@@ -1,0 +1,8 @@
+--python-kinds=-i
+--exclude=*/.git/*
+--exclude=*/.svn/*
+--exclude=*/logs/*
+--exclude=*.pyc
+--exclude=*.so
+--exclude=*~
+--exclude=Session.vim
