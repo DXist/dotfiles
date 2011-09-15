@@ -6,3 +6,4 @@
 --exclude=*.so
 --exclude=*~
 --exclude=Session.vim
+--exclude=*.min.js
