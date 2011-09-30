@@ -1,3 +1,4 @@
+--links=no
 --python-kinds=-i
 --exclude=*/.git/*
 --exclude=*/.svn/*

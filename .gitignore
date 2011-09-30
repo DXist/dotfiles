@@ -1,4 +1,5 @@
 *~
-*swp
+*.swp
 Session.vim
 *.pyc
+.vimrc
