@@ -31,14 +31,14 @@ layouts =
 {
     awful.layout.suit.floating,
     awful.layout.suit.tile,
-    -- awful.layout.suit.tile.left,
+    awful.layout.suit.tile.left,
     awful.layout.suit.tile.bottom,
+    awful.layout.suit.max,
     -- awful.layout.suit.tile.top,
     -- awful.layout.suit.fair,
     -- awful.layout.suit.fair.horizontal,
     -- awful.layout.suit.spiral,
     -- awful.layout.suit.spiral.dwindle,
-    awful.layout.suit.max,
     -- awful.layout.suit.max.fullscreen,
     -- awful.layout.suit.magnifier
 }
@@ -46,15 +46,14 @@ layouts =
 
 -- {{{ Tags
 -- Define a tag table which hold all screen tags.
-tags = {}
+tags = {
+  names  = { "main", "www", "skype", "im", "mail", "office", 7, 8, 9 },
+  layout = { layouts[5], layouts[2], layouts[2], layouts[1], layouts[2],
+			 layouts[1], layouts[1], layouts[1], layouts[1]
+}}
 for s = 1, screen.count() do
-	tags = {
-	  names  = { "main", "www", "mail", "skype", "im", "office", 7, 8, 9 },
-	  layout = { layouts[4], layouts[1], layouts[1], layouts[2], layouts[2],
-				 layouts[1], layouts[1], layouts[1], layouts[1]
-	}}
     -- Each screen has its own tag table.
-    tags[s] = awful.tag(tags.names, s, layouts[1])
+    tags[s] = awful.tag(tags.names, s, tags.layout)
 end
 -- }}}
 
@@ -324,11 +323,11 @@ awful.rules.rules = {
     --   properties = { tag = tags[1][2] } },
     { rule = { class = "Chromium" },
       properties = { tag = tags[1][2] } },
-    { rule = { class = "Thunderbird" },
-      properties = { tag = tags[1][3] } },
     { rule = { class = "Skype" },
-      properties = { tag = tags[1][4] } },
+      properties = { tag = tags[1][3] } },
     { rule = { class = "Pidgin" },
+      properties = { tag = tags[1][4] } },
+    { rule = { class = "Thunderbird" },
       properties = { tag = tags[1][5] } },
 }
 -- }}}
@@ -374,15 +373,15 @@ function run_once(prg,arg_string,pname,screen)
     end
 
     if not arg_string then
-        awful.util.spawn_with_shell("pgrep -f -u $USER -x '" .. pname .. "' || (" .. prg .. ")",screen)
+        awful.util.spawn_with_shell("pgrep -f -u $USER '" .. pname .. "' || (" .. prg .. ")",screen)
     else
-        awful.util.spawn_with_shell("pgrep -f -u $USER -x '" .. pname .. "' || (" .. prg .. " " .. arg_string .. ")",screen)
+        awful.util.spawn_with_shell("pgrep -f -u $USER '" .. pname .. "' || (" .. prg .. " " .. arg_string .. ")",screen)
     end
 end
 
 run_once("xscreensaver","-no-splash")
 run_once("gnome-terminal")
-run_once("chromium-browser", nil, "chromium")
+run_once("chromium-browser")
 run_once("thunderbird")
 run_once("skype")
 run_once("pidgin")
