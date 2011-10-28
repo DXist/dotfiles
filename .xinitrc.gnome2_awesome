@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+~/.xinitrc.awesome &
+exec ck-launch-session gnome-session # ck-launch-session is advised for the dbus stuff to work fine.
