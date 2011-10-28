@@ -1,1 +1,0 @@
-.xinitrc.gnome_awesome
