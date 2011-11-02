@@ -1,4 +1,4 @@
-export PATH=$PATH:/usr/lib/git-core/
+export PATH=$HOME/bin:$PATH:/usr/lib/git-core/
 export EDITOR=/usr/bin/vim
 export PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '
 export GIT_PS1_SHOWDIRTYSTATE=true

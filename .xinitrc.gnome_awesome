@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 ~/.xinitrc.awesome &
-exec ck-launch-session gnome-session --session=gnome-classic # ck-launch-session is advised for the dbus stuff to work fine.
+exec ck-launch-session gnome-session --session=gnome-fallback # ck-launch-session is advised for the dbus stuff to work fine.

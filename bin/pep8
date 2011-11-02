@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# ignore blank lines at end of file
+/usr/local/bin/pep8 --ignore=W391 $@
