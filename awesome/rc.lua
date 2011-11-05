@@ -304,11 +304,13 @@ root.keys(globalkeys)
 awful.rules.rules = {
     -- All clients will match this rule.
     { rule = { },
+	-- Start windows as slave
       properties = { border_width = beautiful.border_width,
                      border_color = beautiful.border_normal,
                      focus = true,
                      keys = clientkeys,
                      buttons = clientbuttons } },
+	{ rule = { }, properties = { }, callback = awful.client.setslave },
     { rule = { class = "MPlayer" },
       properties = { floating = true } },
     { rule = { class = "pinentry" },
@@ -322,8 +324,10 @@ awful.rules.rules = {
       properties = { tag = tags[1][2] } },
     { rule = { class = "Skype" },
       properties = { tag = tags[1][3] } },
-    { rule = { class = "Pidgin" },
-      properties = { tag = tags[1][4] } },
+	{ rule = { class = "Pidgin", role = "buddy_list" },
+      properties = { x = 0, y = 0, w = 160, tag = tags[1][4] } },
+    { rule = { class = "Pidgin", role = "conversation" },
+      properties = { tag = tags[1][4] }, callback = awful.client.setslave },
     { rule = { class = "Thunderbird" },
       properties = { tag = tags[1][5] } },
 }
