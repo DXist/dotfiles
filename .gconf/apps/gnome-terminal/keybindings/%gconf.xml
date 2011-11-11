@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<gconf>
+	<entry name="move_tab_right" mtime="1321000297" type="string">
+		<stringvalue>&lt;Shift&gt;&lt;Alt&gt;k</stringvalue>
+	</entry>
+	<entry name="move_tab_left" mtime="1321000293" type="string">
+		<stringvalue>&lt;Shift&gt;&lt;Alt&gt;j</stringvalue>
+	</entry>
+	<entry name="next_tab" mtime="1321000288" type="string">
+		<stringvalue>&lt;Alt&gt;k</stringvalue>
+	</entry>
+	<entry name="prev_tab" mtime="1321000281" type="string">
+		<stringvalue>&lt;Alt&gt;j</stringvalue>
+	</entry>
+</gconf>
