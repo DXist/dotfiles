@@ -171,6 +171,12 @@ root.buttons(awful.util.table.join(
 ))
 -- }}}
 
+function viewtag(i)
+	local screen = mouse.screen
+	if tags[screen][i] then
+		awful.tag.viewonly(tags[screen][i])
+	end
+end
 -- {{{ Key bindings
 globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev       ),
@@ -187,7 +193,10 @@ globalkeys = awful.util.table.join(
             awful.client.focus.byidx(-1)
             if client.focus then client.focus:raise() end
         end),
-    awful.key({ modkey,           }, "w", function () mymainmenu:show({keygrabber=true}) end),
+    awful.key({ modkey,           }, "q", function () viewtag(4) end),
+    awful.key({ modkey,           }, "w", function () viewtag(5) end),
+    awful.key({ modkey,           }, "e", function () viewtag(6) end),
+    awful.key({ modkey,           }, "s", function () mymainmenu:show({keygrabber=true}) end),
 
     -- Layout manipulation
     awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end),
