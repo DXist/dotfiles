@@ -48,9 +48,12 @@ tags = {
   names  = { "main", "www", "skype", "im", "mail", "other" },
   layout = { layouts[5], layouts[2], layouts[3], layouts[3], layouts[2], layouts[1],
 }}
-for s = 1, screen.count() do
-    -- Each screen has its own tag table.
-    tags[s] = awful.tag(tags.names, s, tags.layout)
+s = 1
+tags[s] = awful.tag(tags.names, s, tags.layout)
+if screen.count() > 1 then
+	for s = 2, screen.count() do
+		tags[s] = awful.tag({"main"}, s, layouts[1])
+	end
 end
 -- }}}
 
