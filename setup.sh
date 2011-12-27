@@ -60,6 +60,10 @@ install() {
   # Compile command-t extension
   echo "*** Compiling extensions..."
   cd $DOTHOME/.vim/bundle/command-t && rake make
+  cd $DOTHOME/.vim/bundle/vimproc && make -f make_gcc.mak
+  echo "*** Installing pep8..."
+  pip install pep8
+
 
   # Done
   echo "*** Installed"
