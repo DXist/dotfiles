@@ -33,14 +33,16 @@ update() {
 
 	echo "*** Updating..."
 
-	git submodule update --init \
-	&& git submodule foreach --recursive git submodule update --init \
+	git submodule update --init --recursive \
 	&& git submodule foreach --recursive git pull origin master
 
 	compile
 
 	echo "*** Update finished"
 	if ask "Commit this update?"; then
+		cd $DOTHOME/.vim
+		git commit -a -m "Automated submodule update"
+		cd $DOTHOME
 		git commit -a -m "Automated submodule update"
 	fi
 }
