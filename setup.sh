@@ -8,10 +8,11 @@ DOTHOME=`dirname $0`
 cd $DOTHOME
 DOTHOME=`pwd`
 
+# from_dir:file:to_dir
 LINK_MAP="
-gnome-terminal/keybindings:.gconf/apps/gnome-terminal/
-awesome:.config/
-bin:bin/
+gnome-terminal:keybindings:.gconf/apps/gnome-terminal
+:awesome:.config
+:bin:
 "
 #
 # Git must be installed on your machine.
@@ -56,28 +57,38 @@ checkdeps() {
 	pip install pep8
 }
 
-install() {
-	update
+
+install_links() {
+	backuplink() {
+		from=`realpath $1`
+		todir=`realpath $2`
+		file=$3
+		if [ -e $todir/$file -a ! -h $todir/$file ]; then
+			echo "$todir/$file backed up to $todir/_${file:1}"
+			mv $todir/$file $todir/_${file}
+		fi
+		echo "Link for $from/$file to $todir/$file"
+		ln -sfT $from/$file $todir/$file
+	}
 	echo "*** Creating symbolic links"
 	for file in `ls -d .??* |egrep -v $DOTIGNORE`
 	do
-		if [ -e $HOME/$file -a ! -h $HOME/$file ]; then
-			echo "$file backed up to $HOME/_${file:1}"
-			mv $HOME/$file $HOME/_${file:1}
-		fi
-		echo "Link for $file to $HOME/$file"
-		ln -sfT $DOTHOME/$file $HOME/$file
+		backuplink $DOTHOME $HOME $file
 	done
 
 	for line in $LINK_MAP
 	do
 		from=`echo $line|awk -F ":" '{ print $1 }'`
-		to=`echo $line|awk -F ":" '{ print $2 }'`
+		file=`echo $line|awk -F ":" '{ print $2 }'`
+		to=`echo $line|awk -F ":" '{ print $3 }'`
 		mkdir -p $HOME/$to
-		echo "Link for $from to $HOME/$to"
-		ln -sfT $DOTHOME/$from $HOME/$to
+		backuplink $DOTHOME/$from $HOME/$to $file
 	done
+}
 
+install() {
+	update
+	install_links
 	checkdeps
 
 	echo "*** Installed"
@@ -89,5 +100,6 @@ case $1 in
 	update) update; exit ;;
 	checkdeps) checkdeps; exit ;;
 	compile) compile; exit ;;
+	install_links|*) install_links; exit ;;
 	install|*) install; exit ;;
 esac
