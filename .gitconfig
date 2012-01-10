@@ -1,0 +1,11 @@
+[user]
+	name = Rinat Shigapov
+	email = rinatshigapov@gmail.com
+[core]
+	excludesfile = ~/.gitignore
+[format]
+	pretty = "%Cred%h%Creset %ad [%an]	%Cgreen%s%d%Creset"
+[log]
+	date = short
+[alias]
+	l = log --graph
