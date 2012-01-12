@@ -64,7 +64,7 @@ install_links() {
 		todir=`realpath $2`
 		file=$3
 		if [ -e $todir/$file -a ! -h $todir/$file ]; then
-			echo "$todir/$file backed up to $todir/_${file:1}"
+			echo "$todir/$file backed up to $todir/_${file}"
 			mv $todir/$file $todir/_${file}
 		fi
 		echo "Link for $from/$file to $todir/$file"
