@@ -8,7 +8,9 @@ if [ $# == 2 ]; then
 	SVN_REBRANCH=$2
 	REBRANCH=svn-$2
 	git checkout $REBRANCH && \
+	cd `git rev-parse --show-toplevel` && \
 	svn delete -m "- branch $SVN_REBRANCH" `git svn info --url` && \
+	cd - && \
 	git checkout master && \
 	git branch -D $REBRANCH && \
 	git branch -d -r $SVN_REBRANCH && \
