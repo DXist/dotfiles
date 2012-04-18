@@ -52,7 +52,7 @@ s = 1
 tags[s] = awful.tag(tags.names, s, tags.layout)
 if screen.count() > 1 then
 	for s = 2, screen.count() do
-		tags[s] = awful.tag({"main"}, s, layouts[1])
+		tags[s] = awful.tag({"main" .. s}, s, layouts[1])
 	end
 end
 -- }}}
