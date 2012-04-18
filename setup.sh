@@ -25,7 +25,6 @@ fi
 
 compile() {
 	echo "*** Compiling extensions..."
-	cd $DOTHOME/.vim/bundle/command-t/ruby/command-t && ruby extconf.rb && make
 	cd $DOTHOME/.vim/bundle/vimproc && make -f make_gcc.mak
 }
 
@@ -53,8 +52,8 @@ checkdeps() {
 	if ! type -p ack &> /dev/null; then
 		echo "Can't find ack..."
 	fi
-	echo "Installing pep8..."
-	pip install pep8
+	echo "Installing flake8..."
+	pip install flake8
 }
 
 

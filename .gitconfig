@@ -9,3 +9,5 @@
 	date = short
 [alias]
 	l = log --graph
+[svn]
+	pushmergeinfo = 1
