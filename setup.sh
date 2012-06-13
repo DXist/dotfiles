@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 #
 # Based on
 # ~rainerborene dotfiles
@@ -7,6 +7,7 @@ DOTIGNORE="(\.git$)|(\.gitmodules$)|(\.xinitrc)|~"
 DOTHOME=`dirname $0`
 cd $DOTHOME
 DOTHOME=`pwd`
+. .bashrc
 
 # from_dir:file:to_dir
 LINK_MAP="
