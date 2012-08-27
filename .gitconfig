@@ -11,3 +11,4 @@
 	l = log --graph
 [svn]
 	pushmergeinfo = 1
+	rmdir = 1

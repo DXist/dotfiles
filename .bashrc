@@ -13,6 +13,13 @@ export PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '
 export GIT_PS1_SHOWDIRTYSTATE=true
 export GIT_PS1_SHOWSTASHSTATE=true
 
+venvwrapper=`which virtualenvwrapper.sh`
+if [ -r  $venvwrapper ]; then
+	export WORKON_HOME=~/envs
+	export PROJECT_HOME=~/workspace
+	. $venvwrapper
+fi
+
 if [ -r /etc/bash_completion.d/git ]; then
 	. /etc/bash_completion.d/git
 fi
