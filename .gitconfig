@@ -12,3 +12,8 @@
 [svn]
 	pushmergeinfo = 1
 	rmdir = 1
+[color]
+	status = true
+	interactive = true
+[web]
+	browser = chromium-browser
