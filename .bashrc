@@ -13,6 +13,16 @@ export PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '
 export GIT_PS1_SHOWDIRTYSTATE=true
 export GIT_PS1_SHOWSTASHSTATE=true
 
+case "$TERM" in
+  screen)
+      set -o functrace
+      trap 'echo -ne "\ek\$:${BASH_COMMAND:0:20}\e\\"' DEBUG
+      export PS1='\[\033k$:\W\033\\\][\u@\h \W$(__git_ps1 " (%s)")]\$ '
+    ;;
+  *)
+    ;;
+esac
+
 venvwrapper=`which virtualenvwrapper.sh`
 if [ -r  $venvwrapper ]; then
 	export WORKON_HOME=~/envs

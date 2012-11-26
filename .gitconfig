@@ -15,5 +15,6 @@
 [color]
 	status = true
 	interactive = true
+	diff = true
 [web]
 	browser = chromium-browser
