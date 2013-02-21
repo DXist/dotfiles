@@ -9,6 +9,9 @@
 	date = short
 [alias]
 	l = log --graph
+	# merge master
+	mm = !git log -n 1 --format='%s' master | xargs -0 git merge master -m
+	d = diff --check
 [svn]
 	pushmergeinfo = 1
 	rmdir = 1
@@ -18,3 +21,7 @@
 	diff = true
 [web]
 	browser = chromium-browser
+[http]
+	postBuffer = 64M
+[credential]
+	helper = cache --timeout=30000

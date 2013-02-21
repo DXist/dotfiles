@@ -3,4 +3,7 @@
 Session.vim
 *.pyc
 .vimrc
+.ropeproject
 tags
+svn-commit.tmp
+Guardfile
