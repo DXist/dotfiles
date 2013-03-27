@@ -3,7 +3,7 @@
 # Based on
 # ~rainerborene dotfiles
 
-DOTIGNORE="(\.git$)|(\.gitmodules$)|(\.xinitrc)|~"
+DOTIGNORE="(\.git$)|(\.gitmodules$)|(\.xinitrc)|~|(\.swp$)"
 DOTHOME=`dirname $0`
 cd $DOTHOME
 DOTHOME=`pwd`
@@ -11,10 +11,12 @@ DOTHOME=`pwd`
 
 # from_dir:file:to_dir
 LINK_MAP="
-gnome-terminal:keybindings:.gconf/apps/gnome-terminal
-:awesome:.config
-:bin:
 "
+# for Linux
+#:bin:
+# gnome-terminal:keybindings:.gconf/apps/gnome-terminal
+# :awesome:.config
+
 #
 # Git must be installed on your machine.
 #
