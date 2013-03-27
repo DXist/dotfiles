@@ -25,3 +25,6 @@
 	postBuffer = 64M
 [credential]
 	helper = cache --timeout=30000
+	branch = true
+[include]
+	path = .gitconfig.local
