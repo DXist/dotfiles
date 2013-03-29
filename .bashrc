@@ -10,7 +10,7 @@ if [ -r ~/.bashrc.local ]; then
 	. ~/.bashrc.local
 fi
 
-export PATH=$HOME/bin:$PATH:/usr/lib/git-core/
+export PATH=$HOME/bin:$PATH:
 export EDITOR=`which vim`
 
 # Git config
