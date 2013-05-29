@@ -26,5 +26,7 @@
 [credential]
 	helper = cache --timeout=30000
 	branch = true
+[push]
+	default = simple
 [include]
 	path = .gitconfig.local
