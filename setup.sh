@@ -88,9 +88,16 @@ install_links() {
 	done
 }
 
+install_vim() {
+	cd $DOTHOME/.vim
+	make install
+	make
+}
+
 install() {
 	update
 	install_links
+	install_vim
 	checkdeps
 
 	echo "*** Installed"
