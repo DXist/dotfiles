@@ -40,6 +40,9 @@ venvwrapper=`which virtualenvwrapper.sh`
 if [ -r  "$venvwrapper" ]; then
 	export WORKON_HOME=~/envs
 	export PROJECT_HOME=~/workspace
+	if [ -z "$VIRTUALENVWRAPPER_PYTHON" ]; then
+		export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
+	fi
 	. $venvwrapper
 fi
 
