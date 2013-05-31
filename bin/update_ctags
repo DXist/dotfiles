@@ -1,3 +1,9 @@
 #!/bin/bash
-`which ctags` -R -o ~/mytags.tmp $@
-mv ~/mytags.tmp ~/mytags
+CTAGS="`which ctags` -R -f exumberant_tags"
+PROJECT_DIR=~/workspace
+
+for project in ${PROJECT_DIR}/*; do
+	cd $project
+	$CTAGS .
+done
+
