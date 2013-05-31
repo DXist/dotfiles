@@ -1,2 +1,3 @@
 --ignore-dir=migrations
---type=text
+--type-set=exumberant_tags:is:exumberant_tags
+--noexumberant_tags
