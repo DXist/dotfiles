@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 ~/.xinitrc.awesome &
-xinput set-prop 9 "Device Accel Profile" 2 &
-xinput set-prop 9 "Device Accel Velocity Scaling" 20 &
+usb_trackpoint_id = `xinput list --id-only "pointer:Lite-On Technology Corp. ThinkPad USB Keyboard with TrackPoint"`
+xinput set-prop $usb_trackpoint_id "Device Accel Profile" 2 &
+xinput set-prop $usb_trackpoint_id "Device Accel Velocity Scaling" 20 &
 exec ck-launch-session gnome-session --session=gnome-fallback # ck-launch-session is advised for the dbus stuff to work fine.
 #exec ck-launch-session gnome-session --session awesome
