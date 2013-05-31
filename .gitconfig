@@ -28,6 +28,6 @@
 	helper = cache --timeout=30000
 	branch = true
 [push]
-	default = simple
+	default = current
 [include]
 	path = .gitconfig.local
