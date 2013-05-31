@@ -9,6 +9,7 @@
 	date = short
 [alias]
 	l = log --graph
+	s = status
 	# merge master
 	mm = !git log -n 1 --format='%s' master | xargs -0 git merge master -m
 	d = diff --check
