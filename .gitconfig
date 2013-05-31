@@ -4,7 +4,7 @@
 [core]
 	excludesfile = ~/.gitignore
 [format]
-	pretty = "%Cred%h%Creset %ad [%an]	%Cgreen%s%d%Creset"
+	pretty = "%Cred%h%Creset %ad [%an <%ae>]	%Cgreen%s%d%Creset"
 [log]
 	date = short
 [alias]
