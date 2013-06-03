@@ -12,12 +12,15 @@ fi
 
 export PATH=$HOME/bin:$PATH:
 export EDITOR=`which vim`
+# quit less if one output fits on one screen
+export PAGER="less -FX"
 
 # Git config
 export PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '
 
 export GIT_PS1_SHOWDIRTYSTATE=true
 export GIT_PS1_SHOWSTASHSTATE=true
+
 
 case "$TERM" in
   screen)
