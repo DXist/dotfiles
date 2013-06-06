@@ -1,9 +1,24 @@
 #!/bin/bash
 CTAGS="`which ctags` -R -f exumberant_tags"
-PROJECT_DIR=~/workspace
 
-for project in ${PROJECT_DIR}/*; do
+if [ -z ${PROJECT_HOME} ]; then
+	echo "PROJECT_HOME is not specified"
+	exit 1
+fi
+
+if [ -z ${WORKON_HOME} ]; then
+	echo "WORKON_HOME is not specified"
+	exit 2
+fi
+
+for project in ${PROJECT_HOME}/*; do
 	cd $project
-	$CTAGS .
-done
+	ctags_dirs='.'
+	env_dir=${WORKON_HOME}/`basename $project`
 
+	if [ -d $env_dir ]; then
+		ctags_dirs+=" $env_dir"
+	fi
+
+	$CTAGS $ctags_dirs
+done
