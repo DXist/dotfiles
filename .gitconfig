@@ -8,11 +8,13 @@
 [log]
 	date = short
 [alias]
+	b = branch
+	c = checkout
+	d = diff
 	l = log --graph
 	s = status
 	# merge master
 	mm = !git log -n 1 --format='%s' master | xargs -0 git merge master -m
-	d = diff --check
 [svn]
 	pushmergeinfo = 1
 	rmdir = 1
