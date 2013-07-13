@@ -11,11 +11,8 @@ DOTHOME=`pwd`
 
 # from_dir:file:to_dir
 LINK_MAP="
+:bin:
 "
-# for Linux
-#:bin:
-# gnome-terminal:keybindings:.gconf/apps/gnome-terminal
-# :awesome:.config
 
 #
 # Git must be installed on your machine.
@@ -28,7 +25,6 @@ fi
 
 compile() {
 	echo "*** Compiling extensions..."
-	cd $DOTHOME/.vim/bundle/vimproc && make -f make_gcc.mak
 }
 
 update() {
