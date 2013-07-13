@@ -45,7 +45,7 @@ if [ -r  "$venvwrapper" ]; then
 	export WORKON_HOME=~/envs
 	export PROJECT_HOME=~/workspace
 	if [ -z "$VIRTUALENVWRAPPER_PYTHON" ]; then
-		export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
+		export VIRTUALENVWRAPPER_PYTHON=`which python`
 	fi
 	. $venvwrapper
 fi
