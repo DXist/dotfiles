@@ -5,6 +5,9 @@ if [ -r /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 
+# functions
+. ~/.bash_functions
+
 # local settings
 if [ -r ~/.bashrc.local ]; then
 	. ~/.bashrc.local
@@ -64,24 +67,3 @@ alias ll='ls $LS_OPTIONS -lhF'
 
 alias vi='vim'
 
-# functions
-function del() {
-    if [ ! -d /tmp/.Trash ]; then
-        mkdir /tmp/.Trash
-    fi
-    mv -f "$1" /tmp/.Trash/
-}
-
-function ask() {
-	echo "$* [y/n]?"
-	read ans
-	if [ $ans = y -o $ans = Y -o $ans = yes -o $ans = Yes -o $ans = YES ]
-	then
-		return 0
-	fi
-
-	if [ $ans = n -o $ans = N -o $ans = no -o $ans = No -o $ans = NO ]
-	then
-		return 1
-	fi
-}
