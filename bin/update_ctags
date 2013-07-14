@@ -1,5 +1,8 @@
 #!/bin/bash
-CTAGS="`which ctags` -R -f exumberant_tags"
+
+TMP_TEMPLATE=`basename $0`.XXXXXX
+CTAGS_FILE=.git/tags
+CTAGS="`which ctags` -R"
 
 if [ -z ${PROJECT_HOME} ]; then
 	echo "PROJECT_HOME is not specified"
@@ -11,14 +14,37 @@ if [ -z ${WORKON_HOME} ]; then
 	exit 2
 fi
 
-for project in ${PROJECT_HOME}/*; do
-	cd $project
-	ctags_dirs='.'
-	env_dir=${WORKON_HOME}/`basename $project`
-
-	if [ -d $env_dir ]; then
-		ctags_dirs+=" $env_dir"
+for project in "${PROJECT_HOME}"/*; do
+	if [ ! -d "${project}" -o ! -d ${project}/.git ]; then
+		# skip non directories and non git projects
+		continue
 	fi
 
-	$CTAGS $ctags_dirs
+	cd $project
+	CTAGS_DIRS='.'
+	ENV_DIR="${WORKON_HOME}"/`basename $project`
+
+	if [ -d ${ENV_DIR} ]; then
+		CTAGS_DIRS+=" ${ENV_DIR}"
+	fi
+
+	# write to tmp file and update original file instantly
+	TMPFILE=`mktemp -t ${TMP_TEMPLATE}`
+	$CTAGS -f ${TMPFILE} ${CTAGS_DIRS}
+
+	# smart update
+	if [ -f "${CTAGS_FILE}" ]; then
+		ORIG_SUM=`cat ${CTAGS_FILE} | md5sum`
+		NEW_SUM=`cat ${TMPFILE} | md5sum`
+
+		if [ "$ORIG_SUM" != "$NEW_SUM" ]; then
+			mv -f ${TMPFILE} ${CTAGS_FILE}
+		else
+			rm -f ${TMPFILE}
+		fi
+
+	else
+		mv -f ${TMPFILE} ${CTAGS_FILE}
+	fi
+
 done

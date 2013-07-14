@@ -4,6 +4,5 @@ Session.vim
 *.pyc
 .ropeproject
 .DS_Store
-exumberant_tags
 svn-commit.tmp
 Guardfile
