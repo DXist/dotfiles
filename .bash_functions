@@ -27,6 +27,7 @@ function ctagsify() {
 	ctags="`which ctags` -R"
 
 	({
+		set -e
 		tmpfile=`mktemp -t ctagsify.XXXXXX`
 		trap "rm -f $tmpfile" EXIT;
 		$ctags -f ${tmpfile} ${what} 2>&1 &&
@@ -43,5 +44,21 @@ function pip() {
 	if [[ -n "${VIRTUAL_ENV}" && ("$1" = install || "$1" = uninstall) ]]; then
 		ctagsify ${VIRTUAL_ENV} ${VIRTUAL_ENV}/.tags
 	fi
+}
+
+function git() {
+	GIT_CMD=`which git`
+	$GIT_CMD "$@"
+	status="$?"
+	[[ $status = 0 ]] || return $status
+
+	for opt in "$@"; do
+		case "$opt" in
+			commit | rebase)
+				$GIT_CMD ctags
+				break
+				;;
+		esac
+	done
 }
 # vim: ft=sh

@@ -1,6 +1,6 @@
 --links=no
 --tag-relative=yes
---languages=-javascript,sql
+--languages=-javascript,sql,css
 --fields=+l
 --python-kinds=-i
 --exclude=.git
