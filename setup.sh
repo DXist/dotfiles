@@ -51,8 +51,8 @@ checkdeps() {
 	if ! type -p ack &> /dev/null; then
 		echo "Can't find ack..."
 	fi
-	echo "Installing flake8..."
-	pip install flake8
+	echo "Installing python dependencies..."
+	pip install pylama virtualenv virtualenvwrapper
 }
 
 
@@ -105,6 +105,6 @@ case $1 in
 	update) update; exit ;;
 	checkdeps) checkdeps; exit ;;
 	compile) compile; exit ;;
+	install) install; exit ;;
 	install_links|*) install_links; exit ;;
-	install|*) install; exit ;;
 esac
