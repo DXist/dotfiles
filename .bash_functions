@@ -28,7 +28,7 @@ function ctagsify() {
 
 	({
 		set -e
-		tmpfile=`mktemp -t ctagsify.XXXXXX`
+		tmpfile=.git/tags.$$
 		trap "rm -f $tmpfile" EXIT;
 		$ctags -f ${tmpfile} ${what} 2>&1 &&
 		mv -f ${tmpfile} $tagfile;
