@@ -3,7 +3,10 @@
 
 BRANCH_NAME=`git rev-parse --abbrev-ref HEAD`
 ISSUE=`expr "$BRANCH_NAME" : '.*/\([[:upper:]]\+-[[:digit:]]\+\)'`
+msg=$(cat $1)
+has_issue=`expr "$msg" : "\($ISSUE\).*"`
 
-if [ -n "$ISSUE" ]; then
-    echo "$ISSUE $(cat $1)" > $1
+
+if [[ -n "$ISSUE" && -z "$has_issue" ]]; then
+    echo -n "$ISSUE $msg" > $1
 fi
