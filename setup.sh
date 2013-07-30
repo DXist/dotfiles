@@ -54,7 +54,7 @@ checkdeps() {
 		echo "Can't find ack..."
 	fi
 	echo "Installing python dependencies..."
-	sudo pip install pylama virtualenv virtualenvwrapper
+	sudo pip install virtualenv virtualenvwrapper
 }
 
 
