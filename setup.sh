@@ -12,6 +12,8 @@ DOTHOME=`pwd`
 # from_dir:file:to_dir
 LINK_MAP="
 :bin:
+envs:postactivate:envs
+envs:postmkvirtualenv:envs
 "
 
 #
