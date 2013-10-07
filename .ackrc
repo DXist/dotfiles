@@ -1,5 +1,7 @@
 --ignore-dir=migrations
 --ignore-dir=build
+--ignore-dir=deb_dist
+--ignore-dir=usr
 --type-set=exumberant_tags:is:.tags
 --type-set=pylint_report:is:pylint.report
 --noexumberant_tags
