@@ -2,7 +2,9 @@
 *.swp
 Session.vim
 *.pyc
+*.pyo
 .ropeproject
 .DS_Store
 svn-commit.tmp
 Guardfile
+.vimrc
