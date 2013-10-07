@@ -1,9 +1,11 @@
 # functions
 function del() {
-    if [ ! -d /tmp/.Trash ]; then
-        mkdir /tmp/.Trash
-    fi
-    mv -f "$1" /tmp/.Trash/
+	if [ $# -eq 0 ]; then
+		return 1
+	fi
+	dir=/tmp/.Trash/`date -Iseconds` &&
+	mkdir -p $dir
+    mv -f "$@" $dir
 }
 
 function ask() {
@@ -24,7 +26,13 @@ function ctagsify() {
 	what=${1:-.}
 	tagfile=${2:-.tags}
 
-	ctags="`which ctags` -R"
+	ctags_prg=`which ctags`
+	if [ -z $ctags_prg ]; then
+		echo 'ctags not found'
+		return
+	fi
+
+	ctags="$ctags_prg -R"
 
 	({
 		set -e
