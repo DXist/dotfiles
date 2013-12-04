@@ -1,6 +1,7 @@
 [user]
 	name = Rinat Shigapov
 	email = rinatshigapov@gmail.com
+	signingkey = 0xC600E8FB
 [core]
 	excludesfile = ~/.gitignore
 [format]
