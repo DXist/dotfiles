@@ -21,9 +21,12 @@
 	pushmergeinfo = 1
 	rmdir = 1
 [color]
+	branch = true
 	status = true
 	interactive = true
 	diff = true
+	grep = true
+	ui = true
 [web]
 	browser = chromium-browser
 [http]
