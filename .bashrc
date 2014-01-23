@@ -70,3 +70,6 @@ alias ls='ls $LS_OPTIONS -hF'
 alias ll='ls $LS_OPTIONS -lhF'
 
 alias vi='vim'
+# ncurses emulates 8 color term when TERM is xterm
+# but we need 16 color
+alias tmux='TERM=xterm-16color tmux'
