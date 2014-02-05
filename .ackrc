@@ -4,5 +4,7 @@
 --ignore-dir=usr
 --type-set=exumberant_tags:is:.tags
 --type-set=pylint_report:is:pylint.report
+--type-set=ignored_js:is:jquery.js
 --noexumberant_tags
 --nopylint_report
+--noignored_js
