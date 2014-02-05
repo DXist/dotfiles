@@ -61,6 +61,27 @@ if [ -r /etc/bash_completion.d/git ]; then
 	. /etc/bash_completion.d/git
 fi
 
+if [ -z "$TMUX" ]; then
+    # we're not in a tmux session
+
+    if [ ! -z "$SSH_TTY" ]; then
+        # We logged in via SSH
+
+		# Predictable SSH authentication socket location.
+		SOCK="/tmp/ssh-agent-$USER-tmux"
+		if test $SSH_AUTH_SOCK && [ $SSH_AUTH_SOCK != $SOCK ]
+		then
+			rm -f $SOCK
+			ln -sf $SSH_AUTH_SOCK $SOCK
+			export SSH_AUTH_SOCK=$SOCK
+		fi
+
+        # start tmux
+        tmux attach
+    fi
+fi
+
+
 alias cp='cp -i'
 alias mv='mv -i'
 alias rm='rm -i'
