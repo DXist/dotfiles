@@ -31,6 +31,7 @@ export PATH=$HOME/bin:$PATH:
 export EDITOR=`which vim`
 # quit less if one output fits on one screen
 export PAGER="less -FX"
+export LESSOPEN="|pygmentize -g %s"
 
 # Git config
 export PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '
@@ -91,6 +92,7 @@ alias ll='ls $LS_OPTIONS -lhF'
 
 alias vi='vim'
 alias vim='TERM=xterm vim'
+alias less='less -R -x4'
 # ncurses emulates 8 color term when TERM is xterm
 # but we need 16 color
 alias tmux='TERM=xterm-16color tmux'
