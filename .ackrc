@@ -2,6 +2,7 @@
 --ignore-dir=build
 --ignore-dir=deb_dist
 --ignore-dir=usr
+--ignore-dir=.tox
 --type-set=exumberant_tags:is:.tags
 --type-set=pylint_report:is:pylint.report
 --type-set=ignored_js:is:jquery.js
