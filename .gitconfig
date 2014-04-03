@@ -14,9 +14,8 @@
 	d = diff
 	l = log --graph
 	s = status
+	rc = rebase --continue
 	ctags = !test -x .git/hooks/ctags && .git/hooks/ctags
-	# merge master
-	mm = !git log -n 1 --format='%s' master | xargs -0 git merge master -m
 [svn]
 	pushmergeinfo = 1
 	rmdir = 1
