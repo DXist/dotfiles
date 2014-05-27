@@ -48,6 +48,8 @@ if [ "$TERM" != "dumb" ]; then
 	fi
 fi
 
+export GOPATH=~/goworkspace
+
 venvwrapper=`which virtualenvwrapper.sh`
 if [ -r  "$venvwrapper" ]; then
 	export WORKON_HOME=~/envs
@@ -93,6 +95,7 @@ alias ll='ls $LS_OPTIONS -lhF'
 alias vi='vim'
 alias vim='TERM=xterm vim'
 alias less='less -R -x4'
+alias go='TMPDIR=~/tmp go'
 # ncurses emulates 8 color term when TERM is xterm
 # but we need 16 color
 alias tmux='TERM=xterm-16color tmux'
