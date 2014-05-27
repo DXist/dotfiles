@@ -3,6 +3,7 @@
 --ignore-dir=deb_dist
 --ignore-dir=usr
 --ignore-dir=.tox
+--ignore-dir=reports
 --type-set=exumberant_tags:is:.tags
 --type-set=pylint_report:is:pylint.report
 --type-set=ignored_js:is:jquery.js
