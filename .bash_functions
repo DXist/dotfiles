@@ -69,4 +69,16 @@ function git() {
 		esac
 	done
 }
+
+function go() {
+	TMPDIR=~/tmp `which go` "$@"
+	status="$?"
+	[[ $status = 0 ]] || return $status
+
+	# rebuild gopath ctags
+	if [[ -n "${GOPATH}" && ("$1" = get ) ]]; then
+		goworkspace=${GOPATH%%:*}
+		ctagsify ${goworkspace} ${goworkspace}/.tags
+	fi
+}
 # vim: ft=sh

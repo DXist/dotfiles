@@ -95,7 +95,6 @@ alias ll='ls $LS_OPTIONS -lhF'
 alias vi='vim'
 alias vim='TERM=xterm vim'
 alias less='less -R -x4'
-alias go='TMPDIR=~/tmp go'
 # ncurses emulates 8 color term when TERM is xterm
 # but we need 16 color
 alias tmux='TERM=xterm-16color tmux'
