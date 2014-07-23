@@ -9,11 +9,16 @@
 [log]
 	date = short
 [alias]
+	a = add
 	b = branch
 	c = checkout
+	cm = commit
+	cma = commit -a
+	p = pull
 	d = diff
 	l = log --graph
 	s = status
+	r = rebase
 	rc = rebase --continue
 	ctags = !test -x .git/hooks/ctags && .git/hooks/ctags
 [svn]
