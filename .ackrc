@@ -7,6 +7,8 @@
 --type-set=exumberant_tags:is:.tags
 --type-set=pylint_report:is:pylint.report
 --type-set=ignored_js:is:jquery.js
+--type-set=coverage:is:.coverage
 --noexumberant_tags
 --nopylint_report
 --noignored_js
+--nocoverage
