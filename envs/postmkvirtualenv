@@ -3,4 +3,5 @@
 
 # install linter
 # install syntax highlighter for less preprocessor
-pip install pylama pygments
+# install debugger
+pip install pylama pygments pudb
