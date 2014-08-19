@@ -14,6 +14,7 @@ LINK_MAP="
 :bin:
 envs:postactivate:envs
 envs:postmkvirtualenv:envs
+config:pudb:config
 "
 
 #
