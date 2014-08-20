@@ -39,15 +39,16 @@ palette.update({
 
     "variables": ("light blue", "default"),
 
-    "var label": ("light blue", "default"),
-    "var value": ("light green", "default"),
-    "focused var label": ("white", "light green"),
-    "focused var value": ("black", "light green"),
+    "var label": ("dark blue", "default"),
+    "var value": ("light blue", "default"),
 
-    "highlighted var label": ("white", "dark blue"),
-    "highlighted var value": ("black", "dark blue"),
-    "focused highlighted var label": ("white", "dark blue"),
-    "focused highlighted var value": ("black", "dark blue"),
+    "focused var label": ("white", "dark blue"),
+    "focused var value": ("black", "dark blue"),
+
+    "highlighted var label": ("white", "light green"),
+    "highlighted var value": ("white", "light green"),
+    "focused highlighted var label": ("white", "light green"),
+    "focused highlighted var value": ("white", "light green"),
 
     "stack": ("light blue", "default"),
 
@@ -55,17 +56,17 @@ palette.update({
     "frame class": ("light blue", "default"),
     "frame location": ("light green", "default"),
 
-    "focused frame name": ("white", "light green"),
-    "focused frame class": ("black", "light green"),
-    "focused frame location": ("dark gray", "light green"),
+    "focused frame name": ("white", "dark blue"),
+    "focused frame class": ("black", "dark blue"),
+    "focused frame location": ("dark gray", "dark blue"),
 
-    "current frame name": ("white", "dark blue"),
-    "current frame class": ("black", "dark blue"),
-    "current frame location": ("dark gray", "dark blue"),
+    "focused current frame name": ("white", "light green"),
+    "focused current frame class": ("black", "light green"),
+    "focused current frame location": ("dark gray", "light green"),
 
-    "focused current frame name": ("white", "dark blue"),
-    "focused current frame class": ("black", "dark blue"),
-    "focused current frame location": ("dark gray", "dark blue"),
+    "current frame name": ("white", "light green"),
+    "current frame class": ("black", "light green"),
+    "current frame location": ("dark gray", "light green"),
 
     # breakpoints
     "breakpoint": ("light blue", "default"),
@@ -83,8 +84,8 @@ palette.update({
     "search box": ("default", "default"),
 
     "source": ("light blue", "default"),
-    "current source": ("black", "light green"),
-    "current focused source": ("black", "light green"),
+    "current source": ("light gray", "light blue"),
+    "current focused source": ("light gray", "light blue"),
 
     "focused source": ("dark gray", "dark blue"),
 
