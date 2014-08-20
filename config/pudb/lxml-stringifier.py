@@ -42,8 +42,4 @@ expanded view, etc.
 
 
 def pudb_stringifier(obj):
-    import lxml.etree
-    if isinstance(obj, lxml.etree.Element):
-        return lxml.etree.tostring(obj)
-    else:
-        return pprint.pformat(obj)
+    return pprint.pformat(obj)
