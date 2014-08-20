@@ -32,10 +32,11 @@ palette.update({
     # UI
     "header": ("black", "light blue", "standout"),
     "focused sidebar": ("yellow", "light blue", "standout"),
-    "group head": ("dark blue", "light blue"),
+    "group head": ("black", "light blue"),
     "background": ("black", "light blue"),
-    "selectable": ("black", "dark cyan"),
-    "focused selectable": ("black", "dark green"),
+    "label": ("black", "light blue"),
+    "value": ("white", "dark blue"),
+    "fixed value": ("black", "light blue"),
 
     "variables": ("light blue", "default"),
 
