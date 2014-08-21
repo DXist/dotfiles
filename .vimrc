@@ -1,1 +1,1 @@
-.vim/.vimrc.mine
+.vim/.vimrc.global
