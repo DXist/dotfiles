@@ -17,6 +17,7 @@
 	p = pull
 	d = diff
 	l = log --graph
+	lst = ls-tree -r --name-only
 	s = status
 	r = rebase
 	rc = rebase --continue

@@ -48,7 +48,9 @@ if [ "$TERM" != "dumb" ]; then
 	fi
 fi
 
-export GOPATH=$GOPATH:~/goworkspace
+if [ -z "${GOPATH##$HOME/goworkspace}" ]; then
+	export GOPATH=$GOPATH:$HOME/goworkspace
+fi
 
 venvwrapper=`which virtualenvwrapper.sh`
 if [ -r  "$venvwrapper" ]; then
