@@ -27,7 +27,10 @@ export LC_TELEPHONE="ru_RU.UTF-8"
 export LC_MEASUREMENT="ru_RU.UTF-8"
 export LC_IDENTIFICATION="ru_RU.UTF-8"
 
-export PATH=$HOME/bin:$PATH:
+if [ -z "${PATH##$HOME/bin}" ]; then
+	export PATH=$HOME/bin:$PATH
+fi
+
 export EDITOR=`which vim`
 # quit less if one output fits on one screen
 export PAGER="less -FX"
