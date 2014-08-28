@@ -11,6 +11,7 @@
 [alias]
 	a = add
 	b = branch
+	brd = "!f() { git branch -d \"$@\" && git push origin --delete \"$@\"; }; f"
 	c = checkout
 	cm = commit
 	cma = commit -a
