@@ -88,6 +88,9 @@ if [ -z "$TMUX" ]; then
     fi
 fi
 
+# disable flow control
+stty -ixon
+
 
 alias cp='cp -i'
 alias mv='mv -i'
