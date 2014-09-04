@@ -4,7 +4,7 @@
 # ~rainerborene dotfiles
 
 DOTIGNORE="(\.git$)|(\.gitmodules$)|(\.xinitrc)|~|(\.swp$)"
-DOTHOME=`dirname $0`
+DOTHOME=`${GNU_PREFIX}dirname $0`
 cd $DOTHOME
 DOTHOME=`pwd`
 . .bashrc
@@ -61,18 +61,18 @@ checkdeps() {
 
 install_links() {
 	backuplink() {
-		from=`realpath $1`
-		todir=`realpath $2`
+		from=`${GNU_PREFIX}realpath $1`
+		todir=`${GNU_PREFIX}realpath $2`
 		file=$3
 		if [ -e $todir/$file -a ! -h $todir/$file ]; then
 			echo "$todir/$file backed up to $todir/_${file}"
 			mv $todir/$file $todir/_${file}
 		fi
 		echo "Link for $from/$file to $todir/$file"
-		ln -sfT $from/$file $todir/$file
+		${GNU_PREFIX}ln -sfT $from/$file $todir/$file
 	}
 	echo "*** Creating symbolic links"
-	for file in `ls -d .??* |egrep -v $DOTIGNORE`
+	for file in `${GNU_PREFIX}ls -d .??* |egrep -v $DOTIGNORE`
 	do
 		backuplink $DOTHOME $HOME $file
 	done
@@ -89,8 +89,8 @@ install_links() {
 
 install_vim() {
 	cd $DOTHOME/.vim
-	make install
-	make
+	${GNU_PREFIX}make install
+	${GNU_PREFIX}make
 }
 
 install() {
