@@ -102,7 +102,8 @@ alias ll='ls $LS_OPTIONS -lhF'
 alias g=git
 
 alias vi='vim'
-alias vim='TERM=xterm vim'
+alias vims='vim --servername=vim'
+alias vimc='vim --remote-tab'
 alias less='less -R -x4'
 # ncurses emulates 8 color term when TERM is xterm
 # but we need 16 color
