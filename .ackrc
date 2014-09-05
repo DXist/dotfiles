@@ -4,11 +4,22 @@
 --ignore-dir=usr
 --ignore-dir=.tox
 --ignore-dir=reports
+
+# tags
 --type-set=exumberant_tags:is:.tags
---type-set=pylint_report:is:pylint.report
---type-set=ignored_js:is:jquery.js
---type-set=coverage:is:.coverage
 --noexumberant_tags
+
+# pylint
+--type-set=pylint_report:is:pylint.report
 --nopylint_report
+
+--type-set=ignored_js:is:jquery.js
 --noignored_js
+
+# coverage report
+--type-set=coverage:is:.coverage
 --nocoverage
+
+# add in a type for gettext messages
+--type-set=gettext=.pot,.po
+--nogettext
