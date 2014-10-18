@@ -27,7 +27,7 @@ export LC_TELEPHONE="ru_RU.UTF-8"
 export LC_MEASUREMENT="ru_RU.UTF-8"
 export LC_IDENTIFICATION="ru_RU.UTF-8"
 
-if [ -z "${PATH##$HOME/bin}" ]; then
+if [[ "${PATH}" != *$HOME/bin* ]]; then
 	export PATH=$HOME/bin:$PATH
 fi
 
@@ -51,7 +51,7 @@ if [ "$TERM" != "dumb" ]; then
 	fi
 fi
 
-if [ -z "${GOPATH##$HOME/goworkspace}" ]; then
+if [[ "${GOPATH}" != *$HOME/goworkspace* ]]; then
 	export GOPATH=$GOPATH:$HOME/goworkspace
 fi
 
