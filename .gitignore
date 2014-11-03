@@ -1,4 +1,5 @@
 *~
+bin
 *.swp
 Session.vim
 *.pyc
