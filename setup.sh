@@ -51,8 +51,8 @@ update() {
 
 checkdeps() {
 	echo "*** Checking dependecies"
-	if ! type -p ack &> /dev/null; then
-		echo "Can't find ack..."
+	if ! type -p ag &> /dev/null; then
+		echo "Can't find ag"
 	fi
 	echo "Installing python dependencies..."
 	sudo pip install virtualenv virtualenvwrapper

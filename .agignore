@@ -1,0 +1,12 @@
+*.min.js
+*.pot
+*.po
+migrations
+build
+deb_dist
+usr
+.tox
+reports
+.tags
+pylint_report
+.coverage

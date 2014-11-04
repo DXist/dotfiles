@@ -1,11 +1,5 @@
 # DXist's .bashrc
-# Test for an interactive shell.  There is no need to set anything
-# past this point for scp and rcp, and it's important to refrain from
-# outputting anything in those cases.
-if [[ $- != *i* ]] ; then
-	# Shell is non-interactive.  Be done now!
-	return
-fi
+
 
 # Source global definitions
 if [ -r /etc/bashrc ]; then
@@ -14,6 +8,18 @@ fi
 
 # functions
 . ~/.bash_functions
+
+if [[ "${PATH}" != *$HOME/bin* ]]; then
+	export PATH=$HOME/bin:$PATH
+fi
+
+# Test for an interactive shell.  There is no need to set anything
+# past this point for scp and rcp, and it's important to refrain from
+# outputting anything in those cases.
+if [[ $- != *i* ]] ; then
+	# Shell is non-interactive.  Be done now!
+	return
+fi
 
 # local settings
 if [ -r ~/.bashrc.local ]; then
@@ -33,10 +39,6 @@ export LC_ADDRESS="ru_RU.UTF-8"
 export LC_TELEPHONE="ru_RU.UTF-8"
 export LC_MEASUREMENT="ru_RU.UTF-8"
 export LC_IDENTIFICATION="ru_RU.UTF-8"
-
-if [[ "${PATH}" != *$HOME/bin* ]]; then
-	export PATH=$HOME/bin:$PATH
-fi
 
 export EDITOR=`which vim`
 # quit less if one output fits on one screen
