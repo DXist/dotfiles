@@ -1,8 +1,10 @@
 *.min.js
+*.pyc
 *.pot
 *.po
 migrations
 build
+_build
 deb_dist
 usr
 .tox
@@ -10,3 +12,7 @@ reports
 .tags
 pylint_report
 .coverage
+.git
+.hg
+.svn
+.bzr

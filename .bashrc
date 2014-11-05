@@ -112,7 +112,6 @@ alias rm='rm -i'
 alias l='ls $LS_OPTIONS -lAhF'
 alias ls='ls $LS_OPTIONS -hF'
 alias ll='ls $LS_OPTIONS -lhF'
-alias g=git
 
 alias vi='vim'
 alias vims='vim --servername=vim'

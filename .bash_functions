@@ -43,6 +43,16 @@ function ctagsify() {
 	} | grep -v Warning &)
 }
 
+function cindexify() {
+	cindex_prg=`which cindex`
+	if [ -z $cindex_prg ]; then
+		echo 'cindex not found'
+		return
+	fi
+
+	$cindex_prg -exclude ~/.agignore 2>/dev/null &
+}
+
 function pip() {
 	`which pip` "$@"
 	status="$?"
@@ -62,12 +72,16 @@ function git() {
 
 	for opt in "$@"; do
 		case "$opt" in
-			commit | rebase)
+			c | cm | cma | checkout | commit | rebase)
 				$GIT_CMD ctags
 				break
 				;;
 		esac
 	done
+}
+
+function g() {
+	git "$@"
 }
 
 function go() {
