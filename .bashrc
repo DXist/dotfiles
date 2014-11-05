@@ -13,6 +13,10 @@ if [[ "${PATH}" != *$HOME/bin* ]]; then
 	export PATH=$HOME/bin:$PATH
 fi
 
+if [[ "${PATH}" != *$HOME/go/bin* ]]; then
+	export PATH=$PATH:$HOME/go/bin
+fi
+
 # Test for an interactive shell.  There is no need to set anything
 # past this point for scp and rcp, and it's important to refrain from
 # outputting anything in those cases.

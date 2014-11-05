@@ -9,3 +9,4 @@ Session.vim
 svn-commit.tmp
 Guardfile
 .vimrc
+saved-breakpoints-*
