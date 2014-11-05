@@ -72,7 +72,7 @@ function git() {
 
 	for opt in "$@"; do
 		case "$opt" in
-			c | cm | cma | checkout | commit | rebase)
+			cm | cma | commit | rebase)
 				$GIT_CMD ctags
 				break
 				;;
