@@ -8,6 +8,7 @@ _build
 deb_dist
 usr
 .tox
+.env
 reports
 .tags
 pylint_report
