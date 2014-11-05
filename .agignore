@@ -2,6 +2,7 @@
 *.pyc
 *.pot
 *.po
+*.wsdl
 migrations
 build
 _build
