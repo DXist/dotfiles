@@ -3,6 +3,8 @@
 *.pot
 *.po
 *.wsdl
+*.egg
+*.egg-info
 migrations
 build
 _build
