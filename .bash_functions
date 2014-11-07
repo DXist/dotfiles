@@ -81,7 +81,11 @@ function git() {
 }
 
 function g() {
-	git "$@"
+	if [[ $# = 0 ]]; then
+		git status
+	else
+		git "$@"
+	fi
 }
 
 function go() {
