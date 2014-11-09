@@ -66,6 +66,14 @@ if [ "$TERM" != "dumb" ]; then
 	fi
 fi
 
+if [[ "${GOPATH}" != *$HOME/go* ]]; then
+	if [[ -z "${GOPATH}" ]]; then
+		export GOPATH=$HOME/go
+	else
+		export GOPATH=$HOME/go:$GOPATH
+	fi
+fi
+
 if [[ "${GOPATH}" != *$HOME/goworkspace* ]]; then
 	export GOPATH=$GOPATH:$HOME/goworkspace
 fi
@@ -122,3 +130,5 @@ alias less='less -R -x4'
 # ncurses emulates 8 color term when TERM is xterm
 # but we need 16 color
 alias tmux='TERM=xterm-16color tmux'
+
+alias cindex='cindex -exclude ~/.agignore'

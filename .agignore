@@ -5,6 +5,10 @@
 *.wsdl
 *.egg
 *.egg-info
+*~
+*.swp
+Session.vim
+.DS_Store
 migrations
 build
 _build

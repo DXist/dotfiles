@@ -1,5 +1,15 @@
 .PHONY: update
-update:
+update: pull update_vim install
+
+.PHONY: pull
+pull:
 	git pull --rebase
-	cd .vim && make fastupdate
+
+.PHONY: update_vim
+update_vim:
+	cd .vim && make update
+
+.PHONY: install
+install:
+	go get github.com/junkblocker/codesearch/...
 	./setup.sh install_links
