@@ -7,7 +7,7 @@ pull:
 
 .PHONY: update_vim
 update_vim:
-	cd .vim && make
+	cd .vim && git pull --rebase && make
 
 .PHONY: install
 install:
