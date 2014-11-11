@@ -11,5 +11,5 @@ update_vim:
 
 .PHONY: install
 install:
-	go get github.com/junkblocker/codesearch/...
 	./setup.sh install_links
+	go get github.com/junkblocker/codesearch/...
