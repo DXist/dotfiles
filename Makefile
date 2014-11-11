@@ -7,7 +7,7 @@ pull:
 
 .PHONY: update_vim
 update_vim:
-	cd .vim && make update
+	cd .vim && make
 
 .PHONY: install
 install:
