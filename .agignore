@@ -1,4 +1,5 @@
 *.min.js
+*.custom.js
 *.pyc
 *.pot
 *.po
