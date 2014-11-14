@@ -133,3 +133,4 @@ alias ag='ag --hidden'
 alias tmux='TERM=xterm-16color tmux'
 
 alias cindex='cindex -exclude ~/.agignore'
+alias cindexprojects='xargs -a ~/.codesearch cindex -exclude ~/.agignore'
