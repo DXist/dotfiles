@@ -87,7 +87,7 @@ function g() {
 		git "$@"
 	fi
 }
-complete -F __git_wrap__git_main g
+complete -o bashdefault -o default -o nospace -F __git_wrap__git_main g
 
 function go() {
 	TMPDIR=~/tmp `which go` "$@"

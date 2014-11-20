@@ -8,6 +8,10 @@
 	pretty = "%Cred%h%Creset %ad [%an <%ae>]	%Cgreen%s%d%Creset"
 [log]
 	date = short
+
+[diff "plist"]
+	textconv = plutil -convert xml1 -o -
+
 [alias]
 	a = add
 	b = branch
@@ -17,8 +21,13 @@
 	cma = commit -a
 	p = pull
 	d = diff
+	# show only modified changes
+	dm = diff --diff-filter=M
+	# check for unapplied hotfixes
+	dcheck = diff HEAD^2...HEAD^1
 	l = log --graph
 	lst = ls-tree -r --name-only
+	m = merge
 	s = status
 	r = rebase
 	rc = rebase --continue
@@ -27,11 +36,6 @@
 	pushmergeinfo = 1
 	rmdir = 1
 [color]
-	branch = true
-	status = true
-	interactive = true
-	diff = true
-	grep = true
 	ui = true
 [web]
 	browser = chromium-browser
