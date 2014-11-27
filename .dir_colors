@@ -61,12 +61,16 @@ TERM cons25
 TERM console
 TERM cygwin
 TERM dtterm
+TERM dvtm
+TERM dvtm-256color
 TERM Eterm
 TERM eterm-color
+TERM fbterm
 TERM gnome
 TERM gnome-256color
 TERM jfbterm
 TERM konsole
+TERM konsole-256color
 TERM kterm
 TERM linux
 TERM linux-c
@@ -74,6 +78,7 @@ TERM mach-color
 TERM mlterm
 TERM nxterm
 TERM putty
+TERM putty-256color
 TERM rxvt
 TERM rxvt-256color
 TERM rxvt-cygwin
@@ -82,13 +87,22 @@ TERM rxvt-unicode
 TERM rxvt-unicode256
 TERM rxvt-unicode-256color
 TERM screen
+TERM screen-16color
+TERM screen-16color-bce
+TERM screen-16color-s
+TERM screen-16color-bce-s
 TERM screen-256color
 TERM screen-256color-bce
 TERM screen-256color-s
+TERM screen-256color-bce-s
 TERM screen-bce
 TERM screen-w
 TERM screen.linux
 TERM screen.xterm-new
+TERM st
+TERM st-meta
+TERM st-256color
+TERM st-meta-256color
 TERM vt100
 TERM xterm
 TERM xterm-new
@@ -97,6 +111,7 @@ TERM xterm-256color
 TERM xterm-88color
 TERM xterm-color
 TERM xterm-debian
+TERM xterm-termite
 
 # EIGHTBIT, followed by '1' for on, '0' for off. (8-bit output)
 EIGHTBIT 1
@@ -260,6 +275,7 @@ EXEC 01;31  # Unix
 .pdf 33
 .pgm 33
 .png 33
+.PNG 33
 .ppm 33
 .pps 33
 .ppsx 33
@@ -304,6 +320,7 @@ EXEC 01;31  # Unix
 .m4v 33
 .mkv 33
 .mov 33
+.MOV 33
 .mp4 33
 .mp4v 33
 .mpeg 33
@@ -317,6 +334,7 @@ EXEC 01;31  # Unix
 .rmvb 33
 .swf 33
 .vob 33
+.webm 33
 .wmv 33
 
 ### Misc
@@ -435,3 +453,4 @@ EXEC 01;31  # Unix
 .3des 34
 .aes 34
 .enc 34
+.sqlite 34
