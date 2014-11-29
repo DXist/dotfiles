@@ -1,0 +1,15 @@
+---
+- hosts: localhost
+  vars:
+    homebrew_installed_packages:
+      - coreutils
+      - git
+      - vim
+      - ctags
+      - bash-completion
+      - tmux
+      - the_silver_searcher
+    homebrew_taps:
+        - caskroom/cask
+  roles:
+    - { role: geerlingguy.homebrew }
