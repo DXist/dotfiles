@@ -1,6 +1,8 @@
 *~
 bin
 .csearchindex
+.cs_files
+.cs_workspaces
 *.swp
 Session.vim
 *.pyc
