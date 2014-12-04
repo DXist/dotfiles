@@ -1,5 +1,6 @@
 --links=no
 --tag-relative=yes
+--sort=foldcase
 --languages=-javascript,sql,css
 --fields=+l
 --python-kinds=-i
