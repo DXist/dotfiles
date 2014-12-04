@@ -1,0 +1,23 @@
+session_name: project
+windows:
+  - window_name: runserver
+    panes:
+    - shell_command:
+      - workon project
+      - ./manage.py runserver
+  - window_name: ''
+    focus: True
+    panes:
+      - shell_command:
+        - workon project
+        - vim
+
+  - window_name: ''
+    panes:
+      - shell_command:
+        - workon project
+
+  - window_name: ''
+    panes:
+      - shell_command:
+        - workon project

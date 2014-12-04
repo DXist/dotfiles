@@ -1,5 +1,6 @@
 *~
 bin
+.csearchindex
 *.swp
 Session.vim
 *.pyc

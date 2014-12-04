@@ -44,13 +44,16 @@ function ctagsify() {
 }
 
 function cindexify() {
+	what=${1:-.}
+	tagfile=${2:-.csearchindex}
+
 	cindex_prg=`which cindex`
 	if [ -z $cindex_prg ]; then
 		echo 'cindex not found'
 		return
 	fi
 
-	$cindex_prg -exclude ~/.agignore 2>/dev/null &
+	$cindex_prg -exclude ~/.agignore -indexpath ${tagfile} ${what} 2>/dev/null &
 }
 
 function pip() {

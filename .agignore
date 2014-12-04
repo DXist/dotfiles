@@ -8,6 +8,7 @@
 *.egg-info
 *~
 *.swp
+.noseids.*
 Session.vim
 .DS_Store
 migrations
