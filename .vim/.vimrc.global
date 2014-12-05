@@ -1,0 +1,595 @@
+" GENERAL {{{1
+" Note: Skip initialization for vim-tiny or vim-small.
+if !1 | finish | endif
+
+if !exists('s:loaded_my_vimrc')
+	if has('vim_starting')
+	set nocompatible               " Be iMproved
+
+	" Required:
+	set runtimepath+=~/.vim/bundle/neobundle.vim/
+	endif
+
+	" Required:
+	call neobundle#begin(expand('~/.vim/bundle/'))
+
+	" Let NeoBundle manage NeoBundle
+	" Required:
+	NeoBundleFetch 'Shougo/neobundle.vim'
+
+	" My Bundles here:
+
+	NeoBundle 'Shougo/vimproc.vim', {
+	\ 'build' : {
+	\     'windows' : 'tools\\update-dll-mingw',
+	\     'cygwin' : 'make -f make_cygwin.mak',
+	\     'mac' : 'make -f make_mac.mak',
+	\     'linux' : 'make',
+	\     'unix' : 'gmake',
+	\    },
+	\ }
+	NeoBundle 'Shougo/unite.vim'
+	NeoBundle 'kien/ctrlp.vim'
+	NeoBundleLazy 'Shougo/unite-outline', {'autoload':{'unite_sources':'outline'}}
+	NeoBundleLazy 'tsukkee/unite-tag', {'autoload':{'unite_sources':'tag'}}
+	NeoBundleLazy 'junkblocker/unite-codesearch', {'autoload':{'unite_sources':'codesearch'}}
+	NeoBundleLazy 'osyo-manga/unite-quickfix', {'autoload':{'unite_sources': ['quickfix', 'location_list']}}
+	NeoBundleLazy 'thinca/vim-unite-history', { 'autoload' : { 'unite_sources' : ['history/command', 'history/search']}}
+	NeoBundleLazy 'tsukkee/unite-help', {'autoload':{'unite_sources':'help'}}
+	NeoBundle 'mhinz/vim-hugefile'
+	NeoBundle 'tpope/vim-fugitive'
+	" syntax files for git
+	NeoBundle 'tpope/vim-git'
+	NeoBundle 'gregsexton/gitv'
+	NeoBundle 'tpope/vim-dispatch'
+	NeoBundle 'tpope/vim-repeat'
+	NeoBundle 'tpope/vim-surround',{
+	        \ 'depends': ['tpope/vim-repeat']}
+	NeoBundle 'tpope/vim-commentary'
+	NeoBundle 'tpope/vim-ragtag'
+	NeoBundle 'jmcantrell/vim-virtualenv'
+	NeoBundle 'altercation/vim-colors-solarized'
+	NeoBundle 'scrooloose/syntastic'
+	NeoBundle 'bkad/CamelCaseMotion'
+	NeoBundle 'Lokaltog/vim-easymotion'
+	NeoBundle 'Raimondi/delimitMate'
+	NeoBundle 'Valloric/YouCompleteMe', {
+		\ 'build': {'unix': 'sh -c "git submodule update --init --recursive && ./install.sh"'}}
+	NeoBundle 'michaeljsmith/vim-indent-object'
+	NeoBundle 'xolox/vim-misc'
+	" NeoBundle 'xolox/vim-session'
+	NeoBundle 'thinca/vim-template'
+	NeoBundle 'me-vlad/spellfiles.vim'
+	NeoBundle 'SirVer/ultisnips'
+	NeoBundle 'honza/vim-snippets'
+	NeoBundle 'benatkin/vim-move-between-tabs'
+
+	" optional plugins
+	" Vim plugin that displays tags in a window, ordered by class etc.
+	NeoBundleLazy "majutsushi/tagbar", {
+		\ 'autoload' : {'commands': 'TagbarToggle'}}
+
+	" filetypes
+	NeoBundleLazy 'hynek/vim-python-pep8-indent', {
+		\ 'autoload': {'filetypes': ['python']}}
+
+	NeoBundleLazy "pangloss/vim-javascript", {
+		\ 'autoload': {'filetypes': ['javascript']}}
+
+	NeoBundleLazy 'othree/html5.vim', {
+		\ 'autoload': {'filetypes': ['html', 'xhtml', 'css']}}
+
+	NeoBundleLazy 'wavded/vim-stylus', {
+		\ 'autoload': {'filetypes': ['styl']}}
+
+	NeoBundleLazy 'fatih/vim-go', {
+		\ 'autoload': {'filetypes': ['go']}}
+
+	NeoBundleLazy 'chase/vim-ansible-yaml', {
+		\ 'autoload': {'filetypes': ['yaml']}}
+
+	NeoBundle 'szw/vim-ctrlspace'
+	NeoBundle 'terryma/vim-multiple-cursors'
+
+	call neobundle#end()
+
+	" Required:
+	filetype plugin indent on
+
+	" If there are uninstalled bundles found on startup,
+	" this will conveniently prompt you to install them.
+	NeoBundleCheck
+
+	syntax on
+	" enable modeline
+	set modeline
+	" allow perdirectory rc-files
+	set exrc
+	set secure
+	" автообновление настроек
+	autocmd BufWritePost .vimrc.global source ~/.vim/.vimrc.global
+	" автообновление проектов
+	autocmd BufWritePost projects.vim source ~/.vim/projects.vim
+	let s:loaded_my_vimrc = 1
+endif
+
+set history=1000
+"}}}
+
+" VIM user interface {{{1
+" statusline по умолчанию
+if &statusline == ''
+	set statusline=%<%f\ %y\ %h%m%r%=%-14.(%l,%c%V%)\ %P
+endif
+
+" статус - 2 строка снизу
+set laststatus=2
+
+set ttyfast
+if v:version>=703
+	set relativenumber
+endif
+set showcmd
+
+" Enable mouse usage (all modes)
+set mouse=a
+set ttymouse=xterm2
+" change window header to titlestring
+set title
+" nocursorline in insert mode
+set cursorline
+au InsertEnter * set nocursorline
+au InsertLeave * set cursorline
+set visualbell              " mute error bell"
+set scrolloff=4             " min 4 symbols bellow cursor"
+set linebreak               " break lines by words"
+" новое окно помещаем справа от текущего
+set splitright
+set previewheight=25
+
+" SEARCH
+" игнорируем case, если шаблон в нижнем регистре
+set ignorecase
+set smartcase
+" ищем в процессе набора
+set incsearch
+" подсветка найденных соответствий
+set hlsearch
+set showmatch               " Show matching brackets
+
+" wildmenu
+set wildmenu
+set wildignore=*.o,.git,*.swp,*.swo,*~,*.pyc,build,*.egg,*.egg/*,*.egg-info/*,dist,deb_dist,pyshared,.tox,.env
+set wildcharm=<C-Z>
+source $VIMRUNTIME/menu.vim
+
+"}}}
+
+" COLORS {{{1
+" тёмный фон
+set bg=dark
+silent! colorscheme solarized
+let g:solarized_termtrans =1
+" переключение background
+if exists("togglebg")
+	call togglebg#map("<F6>")
+endif
+
+let python_highlight_all = 1
+" Highlight leading tabs
+match SpecialKey /^\t\+/
+"}}}
+
+" FILES, BACKUPS, BUFFERS, SAVING {{{1
+" keep a backup file
+set backup
+" бэкапы и swap-файлы храним во временной директории
+set backupdir=~/.vim/backup/,/tmp
+set directory=~/.vim/tmp/,/tmp
+
+set hidden					" hide buffers when they are abandoned
+set autoread				" auto reload externally changed files
+" Save current open file when window focus is lost
+"au FocusLost * if &modifiable && &modified | write | endif
+
+function! RemoveTrailingWhitespace()
+	if &ft != "diff"
+		let b:curcol = col(".")
+		let b:curline = line(".")
+		" отсекаем неэкранированные пробелы на конце при сохранении
+		silent! %s/\(\\\)\@<!\s\+$//e
+		" пустые строки в конце файла
+		"silent! %s/\(\s*\n\)\+\%$//
+		call cursor(b:curline, b:curcol)
+	endif
+endfunction
+
+augroup group_general
+	autocmd!
+	autocmd BufWritePre * call RemoveTrailingWhitespace()
+augroup END
+
+" netrw
+let g:netrw_localcopycmd = '/bin/cp'
+"}}}
+
+" LOCALIZATION {{{1
+" удобно при наборе русских текстов
+set keymap=russian-jcukenwin
+if v:version>=703 || (v:version == 702 && has("patch109"))
+	" нужна поддержка unicode langmap
+	set langmap=йq,цw,уe,кr,еt,нy,гu,шi,щo,зp,х[,ъ],фa,ыs,вd,аf,пg,рh,оj,лk,дl,ж\\;,э',яz,чx,сc,мv,иb,тn,ьm,б\\,,ю.,ё`,ЙQ,ЦW,УE,КR,ЕT,НY,ГU,ШI,ЩO,ЗP,Х\{,Ъ\},ФA,ЫS,ВD,АF,ПG,РH,ОJ,ЛK,ДL,Ж\:,Э\",ЯZ,ЧX,СC,МV,ИB,ТN,ЬM,Б\<,Ю\>,Ё~
+endif
+set spelllang=en,ru
+set langmenu=none            " Always use english menu
+"Кодировки файлов
+set fileencodings=utf-8,cp1251,koi8-r,cp866
+"lmap is off and IM is off
+set iminsert=0               " English by default"
+set imsearch=0
+"}}}
+
+" TEXT EDITING {{{1
+set textwidth=0
+" allow backspacing over everything in insert mode
+set backspace=indent,eol,start
+set smarttab
+set tabstop=4
+set shiftwidth=4
+set shiftround
+set softtabstop=-1 " the same value as shiftwidth
+set autoindent              " copy indent from previous line
+" замена всех соответствий
+set gdefault
+
+" formatting
+map Q gq
+
+" Undo
+if has('persistent_undo')
+	set undofile				" enable persistent undo
+	set undodir=/tmp/vimundo    " store undofiles in a tmp dir
+endif
+
+"diff
+set diffopt+=vertical
+nmap dgl :diffget /2<CR>:diffupdate<CR>
+nmap dgr :diffget /3<CR>:diffupdate<CR>
+
+" для различения уровня отступов
+set listchars=tab:\ \ ,trail:·,extends:⋯,precedes:⋯,nbsp:~
+set list
+""}}}
+
+" FOLDING - сворачивание {{{1
+if has('folding')
+	set foldcolumn=3
+	set fdm=indent
+	set fdn=2
+	set fml=15
+	set foldopen+=insert
+endif
+"}}}
+" COMPLETION {{{1
+" учитываем case при дополнении
+set infercase
+" дополнение тега и имени файла
+inoremap ^] ^X^]
+inoremap ^F ^X^F
+
+" longest option behaves wierd when common match is short
+set completeopt=menuone
+
+" Enable omni completion.
+augroup group_css
+	au!
+	autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+augroup END
+
+" use htmldjango instead of html
+augroup group_htmldjango
+	au!
+	autocmd FileType html set filetype=htmldjango
+augroup END
+
+augroup group_html
+	au!
+	autocmd FileType html,htmldjango,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+augroup END
+
+augroup group_javascript
+	au!
+	autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+augroup END
+
+augroup group_python
+	au!
+	autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+	autocmd FileType python nnoremap <buffer> <leader>jf :YcmCompleter GoToDeclaration<CR>
+	autocmd FileType python nnoremap <buffer> <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+augroup END
+
+augroup group_xml
+	au!
+	autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+augroup END
+
+augroup group_c
+	au!
+	autocmd FileType c,cpp nnoremap <buffer> <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+	autocmd FileType c,cpp nnoremap <buffer> <leader>jf :YcmCompleter GoToDeclaration<CR>
+augroup END
+
+
+"YouCompleteMe conflicts with delimitMate]
+let g:ycm_key_list_previous_completion = ['<Up>']
+"}}}
+
+" PROJECTS {{{1
+if filereadable(expand('~/.vim/projects.vim'))
+	source ~/.vim/projects.vim
+endif
+" }}}
+
+" MAPPINGS {{{1
+" GENERAL {{{2
+let mapleader = ","
+
+" Fast saving
+nmap <leader>s :w<cr>
+nmap <leader>x :silent w !sudo tee %<cr>:e!<cr>
+"Tab in visual mode
+xmap <Tab> >gv
+xmap <S-Tab> <gv
+" key mapping for tab navigation
+nmap <C-n> gt
+nmap <C-p> gT
+" key mapping for keymap switch
+"imap <Tab> <C-^>
+
+" clear search highlight
+nmap <silent> <leader>h :silent :nohlsearch<CR>
+" Command mode {{{
+" ------------
+
+	" Allow command line editing like emacs
+	cnoremap <C-A>      <Home>
+	cnoremap <C-B>      <Left>
+	cnoremap <C-D>      <Del>
+	cnoremap <C-F>      <Right>
+	cnoremap <Esc>b <S-Left>
+	cnoremap <Esc>f <S-Right>
+	cnoremap <Esc>d <S-Right><C-W>
+
+" }}}
+" Paste mode
+set pastetoggle=<F2>
+map <F3> :set nowrap!<CR>
+" Подсветка подозрительных аналогов ascii символов
+map <F4> /[соех]<CR>
+" Перенос строки без разбития аргументов
+"map <F4> <ESC>80\|T,s<CR><ESC>
+" Обновление .vimrc.global
+map <F5> <ESC>: source ~/.vim/.vimrc.global<CR>
+" Fast editing of the .vimrc
+map <Leader>v :e! ~/.vim/.vimrc.global<CR>
+map <Leader>vp :e ~/.vim/projects.vim<CR>
+"}}}
+
+" WINDOWS {{{2
+" Window movement
+map <c-j> <c-w>j
+map <c-k> <c-w>k
+map <c-l> <c-w>l
+map <c-h> <c-w>h
+
+set switchbuf=usetab
+"}}}
+
+" PLUGINS {{{2
+" Session.vim
+let g:session_autosave = "yes"
+let g:session_autosave_periodic = 5
+" expand sym links
+let g:session_directory = resolve(expand("~/.vim/sessions"))
+let g:session_lock_directory = "/tmp"
+nmap <space> :<c-u>OpenSession<CR>
+
+"py-test-runner
+map <Leader>mt <ESC>:python RunUnitTestsUnderCursor()<CR>
+map <Leader>mr <ESC>:python run_test()<CR>
+
+
+map <Leader>i oimport ipdb; ipdb.set_trace()  # FIXME: brakepoint<ESC>
+map <Leader>n :silent let @* = 'b ' . expand('%:p') . ':' . line('.') <bar> echo "Pdb breakpoint copied to selection buffer"<CR>
+map <Leader>p oimport pprint; pprint.pprint(
+
+
+" Unite
+" The prefix key.
+
+let g:unite_source_history_yank_enable = 1
+let g:unite_source_menu_menus = {}
+let g:unite_enable_short_source_mes = 0
+let g:unite_source_codesearch_command = 'csearch -indexpath .csearchindex'
+let g:unite_source_codesearch_ignore_case = 1
+
+if executable('ag')
+	let g:unite_source_grep_command='ag'
+	let g:unite_source_grep_default_opts='--hidden --nocolor --nogroup --smart-case'
+	let g:unite_source_grep_recursive_opt=''
+	let g:unite_source_grep_search_word_highlight = 1
+elseif executable('ack')
+	let g:unite_source_grep_command='ack'
+	let g:unite_source_grep_default_opts='--no-group --no-color'
+	let g:unite_source_grep_recursive_opt=''
+	let g:unite_source_grep_search_word_highlight = 1
+endif
+
+nnoremap    [unite]   <Nop>
+nnoremap <silent> <leader>d  :<C-u>Unite -resume codesearch<CR>
+" nnoremap <silent> <leader>f  :<C-u>Unite buffer file_rec/async file/new<CR>
+nnoremap <silent> <leader>r  :<C-u>UniteResume<CR>
+nnoremap <silent> <leader>t  :<C-u>Unite -resume tag<CR>
+
+nnoremap <silent> <leader>a  :<C-u>Unite grep:.<CR>
+nnoremap <silent> <leader>8  :<C-u>UniteWithCursorWord grep:.<CR>
+
+nnoremap <silent> [unite]b  :<C-u>Unite bookmark:default<CR>
+nnoremap <silent> [unite]r  :<C-u>Unite register<CR>
+nnoremap <silent> [unite]o  :<C-u>Unite outline<CR>
+nnoremap <silent> [unite]ma
+		\ :<C-u>Unite mapping<CR>
+nnoremap  [unite]s  :<C-u>Unite source<CR>
+
+
+augroup group_unite
+	au!
+	autocmd FileType unite call s:unite_my_settings()
+augroup END
+
+function! s:unite_my_settings()
+	" Overwrite settings.
+
+	imap <buffer> <C-w>     <Plug>(unite_delete_backward_path)
+	imap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
+	imap <silent><buffer><expr> <C-t> unite#do_action('tabopen')
+	imap <silent><buffer><expr> <C-s> unite#do_action('split')
+	imap <silent><buffer><expr> <C-s> unite#do_action('split')
+	imap <silent><buffer> <tab> <c-x><c-f>
+	iunmap <silent><buffer> <c-n>
+	iunmap <silent><buffer> <c-p>
+
+	imap <buffer> <C-w>     <Plug>(unite_delete_backward_path)
+	nmap <buffer> x     <Plug>(unite_quick_match_choose_action)
+	nmap <buffer> <C-z>     <Plug>(unite_toggle_transpose_window)
+	imap <buffer> <C-z>     <Plug>(unite_toggle_transpose_window)
+	imap <buffer> <C-y>     <Plug>(unite_narrowing_path)
+	nmap <buffer> <C-y>     <Plug>(unite_narrowing_path)
+	nmap <buffer> <C-r>     <Plug>(unite_narrowing_input_history)
+	imap <buffer> <C-r>     <Plug>(unite_narrowing_input_history)
+
+	imap <buffer> <C-j>     <Plug>(unite_select_next_line)
+	imap <buffer> <C-k>     <Plug>(unite_select_previous_line)
+	nnoremap <silent><buffer><expr> l
+			\ unite#smart_map('l', unite#do_action('default'))
+
+endfunction
+
+" nnoremap <silent> <leader>f  :<C-u>CtrlPMixed<CR>
+
+" Ctrlp
+let g:ctrlp_map = '<Nul>'
+let g:ctrlp_extensions = ['tag']
+let g:ctrlp_mruf_relative = 1
+let g:ctrlp_max_height = 25
+let g:ctrlp_show_hidden = 1
+
+" ctrlspace
+let g:ctrlspace_load_last_workspace_on_start = 1
+let g:ctrlspace_save_workspace_on_exit = 1
+let g:ctrlspace_save_workspace_on_switch = 1
+nmap <space> :<c-u>CtrlSpace<CR>
+nnoremap <silent> <leader>f  :<C-u>CtrlSpace O<CR>
+nnoremap <leader><space> :<c-u>CtrlSpace b<CR>
+
+" vim-surround {{{
+let g:surround_{char2nr("b")} = "{% block\1 \r..*\r &\1 %}\r{% endblock %}"
+let g:surround_{char2nr("i")} = "{% if\1 \r..*\r &\1 %}\r{% endif %}"
+let g:surround_{char2nr("w")} = "{% with\1 \r..*\r &\1 %}\r{% endwith %}"
+let g:surround_{char2nr("c")} = "{% comment\1 \r..*\r &\1 %}\r{% endcomment %}"
+let g:surround_{char2nr("f")} = "{% for\1 \r..*\r &\1 %}\r{% endfor %}"
+let g:surround_{char2nr("s")} = "{% static \"\r\" %}"
+" }}}
+
+" ctags
+if exists("$virtual_env")
+	set tags^=$virtual_env/.tags
+endif
+
+if exists("$gopath")
+	let &tags .= ',' . split($gopath, ':')[-1] . '/.tags'
+endif
+
+" tjump-style tag move
+nmap g] g<C-]>
+nmap g} <c-W>g}
+" nmap <Leader>r <ESC>:tag /
+" nmap <Leader>rr <ESC>:vertical stag /
+nmap <Leader>j <ESC>:tjump /
+nmap <Leader>jj <ESC>:vertical stjump /
+nmap <Leader>y <ESC>:tag<CR>
+
+" fugitive, git commands
+map <Leader>gs <ESC>:Gstatus<CR>
+map <Leader>gd <ESC>:Gdiff<CR>
+map <Leader>gc <ESC>:Gcommit<CR>
+map <Leader>gca <ESC>:Gcommit -a<CR>
+" Git fugitive menu
+noremap <Leader>g :emenu Git.<C-Z>
+menu Git.Status :Gstatus<CR>
+menu Git.Diff :Gdiff<CR>
+menu Git.Commit :Gcommit %<CR>
+menu Git.Checkout :Gread<CR>
+menu Git.Remove :Gremove<CR>
+menu Git.Move :Gmove<CR>
+menu Git.Log :Glog<CR>
+menu Git.Blame :Gblame<CR>
+"Gitv
+map <Leader>gv <ESC>:Gitv<CR>
+let g:Gitv_WipeAllOnClose = 1
+let g:Gitv_DoNotMapCtrlKey = 0
+
+let g:virtualenv_auto_activate = 1
+let g:virtualenv_stl_format = '(%n)'
+
+" Syntastic
+
+let g:syntastic_error_symbol='✗'
+let g:syntastic_style_error_symbol='✗'
+let g:syntastic_warning_symbol='➤'
+let g:syntastic_style_warning_symbol='➤'
+let g:syntastic_python_checkers=['pylama']
+let g:syntastic_python_pylama_args='--linters pylint,pep8,pep257,mccabe --options=~/.pylama.ini'
+let g:syntastic_python_flake8_args='--max-complexity=10'
+let g:syntastic_ignore_files=['\m\migrations']
+
+
+"Easy motion
+map s <Plug>(easymotion-s)
+map ы <Plug>(easymotion-s)
+map t <Plug>(easymotion-bd-tl)
+map f <Plug>(easymotion-bd-fl)
+
+let g:EasyMotion_do_shade = 0
+let g:EasyMotion_smartcase = 1
+let g:EasyMotion_use_smartsign_us = 1
+
+" OS X hacks
+" copy selection to copy buffer
+command! -range Pbcopy silent '<,'>w !reattach-to-user-namespace pbcopy
+
+" VARIOUS {{{2
+"tagbar
+map <LocalLeader><space> :TagbarToggle<CR>
+"let g:tagbar_singleclick = 1
+" delimitMate
+let g:delimitMate_nesting_quotes = ['"']
+au FileType html,htmldjango let b:delimitMate_matchpairs = "(:),[:],{:}"
+"let g:delimitMate_smart_quotes = 0
+"let g:delimitMate_quotes = '"'
+" UltiSnips
+let g:UltiSnipsExpandTrigger = "<c-j>"
+let g:UltiSnipsListSnippets = "<Leader>u"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+let g:ultisnips_python_style='sphinx'
+
+"}}}
+"}}}
+" Local settings
+" ================
+if filereadable($HOME . "/.vimrc.local")
+    source $HOME/.vimrc.local
+endif
+" vim: set foldmethod=marker:
