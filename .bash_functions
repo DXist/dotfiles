@@ -103,4 +103,8 @@ function go() {
 		ctagsify ${goworkspace} ${goworkspace}/.tags
 	fi
 }
+
+function agsed() {
+	ag -l "$1" | xargs sed -i "s/$1/$2/"
+}
 # vim: ft=sh
