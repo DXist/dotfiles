@@ -1,3 +1,6 @@
+.PHONY: all
+all: provision update_vim
+
 .PHONY: provision
 provision:
 ifndef ROLES
@@ -9,16 +12,13 @@ endif
 	ansible-galaxy install -r $(ROLES) --ignore-errors
 	ansible-playbook -i inventory.ini $(PLAYBOOK)
 
-.PHONY: update
-update: pull update_vim install
-
 .PHONY: pull
 pull:
 	git pull --rebase
 
 .PHONY: update_vim
 update_vim:
-	cd .vim && git pull --rebase && make
+	vim +NeoBundleInstall! +qall
 
 .PHONY: install
 install:

@@ -1,2 +1,3 @@
 ---
 - include: provisioning/homebrew.yml
+- include: playbook.base.yml
