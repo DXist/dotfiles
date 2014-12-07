@@ -132,6 +132,9 @@ alias ag='ag --hidden'
 # but we need 16 color
 alias tmux='TERM=xterm-16color tmux'
 
+alias pbcopy='reattach-to-user-namespace pbcopy'
+alias pbpaste='reattach-to-user-namespace pbpaste'
+
 alias cindex='cindex -exclude ~/.agignore'
 alias cindexprojects='xargs -a ~/.codesearch cindex -exclude ~/.agignore'
 export CSEARCHINDEX='.csearchindex'
