@@ -22,8 +22,3 @@ pull:
 .PHONY: update_vim
 update_vim:
 	vim +NeoBundleInstall! +qall
-
-.PHONY: install
-install:
-	./setup.sh install_links
-	go get github.com/junkblocker/codesearch/...

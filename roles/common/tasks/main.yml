@@ -31,7 +31,7 @@
   tags:
     - links
 
-- name: Create directories for symlink targets
+- name: Create required directories
   file: path={{ item }} state=directory
   with_items:
     - ~/bin
@@ -49,3 +49,10 @@
     - { path: 'config/pudb', dest: '.config/pudb' }
   tags:
     - links
+
+- name: Install go tools
+  command: go get github.com/junkblocker/codesearch/...
+  environment:
+    GOPATH: ~/go
+  tags:
+    - gotools
