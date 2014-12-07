@@ -9,6 +9,7 @@
 *~
 *.swp
 .noseids.*
+.cs_files
 Session.vim
 .DS_Store
 migrations

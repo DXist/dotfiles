@@ -1,2 +1,4 @@
 ---
-- include: provisioning/vim.yml
+- hosts: localhost
+  roles:
+    - common

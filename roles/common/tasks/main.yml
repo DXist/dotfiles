@@ -1,0 +1,51 @@
+---
+
+- name: Install neobundle
+  git: repo=https://github.com/Shougo/neobundle.vim dest={{ playbook_dir }}/.vim/bundle/neobundle.vim
+
+- name: Install dotfiles symlinks
+  file: src={{ playbook_dir }}/{{ item }} dest=~/{{ item }} state=link force=true
+  with_items:
+    - .ackrc
+    - .agignore
+    - .bash_functions
+    - .bash_profile
+    - .bashrc
+    - .csearchindex
+    - .ctags
+    - .dir_colors
+    - .git_template
+    - .gitattributes
+    - .gitconfig
+    - .gitignore
+    - .hgrc
+    - .ideavimrc
+    - .pdbrc
+    - .pylama.ini
+    - .pythonrc
+    - .screenrc
+    - .tmux-osx.conf
+    - .tmux.conf
+    - .vim
+    - .vimrc
+  tags:
+    - links
+
+- name: Create directories for symlink targets
+  file: path={{ item }} state=directory
+  with_items:
+    - ~/bin
+    - ~/envs
+    - ~/.config
+  tags:
+    - links
+
+- name: Install extra symlinks
+  file: src={{ playbook_dir }}/{{ item.path }} dest=~/{{ item.dest }} state=link force=true
+  with_items:
+    - { path: 'bin', dest: 'bin' }
+    - { path: 'envs/postactivate', dest: 'envs/postactivate' }
+    - { path: 'envs/postmkvirtualenv', dest: 'envs/postmkvirtualenv' }
+    - { path: 'config/pudb', dest: '.config/pudb' }
+  tags:
+    - links

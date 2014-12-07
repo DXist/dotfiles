@@ -1,16 +1,19 @@
 .PHONY: all
-all: provision update_vim
+all: bootstrap provision update_vim
 
-.PHONY: provision
-provision:
+.PHONY: bootstrap
+bootstrap:
 ifndef ROLES
 	$(error ROLES is not defined)
 endif
+	ansible-galaxy install -r $(ROLES) --ignore-errors
+
+.PHONY: provision
+provision:
 ifndef PLAYBOOK
 	$(error PLAYBOOK is not defined)
 endif
-	ansible-galaxy install -r $(ROLES) --ignore-errors
-	ansible-playbook -i inventory.ini $(PLAYBOOK)
+	ansible-playbook -i inventory.ini $(PLAYBOOK) $(ANSIBLE_ARGS)
 
 .PHONY: pull
 pull:

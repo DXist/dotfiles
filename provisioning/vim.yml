@@ -1,6 +1,0 @@
----
-- hosts: localhost
-  tasks:
-  - name: Install neobundle
-    git: repo=https://github.com/Shougo/neobundle.vim dest={{ inventory_dir }}/.vim/bundle/neobundle.vim
-

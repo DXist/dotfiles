@@ -1,3 +1,30 @@
 ---
-- include: provisioning/homebrew.yml
-- include: playbook.base.yml
+- hosts: localhost
+  vars:
+    homebrew_installed_packages:
+      - brew-cask
+      - coreutils
+      - git
+      - vim
+      - ctags
+      - bash-completion
+      - tmux
+      - the_silver_searcher
+      - reattach-to-user-namespace
+    homebrew_taps:
+        - caskroom/cask
+  tasks:
+    - name: install casks
+      homebrew_cask: name={{ item }} state=present
+      with_items:
+        - google-chrome
+        - seil
+        - karabiner
+        - iterm2
+        - skype
+        - vlc
+        - libreoffice
+        - intellij-idea-ce
+  roles:
+    - geerlingguy.homebrew
+    - common
