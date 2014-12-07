@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 . ~/.bashrc
-ctagsify . .git/tags
+git_dir=$(git rev-parse --git-dir)
+ctagsify . $git_dir/tags
 cindexify

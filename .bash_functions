@@ -67,22 +67,6 @@ function pip() {
 	fi
 }
 
-function git() {
-	GIT_CMD=`which git`
-	$GIT_CMD "$@"
-	status="$?"
-	[[ $status = 0 ]] || return $status
-
-	for opt in "$@"; do
-		case "$opt" in
-			cm | cma | commit | rebase)
-				$GIT_CMD ctags
-				break
-				;;
-		esac
-	done
-}
-
 function g() {
 	if [[ $# = 0 ]]; then
 		git status

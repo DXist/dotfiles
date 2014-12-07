@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+git_dir=$(git rev-parse --git-dir)
+case "$1" in
+	rebase) exec $git_dir/hooks/post-merge ;;
+esac
