@@ -53,6 +53,6 @@
 - name: Install go tools
   command: go get github.com/junkblocker/codesearch/...
   environment:
-    GOPATH: ~/go
+    GOPATH: "{{ lookup('ENV', 'HOME') }}/go"
   tags:
     - gotools
