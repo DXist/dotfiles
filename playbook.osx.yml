@@ -27,6 +27,12 @@
         - vlc
         - libreoffice
         - intellij-idea-ce
+
+    - name: Install OSX specific links
+      file: src={{ playbook_dir }}/{{ item }} dest=~/{{ item }} state=link force=true
+      with_items:
+        - .tmux-osx.conf
+
   roles:
     - geerlingguy.homebrew
     - common

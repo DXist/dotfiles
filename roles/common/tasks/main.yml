@@ -24,7 +24,6 @@
     - .pylama.ini
     - .pythonrc
     - .screenrc
-    - .tmux-osx.conf
     - .tmux.conf
     - .vim
     - .vimrc
