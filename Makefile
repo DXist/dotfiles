@@ -4,9 +4,10 @@ all: bootstrap provision update_vim
 .PHONY: bootstrap
 bootstrap:
 ifndef ROLES
-	$(error ROLES is not defined)
-endif
+	$(info ROLES is not defined skipping)
+else
 	ansible-galaxy install -r $(ROLES) --ignore-errors
+endif
 
 .PHONY: provision
 provision:
