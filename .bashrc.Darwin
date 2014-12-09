@@ -6,4 +6,3 @@ fi
 if [[ "${PATH}" != *libexec/gnubin* ]]; then
 	export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
 fi
-
