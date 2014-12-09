@@ -1,0 +1,11 @@
+---
+- name: Install system deps
+  zypper: name={{ item }} state=present
+  with_items:
+    - git-core
+    - ctags
+    - go
+    - the_silver_searcher
+    - tmux
+    - bash-completion
+    - python-virtualenvwrapper

@@ -1,19 +1,17 @@
+OS_FAMILY = $(shell ansible localhost -i inventory.ini -m setup -a 'filter=ansible_os_family' |grep ansible_os_family |cut -d'"' -f4)
+PLAYBOOK ?= playbook.$(OS_FAMILY).yml
+
 .PHONY: all
 all: bootstrap provision update_vim
 
 .PHONY: bootstrap
 bootstrap:
-ifndef ROLES
-	$(info ROLES is not defined skipping)
-else
-	ansible-galaxy install -r $(ROLES) --ignore-errors
+ifeq $(OS_FAMILY), 'Darwin'
+	ansible-galaxy install -r roles.Darwin.txt --ignore-errors
 endif
 
 .PHONY: provision
 provision:
-ifndef PLAYBOOK
-	$(error PLAYBOOK is not defined)
-endif
 	ansible-playbook -i inventory.ini $(PLAYBOOK) $(ANSIBLE_ARGS)
 
 .PHONY: pull
