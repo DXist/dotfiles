@@ -29,9 +29,10 @@
         - intellij-idea-ce
 
     - name: Install OSX specific links
-      file: src={{ playbook_dir }}/{{ item }} dest=~/{{ item }} state=link force=true
+      file: src={{ playbook_dir }}/{{ item.src }} dest=~/{{ item.path }} state=link force=true
       with_items:
-        - .tmux-osx.conf
+        - { src: .tmux.Darwin.conf, path: .tmux.platform.conf }
+        - { src: .bashrc.Darwin, path: .bashrc.platform }
 
   roles:
     - geerlingguy.homebrew

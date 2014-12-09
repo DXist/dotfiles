@@ -25,6 +25,11 @@ if [[ $- != *i* ]] ; then
 	return
 fi
 
+# platform specific bashrc
+if [ -r ~/.bashrc.platform ]; then
+	. ~/.bashrc.platform
+fi
+
 # local settings
 if [ -r ~/.bashrc.local ]; then
 	. ~/.bashrc.local
