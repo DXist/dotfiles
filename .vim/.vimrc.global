@@ -45,6 +45,7 @@ if !exists('s:loaded_my_vimrc')
 	NeoBundle 'tpope/vim-repeat'
 	NeoBundle 'tpope/vim-surround',{
 	        \ 'depends': ['tpope/vim-repeat']}
+	NeoBundle 'tpope/vim-eunuch'
 	NeoBundle 'tpope/vim-commentary'
 	NeoBundle 'tpope/vim-ragtag'
 	NeoBundle 'jmcantrell/vim-virtualenv'

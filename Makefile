@@ -6,7 +6,7 @@ all: bootstrap provision update_vim
 
 .PHONY: bootstrap
 bootstrap:
-ifeq $(OS_FAMILY), 'Darwin'
+ifeq ($(OS_FAMILY), 'Darwin')
 	ansible-galaxy install -r roles.Darwin.txt --ignore-errors
 endif
 
