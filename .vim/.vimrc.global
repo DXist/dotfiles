@@ -46,6 +46,7 @@ if !exists('s:loaded_my_vimrc')
 	NeoBundle 'tpope/vim-surround',{
 	        \ 'depends': ['tpope/vim-repeat']}
 	NeoBundle 'tpope/vim-eunuch'
+	NeoBundle 'tpope/vim-unimpaired'
 	NeoBundle 'tpope/vim-commentary'
 	NeoBundle 'tpope/vim-ragtag'
 	NeoBundle 'jmcantrell/vim-virtualenv'
@@ -398,8 +399,9 @@ let g:session_lock_directory = "/tmp"
 nmap <space> :<c-u>OpenSession<CR>
 
 "py-test-runner
-map <Leader>mt <ESC>:python RunUnitTestsUnderCursor()<CR>
-map <Leader>mr <ESC>:python run_test()<CR>
+" map <Leader>mt <ESC>:python RunUnitTestsUnderCursor()<CR>
+" map <Leader>mr <ESC>:python run_test()<CR>
+map <Leader>m <ESC>:silent Make %<CR>
 
 
 map <Leader>i oimport ipdb; ipdb.set_trace()  # FIXME: brakepoint<ESC>
