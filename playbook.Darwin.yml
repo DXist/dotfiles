@@ -29,10 +29,12 @@
         - intellij-idea-ce
 
     - name: Install OSX specific links
-      file: src={{ playbook_dir }}/roles/Darwin/files/{{ item.src }} dest=~/{{ item.path }} state=link force=true
+      file: src={{ playbook_dir }}/roles/Darwin/files/{{ item.src }} dest={{ item.path }} state=link force=true
       with_items:
-        - { src: .tmux.Darwin.conf, path: .tmux.platform.conf }
-        - { src: .bashrc.Darwin, path: .bashrc.platform }
+        - { src: .tmux.Darwin.conf, path: ~/.tmux.platform.conf }
+        - { src: .bashrc.Darwin, path: ~/.bashrc.platform }
+        - { src: org.pqrs.Karabiner.plist, path: ~/Library/Preferences/org.pqrs.Karabiner.plist }
+        - { src: org.pqrs.Seil.plist, path: ~/Library/Preferences/org.pqrs.Seil.plist }
 
   roles:
     - geerlingguy.homebrew
