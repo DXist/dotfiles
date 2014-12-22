@@ -7,6 +7,6 @@ if exists(":CompilerSet") != 2
 	command -nargs=* CompilerSet setlocal <args>
 endif
 
-CompilerSet efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ \=\-]%\\@=%m,%-G%.%#
+CompilerSet efm=\%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z\ \ \ \ %m
 
 CompilerSet makeprg=./manage.py\ test\ --noinput\ $*
