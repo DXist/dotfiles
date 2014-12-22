@@ -91,6 +91,7 @@ if !exists('s:loaded_my_vimrc')
 		\ 'autoload': {'filetypes': ['yaml']}}
 
 	NeoBundle 'szw/vim-ctrlspace'
+	NeoBundle 'airblade/vim-rooter'
 	NeoBundle 'mattn/emmet-vim'
 
 	call neobundle#end()
@@ -495,6 +496,11 @@ let g:ctrlspace_save_workspace_on_switch = 1
 nmap <space> :<c-u>CtrlSpace<CR>
 nnoremap <silent> <leader>f  :<C-u>CtrlSpace O<CR>
 nnoremap <leader><space> :<c-u>CtrlSpace b<CR>
+
+" vim-rooter
+
+let g:rooter_use_lcd = 1
+let g:rooter_patterns = ['.git', '.git/', '.tags', '.hg/', '.bzr/', '.svn/',]
 
 " vim-surround {{{
 let g:surround_{char2nr("b")} = "{% block\1 \r..*\r &\1 %}\r{% endblock %}"
