@@ -512,12 +512,12 @@ let g:surround_{char2nr("s")} = "{% static \"\r\" %}"
 " }}}
 
 " ctags
-if exists("$virtual_env")
-	set tags^=$virtual_env/.tags
+if exists("$VIRTUAL_ENV")
+	set tags^=$VIRTUAL_ENV/.tags
 endif
 
-if exists("$gopath")
-	let &tags .= ',' . split($gopath, ':')[-1] . '/.tags'
+if exists("$GOPATH")
+	let &tags .= ',' . split($GOPATH, ':')[-1] . '/.tags'
 endif
 
 " tjump-style tag move
