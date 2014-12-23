@@ -13,4 +13,5 @@ Session.vim
 svn-commit.tmp
 Guardfile
 .vimrc
+.runtests
 saved-breakpoints-*

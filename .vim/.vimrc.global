@@ -402,6 +402,10 @@ nmap <space> :<c-u>OpenSession<CR>
 " map <Leader>mt <ESC>:python RunUnitTestsUnderCursor()<CR>
 " map <Leader>mr <ESC>:python run_test()<CR>
 map <Leader>m <ESC>:silent Make %<CR>
+" run all test suite
+map <LocalLeader>m <ESC>:silent Make<CR>
+" run alternative test run"
+map <Leader><Leader>m <ESC>:Dispatch<CR>
 
 
 map <Leader>i oimport ipdb; ipdb.set_trace()  # FIXME: brakepoint<ESC>

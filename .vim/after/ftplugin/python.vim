@@ -1,12 +1,13 @@
-"Настройки табов для Python, согласно рекомендациям
-setlocal expandtab "Ставим табы пробелами
-setlocal softtabstop=4 "4 пробела в табе
-"Ширина текста 79 символов
+setlocal expandtab
+setlocal softtabstop=4
 setlocal textwidth=79
 setlocal commentstring=#%s
+setlocal errorformat=\%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z\ \ \ \ %m
+
 if v:version>=703
 	setlocal cc=79
 endif
+
 let b:delimitMate_smart_quotes = 0
 
 python << EOF
