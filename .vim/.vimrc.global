@@ -91,7 +91,7 @@ if !exists('s:loaded_my_vimrc')
 		\ 'autoload': {'filetypes': ['yaml']}}
 
 	NeoBundle 'szw/vim-ctrlspace'
-	NeoBundle 'airblade/vim-rooter'
+	" NeoBundle 'airblade/vim-rooter'
 	NeoBundle 'mattn/emmet-vim'
 
 	call neobundle#end()
