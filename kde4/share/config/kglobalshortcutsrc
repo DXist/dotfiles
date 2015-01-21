@@ -1,5 +1,5 @@
 [$Version]
-update_info=konsole_remove_background_mode.upd:2.11.0-remove-background-mode,kscreenlocker_locksession-shortcut.upd:4.9-locksession-shortcut,ksmserver_shortcuts.upd:kde4.10,ksmserver_shortcuts.upd:kde4.10-remove-group-kscreenlocker,plasma-to-plasmadesktop-shortcuts.upd:4.3plasma-desktop-shortcuts
+update_info=konsole_remove_background_mode.upd:1.11.0-remove-background-mode,kscreenlocker_locksession-shortcut.upd:4.9-locksession-shortcut,ksmserver_shortcuts.upd:kde4.10,ksmserver_shortcuts.upd:kde4.10-remove-group-kscreenlocker,plasma-to-plasmadesktop-shortcuts.upd:4.3plasma-desktop-shortcuts
 
 [KDE Keyboard Layout Switcher]
 Switch keyboard layout to English (US)=none,none,Switch keyboard layout to English (US)
@@ -50,7 +50,7 @@ mute=Volume Mute,Volume Mute,Mute
 
 [krunner]
 PowerDevil=none,none,Run Command (runner "PowerDevil" only)
-Run Command=Alt+F2,Alt+F2,Run Command
+Run Command=Meta+R,Alt+F2,Run Command
 Run Command on clipboard contents=Alt+Shift+F2,Alt+Shift+F2,Run Command on clipboard contents
 Show System Activity=Ctrl+Esc,Ctrl+Esc,Show System Activity
 Switch User=Ctrl+Alt+Ins,Ctrl+Alt+Ins,Switch User
@@ -179,10 +179,10 @@ Window Pack Right=none,none,Pack Window to the Right
 Window Pack Up=none,none,Pack Window Up
 Window Quick Tile Bottom Left=none,none,Quick Tile Window to the Bottom Left
 Window Quick Tile Bottom Right=none,none,Quick Tile Window to the Bottom Right
-Window Quick Tile Left=none,none,Quick Tile Window to the Left
+Window Quick Tile Left=Meta+H,none,Quick Tile Window to the Left
 Window Quick Tile Right=none,none,Quick Tile Window to the Right
 Window Quick Tile Top Left=none,none,Quick Tile Window to the Top Left
-Window Quick Tile Top Right=none,none,Quick Tile Window to the Top Right
+Window Quick Tile Top Right=Meta+L,none,Quick Tile Window to the Top Right
 Window Raise=none,none,Raise Window
 Window Resize=none,none,Resize Window
 Window Shade=none,none,Shade Window
@@ -208,9 +208,9 @@ Window to Desktop 6=none,none,Window to Desktop 6
 Window to Desktop 7=none,none,Window to Desktop 7
 Window to Desktop 8=none,none,Window to Desktop 8
 Window to Desktop 9=none,none,Window to Desktop 9
-Window to Next Desktop=none,none,Window to Next Desktop
-Window to Next Screen=none,none,Window to Next Screen
-Window to Previous Desktop=none,none,Window to Previous Desktop
+Window to Next Desktop=,none,Window to Next Desktop
+Window to Next Screen=Meta+O,none,Window to Next Screen
+Window to Previous Desktop=,none,Window to Previous Desktop
 Window to Previous Screen=none,none,Window to Previous Screen
 Window to Screen 0=none,none,Window to Screen 0
 Window to Screen 1=none,none,Window to Screen 1
