@@ -34,6 +34,8 @@
   file: path={{ item }} state=directory
   with_items:
     - ~/bin
+    - ~/go
+    - ~/goworkspace
     - ~/envs
     - ~/.config
   tags:
