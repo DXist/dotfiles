@@ -1,0 +1,3 @@
+MAILTO=srk
+59 13 * * * duplicity remove-all-but-n-full 4 --verbosity=error --no-print-statistics --force sftp://backup//mnt/backup/dxbox
+0 14 * * * duplicity --exclude-globbing-filelist /home/srk/.backup.exclude.list --full-if-older-than 1M --verbosity=error --no-encryption --no-print-statistics /  sftp://backup//mnt/backup/dxbox

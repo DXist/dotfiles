@@ -13,6 +13,7 @@
     - tmux
     - bash-completion
     - python-virtualenvwrapper
+    - chromium
 
 - name: Install extra fonts
   sudo: yes
@@ -26,8 +27,17 @@
   file: path={{ item }} state=directory
   with_items:
     - ~/.kde4/share/apps/konsole
+    - ~/.kde4/share/config
 
 - name: Configure KDE4 apps
-  file: src={{ playbook_dir }}/kde4/share/apps/{{ item.path }} dest=~/.kde4/share/apps/{{ item.dest }} state=link force=true
+  file: src={{ playbook_dir }}/kde4/share/apps/{{ item }} dest=~/.kde4/share/apps/{{ item }} state=link force=true
   with_items:
-    - { path: 'konsole/Shell.profile', dest: 'konsole/Shell.profile' }
+    - konsole/Shell.profile
+
+- name: Configure KDE4
+  file: src={{ playbook_dir }}/kde4/share/config/{{ item }} dest=~/.kde4/share/config/{{ item }} state=link force=true
+  with_items:
+    - kscreensaverrc
+    - kwinrc
+    - khotkeysrc
+    - kglobalshortcutsrc

@@ -1,0 +1,15 @@
+**.avi
+**.mov
+**.log
+**/tmp/**
+**/.snapshots/**
+**/.davfs2/cache/**
+**/.cache/**
+**/.neocomplcache/**
+**/.pip/cache/**
+/proc/**
+/sys/**
+/dev/**
+/run/user/**
+/var/run/user/**
+/mnt/
