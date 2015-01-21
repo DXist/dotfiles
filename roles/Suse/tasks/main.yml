@@ -1,5 +1,6 @@
 ---
 - name: Install system deps
+  sudo: yes
   zypper: name={{ item }} state=present
   with_items:
     - git-core

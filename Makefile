@@ -12,7 +12,7 @@ endif
 
 .PHONY: provision
 provision:
-	ansible-playbook -i inventory.ini $(PLAYBOOK) $(ANSIBLE_ARGS)
+	ansible-playbook -i inventory.ini $(PLAYBOOK) --ask-sudo-pass $(ANSIBLE_ARGS)
 
 .PHONY: pull
 pull:
