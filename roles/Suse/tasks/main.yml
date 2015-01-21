@@ -33,10 +33,12 @@
   file: src={{ playbook_dir }}/kde4/share/apps/{{ item }} dest=~/.kde4/share/apps/{{ item }} state=link force=true
   with_items:
     - konsole/Shell.profile
+    - konsole/konsoleui.rc
 
 - name: Configure KDE4
   file: src={{ playbook_dir }}/kde4/share/config/{{ item }} dest=~/.kde4/share/config/{{ item }} state=link force=true
   with_items:
+    - kdeglobals
     - kscreensaverrc
     - kwinrc
     - khotkeysrc

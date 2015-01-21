@@ -1,0 +1,14 @@
+[$Version]
+update_info=kded.upd:kde3.0
+
+[General]
+dbfile=/home/srk/.mozilla/firefox/hwr0rr07.default/places.sqlite
+
+[Locale]
+Country=ru
+
+[Shortcuts]
+BackwardWord=Ctrl+Left; Alt+B
+BeginningOfLine=Home; Ctrl+A
+ForwardWord=Ctrl+Right; Alt+F
+SelectAll=
