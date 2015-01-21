@@ -4,7 +4,7 @@ update_info=konsole_remove_background_mode.upd:1.11.0-remove-background-mode,ksc
 [KDE Keyboard Layout Switcher]
 Switch keyboard layout to English (US)=none,none,Switch keyboard layout to English (US)
 Switch keyboard layout to Russian=CapsLock,none,Switch keyboard layout to Russian
-Switch to Next Keyboard Layout=Ctrl+Alt+K,Ctrl+Alt+K,Switch to Next Keyboard Layout
+Switch to Next Keyboard Layout=,Ctrl+Alt+K,Switch to Next Keyboard Layout
 _k_friendly_name=KDE Keyboard Layout Switcher
 
 [kactivitymanagerd]
@@ -180,9 +180,9 @@ Window Pack Up=none,none,Pack Window Up
 Window Quick Tile Bottom Left=none,none,Quick Tile Window to the Bottom Left
 Window Quick Tile Bottom Right=none,none,Quick Tile Window to the Bottom Right
 Window Quick Tile Left=Meta+H,none,Quick Tile Window to the Left
-Window Quick Tile Right=none,none,Quick Tile Window to the Right
+Window Quick Tile Right=Meta+L,none,Quick Tile Window to the Right
 Window Quick Tile Top Left=none,none,Quick Tile Window to the Top Left
-Window Quick Tile Top Right=Meta+L,none,Quick Tile Window to the Top Right
+Window Quick Tile Top Right=,none,Quick Tile Window to the Top Right
 Window Raise=none,none,Raise Window
 Window Resize=none,none,Resize Window
 Window Shade=none,none,Shade Window

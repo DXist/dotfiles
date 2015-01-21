@@ -4,6 +4,9 @@ update_info=kded.upd:kde3.0
 [General]
 dbfile=/home/srk/.mozilla/firefox/hwr0rr07.default/places.sqlite
 
+[KShortcutsDialog Settings]
+Dialog Size=600,480
+
 [Locale]
 Country=ru
 
