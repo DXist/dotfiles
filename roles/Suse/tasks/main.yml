@@ -14,6 +14,7 @@
     - bash-completion
     - python-virtualenvwrapper
     - chromium
+    - xinput
 
 - name: Install extra fonts
   sudo: yes
@@ -28,6 +29,16 @@
   with_items:
     - ~/.kde4/share/apps/konsole
     - ~/.kde4/share/config
+
+- name: Install Autostart symlinks
+  file: src={{ playbook_dir }}/kde4/Autostart/{{ item }} dest=~/.kde4/Autostart/{{ item }} state=link force=true
+  with_items:
+    - ssh-add.sh
+    - usb-trackpoint.sh
+
+- name: Install udev rules
+  sudo: yes
+  file: src={{ playbook_dir }}/udev/90-local.rules dest=/etc/udev/rules.d/90-local.rules state=link force=true
 
 - name: Configure KDE4 apps
   file: src={{ playbook_dir }}/kde4/share/apps/{{ item }} dest=~/.kde4/share/apps/{{ item }} state=link force=true
