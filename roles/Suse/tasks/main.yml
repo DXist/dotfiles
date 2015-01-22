@@ -15,6 +15,7 @@
     - python-virtualenvwrapper
     - chromium
     - xinput
+    - python-pip
 
 - name: Install extra fonts
   sudo: yes
@@ -54,3 +55,7 @@
     - kwinrc
     - khotkeysrc
     - kglobalshortcutsrc
+
+- name: Install tmuxp
+  sudo: yes
+  command: pip2.7 install tmuxp
