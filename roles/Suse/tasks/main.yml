@@ -59,3 +59,20 @@
 - name: Install tmuxp
   sudo: yes
   command: pip2.7 install tmuxp
+
+- name: Configure snapper
+  sudo: yes
+  command: snapper  -c root create-config /
+  ignore_errors: yes
+
+- name: Configure snapper
+  sudo: yes
+  command: snapper  -c home create-config /home
+  ignore_errors: yes
+
+- name: Configure snapper
+  file: src={{ playbook_dir }}/snapper/{{ item }} dest=/etc/snapper/configs/{{ item }} state=link force=true
+  sudo: yes
+  with_items:
+    - root
+    - home
