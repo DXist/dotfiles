@@ -1,4 +1,25 @@
 ---
+- name: Get suse version
+  shell: cat /etc/os-release |grep VERSION_ID | cut -d\" -f 2
+  register: SUSE_VERSION
+  tags:
+    - zypper
+
+- name: Configure repositories
+  command: zypper --gpg-auto-import-keys ar -f -n packman-essentials http://packman.inode.at/suse/openSUSE_{{ SUSE_VERSION.stdout }}/Essentials/ packman-essentials
+  sudo: yes
+  register: packman_result
+  failed_when: "packman_result.rc and 'exists' not in packman_result.stderr"
+  tags:
+    - zypper
+
+- name: Refresh repositories
+  command: zypper ref
+  sudo: yes
+  when: not packman_result.rc
+  tags:
+    - zypper
+
 - name: Install system deps
   sudo: yes
   zypper: name={{ item }} state=present
@@ -14,6 +35,7 @@
     - bash-completion
     - python-virtualenvwrapper
     - chromium
+    - chromium-ffmpeg
     - xinput
     - python-pip
 
@@ -82,17 +104,3 @@
   with_items:
     - root
     - home
-
-- name: Get suse version
-  shell: cat /etc/os-release |grep VERSION_ID | cut -d\" -f 2
-  register: SUSE_VERSION
-  tags:
-    - zypper
-
-- name: Configure repositories
-  command: zypper --gpg-auto-import-keys ar -f -n packman-essentials http://packman.inode.at/suse/openSUSE_{{ SUSE_VERSION.stdout }}/Essentials/ packman-essentials
-  sudo: yes
-  register: packman_result
-  failed_when: "packman_result.rc and 'exists' not in packman_result.stderr"
-  tags:
-    - zypper
