@@ -38,6 +38,7 @@
     - chromium-ffmpeg
     - xinput
     - python-pip
+    - hplip
 
 - name: Install extra fonts
   sudo: yes
