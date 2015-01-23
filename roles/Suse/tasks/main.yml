@@ -20,6 +20,12 @@
   tags:
     - zypper
 
+- name: Configure cron
+  replace: dest=/etc/sysconfig/cron regexp='DAILY_TIME="[^"]*"$' replace='DAILY_TIME="13:00"'
+  sudo: yes
+  tags:
+    - cron
+
 - name: Install system deps
   sudo: yes
   zypper: name={{ item }} state=present
