@@ -29,6 +29,7 @@
     - .vimrc
     - .backup.exclude.list
     - .terminfo
+    - .termcap
   tags:
     - links
 
