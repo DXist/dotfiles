@@ -1,5 +1,6 @@
 OS_FAMILY = $(shell ansible localhost -i inventory.ini -m setup -a 'filter=ansible_os_family' |grep ansible_os_family |cut -d'"' -f4)
 PLAYBOOK ?= playbook.$(OS_FAMILY).yml
+ANSIBLE_ARGS ?= --ask-sudo-pass
 
 .PHONY: all
 all: bootstrap provision update_vim
@@ -12,7 +13,7 @@ endif
 
 .PHONY: provision
 provision:
-	ansible-playbook -i inventory.ini $(PLAYBOOK) --ask-sudo-pass $(ANSIBLE_ARGS)
+	ansible-playbook -i inventory.ini $(PLAYBOOK) $(ANSIBLE_ARGS)
 
 .PHONY: pull
 pull:

@@ -28,6 +28,7 @@
     - .vim
     - .vimrc
     - .backup.exclude.list
+    - .terminfo
   tags:
     - links
 
