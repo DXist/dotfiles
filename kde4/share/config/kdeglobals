@@ -3,6 +3,7 @@ update_info=kded.upd:kde3.0
 
 [General]
 BrowserApplication=chromium-browser.desktop
+XftHintStyle=hintmedium
 dbfile=/home/srk/.mozilla/firefox/hwr0rr07.default/places.sqlite
 
 [KFileDialog Settings]

@@ -1,8 +1,8 @@
 [Appearance]
-AntiAliasFonts=true
+AntiAliasFonts=false
 BoldIntense=true
 ColorScheme=Solarized
-Font=PragmataPro,11,-1,5,50,0,0,0,0,0
+Font=PragmataPro,12.3,-1,0,50,0,0,0,0,0
 
 [General]
 Environment=TERM=xterm-16color

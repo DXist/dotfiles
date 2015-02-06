@@ -5,7 +5,7 @@ usb_trackpoint_id=`xinput list --id-only "pointer:Lite-On Technology Corp. Think
 # xinput set-prop ${usb_trackpoint_id} "Device Accel Profile" 2
 # xinput set-prop ${usb_trackpoint_id} "Device Accel Velocity Scaling" 15
 xinput set-prop ${usb_trackpoint_id} "Device Accel Profile" 2
-xinput set-prop ${usb_trackpoint_id} "Device Accel Velocity Scaling" 25
+xinput set-prop ${usb_trackpoint_id} "Device Accel Velocity Scaling" 55
 xinput set-prop ${usb_trackpoint_id} 'Device Accel Constant Deceleration' 2
 xinput set-prop ${usb_trackpoint_id} "Evdev Wheel Emulation" 1
 xinput set-prop ${usb_trackpoint_id} "Evdev Wheel Emulation Button" 2
