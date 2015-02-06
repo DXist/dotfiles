@@ -54,6 +54,23 @@
   tags:
     - links
 
+- name: Check if root home /root exists
+  stat: path=/root
+  register: root_home
+  sudo: yes
+  tags:
+    - root-links
+
+- name: Install dotfiles symlinks into root home
+  file: src={{ playbook_dir }}/{{ item }} dest=/root/{{ item }} state=link force=true
+  sudo: yes
+  when: root_home.stat.isdir is defined and root_home.stat.isdir
+  with_items:
+    - .terminfo
+    - .termcap
+  tags:
+    - root-links
+
 - name: Install go tools
   command: go get github.com/junkblocker/codesearch/...
   environment:
