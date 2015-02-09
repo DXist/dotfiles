@@ -5,6 +5,13 @@ update_info=kded.upd:kde3.0
 BrowserApplication=chromium-browser.desktop
 XftHintStyle=hintmedium
 dbfile=/home/srk/.mozilla/firefox/hwr0rr07.default/places.sqlite
+desktopFont=Sans Serif,9,-1,5,50,0,0,0,0,0
+fixed=Monospace,9,-1,5,50,0,0,0,0,0
+font=Sans Serif,9,-1,5,50,0,0,0,0,0
+menuFont=Sans Serif,9,-1,5,50,0,0,0,0,0
+smallestReadableFont=Sans Serif,8,-1,5,50,0,0,0,0,0
+taskbarFont=Sans Serif,9,-1,5,50,0,0,0,0,0
+toolBarFont=Sans Serif,8,-1,5,50,0,0,0,0,0
 
 [KFileDialog Settings]
 Automatically select filename extension=true
@@ -36,3 +43,6 @@ BackwardWord=Ctrl+Left; Alt+B
 BeginningOfLine=Home; Ctrl+A
 ForwardWord=Ctrl+Right; Alt+F
 SelectAll=
+
+[WM]
+activeFont=Sans Serif,8,-1,5,50,0,0,0,0,0

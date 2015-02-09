@@ -144,6 +144,11 @@ alias cindex='cindex -exclude ~/.agignore'
 alias cindexprojects='xargs -a ~/.codesearch cindex -exclude ~/.agignore'
 export CSEARCHINDEX='.csearchindex'
 
+if [ "$TMUX" ]; then
+	alias sudo='TERM=screen sudo'
+	alias su='TERM=screen su'
+fi
+
 if hash tmuxp.bash 2>/dev/null; then
 	source tmuxp.bash
 fi
