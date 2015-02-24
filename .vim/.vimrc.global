@@ -93,6 +93,7 @@ if !exists('s:loaded_my_vimrc')
 	NeoBundle 'szw/vim-ctrlspace'
 	" NeoBundle 'airblade/vim-rooter'
 	NeoBundle 'mattn/emmet-vim'
+	NeoBundle 'ekalinin/Dockerfile.vim'
 
 	call neobundle#end()
 
@@ -563,6 +564,7 @@ let g:syntastic_style_error_symbol='✗'
 let g:syntastic_warning_symbol='➤'
 let g:syntastic_style_warning_symbol='➤'
 let g:syntastic_python_checkers=['pylama']
+let g:syntastic_python_pylama_exe='pylama --ignore=D102'
 let g:syntastic_python_pylama_args='--linters pylint,pep8,pep257,mccabe --options=~/.pylama.ini'
 let g:syntastic_python_flake8_args='--max-complexity=10'
 let g:syntastic_ignore_files=['\m\migrations']
