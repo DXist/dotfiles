@@ -49,7 +49,7 @@ increase_volume=Volume Up,Volume Up,Increase Volume
 mute=Volume Mute,Volume Mute,Mute
 
 [konversation]
-_k_friendly_name=Konversation
+_k_friendly_name=konversation
 next_active_tab=none,none,Next Active Tab
 toggle_mainwindow_visibility=none,none,Show/Hide Konversation
 

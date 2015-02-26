@@ -12,4 +12,5 @@
 /dev/**
 /run/user/**
 /var/run/user/**
+/var/lib/docker/**
 /mnt/
