@@ -2,7 +2,6 @@
 *.custom.js
 *.pyc
 *.pot
-*.po
 *.wsdl
 *.egg
 *.egg-info
