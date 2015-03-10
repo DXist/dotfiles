@@ -118,6 +118,7 @@ fi
 
 # disable flow control
 stty -ixon
+alias reset='reset && stty -ixon'
 
 
 alias cp='cp -i'
