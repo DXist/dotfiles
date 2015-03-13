@@ -235,9 +235,10 @@ Next Activity=Meta+Tab,Meta+Tab,Next Activity
 Previous Activity=Meta+Shift+Tab,Meta+Shift+Tab,Previous Activity
 Show Dashboard=Ctrl+F12,Ctrl+F12,Show Dashboard
 Stop Activity=Meta+S,Meta+S,Stop Current Activity
+SystemTray-Klipper-23=,Ctrl+Alt+V,
 SystemTray-Klipper-6=Ctrl+Alt+V,Ctrl+Alt+V,
 _k_friendly_name=Plasma Desktop Shell
-activate widget 2=Alt+F1,Alt+F1,Activate Application Launcher Widget
+activate widget 19=Alt+F1,Alt+F1,Activate Application Launcher Widget
 manage activities=Meta+Q,Meta+Q,Activities...
 
 [plasma-desktop-screen-1]

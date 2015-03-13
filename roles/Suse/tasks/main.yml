@@ -47,6 +47,7 @@
     - xinput
     - python-pip
     - hplip
+    - rsibreak
   tags:
     - system_reqs
 
