@@ -1,0 +1,33 @@
+[General]
+AutoStart=true
+
+[General Settings]
+BigDuration=1
+BigInterval=60
+DisableAccel=false
+Effect=0
+Graylevel=80
+HideLockButton=false
+HideMinimizeButton=false
+HidePostponeButton=false
+IgnoreIdleForTinyBreaks=false
+ImageFolder=/home/srk
+Patience=30
+PostponeBreakDuration=5
+ResetTimersAfterIdle=true
+SearchRecursiveCheck=false
+ShowSmallImagesCheck=true
+ShowTimerReset=false
+SlideInterval=10
+TinyDuration=20
+TinyInterval=20
+UseNoIdleTimer=false
+UsePlasmaReadOnly=true
+
+[Popup Settings]
+UseFlash=true
+UsePopup=true
+
+[SetupDimensions]
+Height 900=574
+Width 1600=624

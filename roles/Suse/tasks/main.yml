@@ -90,6 +90,7 @@
     - kwinrc
     - khotkeysrc
     - kglobalshortcutsrc
+    - rsibreakrc
 
 - name: Install tmuxp
   sudo: yes
