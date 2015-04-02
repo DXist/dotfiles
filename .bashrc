@@ -49,7 +49,7 @@ export LC_TELEPHONE="ru_RU.UTF-8"
 export LC_MEASUREMENT="ru_RU.UTF-8"
 export LC_IDENTIFICATION="ru_RU.UTF-8"
 
-export EDITOR=`which vim`
+export EDITOR=vim
 # quit less if one output fits on one screen
 export PAGER="less -FX"
 export LESSOPEN="|pygmentize -g -O encoding=utf-8 %s"
