@@ -140,6 +140,7 @@ alias tmux='TERM=xterm-16color tmux'
 
 alias pbcopy='reattach-to-user-namespace pbcopy'
 alias pbpaste='reattach-to-user-namespace pbpaste'
+alias tailf='LESSOPEN="" less +F'
 
 alias cindex='cindex -exclude ~/.agignore'
 alias cindexprojects='xargs -a ~/.codesearch cindex -exclude ~/.agignore'
