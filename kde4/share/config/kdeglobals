@@ -25,10 +25,10 @@ Show Full Path=false
 Show Preview=false
 Show Speedbar=true
 Show hidden files=false
-Sort by=Date
+Sort by=Name
 Sort directories first=true
 Sort reversed=true
-Speedbar Width=106
+Speedbar Width=118
 View Style=Simple
 listViewIconSize=0
 

@@ -24,6 +24,9 @@ TinyInterval=20
 UseNoIdleTimer=false
 UsePlasmaReadOnly=true
 
+[Notification Messages]
+dont_show_welcome_again_for_001=false
+
 [Popup Settings]
 UseFlash=true
 UsePopup=true
