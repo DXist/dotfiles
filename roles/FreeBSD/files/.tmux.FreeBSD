@@ -1,1 +1,2 @@
 TERM=screen
+set-option -g default-terminal $TERM
