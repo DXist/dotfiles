@@ -65,7 +65,9 @@ export PIP_DOWNLOAD_CACHE=$HOME/.pip/cache
 export PYTHONSTARTUP=~/.pythonrc
 
 if [ "$TERM" != "dumb" ]; then
-    export LS_OPTIONS='--color=auto'
+	if [ -z "$LS_OPTIONS" ]; then
+		export LS_OPTIONS='--color=auto'
+	fi
 	if [ -r ~/.dir_colors ]; then
 		eval `dircolors ~/.dir_colors`
 	fi

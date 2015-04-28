@@ -1,1 +1,12 @@
-playbook.base.yml
+---
+- hosts: localhost
+
+  pre_tasks:
+    - name: Install FreeBSD specific bashrc
+      file: src={{ playbook_dir }}/roles/FreeBSD/files/{{ item.src }} dest={{ item.path }} state=link force=true
+      with_items:
+        - { src: .bashrc.FreeBSD, path: ~/.bashrc.platform }
+        - { src: .tmux.FreeBSD, path: ~/.tmux.platform }
+
+  roles:
+    - common
