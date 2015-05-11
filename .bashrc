@@ -151,6 +151,7 @@ export CSEARCHINDEX='.csearchindex'
 if [ "$TMUX" ]; then
 	alias sudo='TERM=screen sudo'
 	alias su='TERM=screen su'
+	alias ssh='TERM=screen ssh'
 fi
 
 if hash tmuxp.bash 2>/dev/null; then
