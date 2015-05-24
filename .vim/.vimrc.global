@@ -56,7 +56,7 @@ if !exists('s:loaded_my_vimrc')
 	NeoBundle 'Lokaltog/vim-easymotion'
 	NeoBundle 'Raimondi/delimitMate'
 	NeoBundle 'Valloric/YouCompleteMe', {
-		\ 'build': {'unix': 'sh -c "git submodule update --init --recursive && ./install.sh"'}}
+		\ 'build': {'unix': 'sh -c "git submodule update --init --recursive && ./install.sh --gocode-completer"'}}
 	NeoBundle 'michaeljsmith/vim-indent-object'
 	NeoBundle 'xolox/vim-misc'
 	" NeoBundle 'xolox/vim-session'
