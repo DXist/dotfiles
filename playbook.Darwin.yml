@@ -38,6 +38,7 @@
         - { src: com.googlecode.iterm2.plist, path: ~/Library/Preferences/com.googlecode.iterm2.plist }
         - { src: com.apple.universalaccess.plist, path: ~/Library/Preferences/com.apple.universalaccess.plist }
         - { src: com.apple.symbolichotkeys.plist, path: ~/Library/Preferences/com.apple.symbolichotkeys.plist }
+        - { src: com.google.Chrome.plist, path: ~/Library/Preferences/com.google.Chrome.plist }
 
       tags:
         - osxconfigs
