@@ -29,7 +29,6 @@ if !exists('s:loaded_my_vimrc')
 	\    },
 	\ }
 	NeoBundle 'Shougo/unite.vim'
-	NeoBundle 'kien/ctrlp.vim'
 	NeoBundleLazy 'Shougo/unite-outline', {'autoload':{'unite_sources':'outline'}}
 	NeoBundleLazy 'tsukkee/unite-tag', {'autoload':{'unite_sources':'tag'}}
 	NeoBundleLazy 'junkblocker/unite-codesearch', {'autoload':{'unite_sources':'codesearch'}}
@@ -484,15 +483,6 @@ function! s:unite_my_settings()
 			\ unite#smart_map('l', unite#do_action('default'))
 
 endfunction
-
-" nnoremap <silent> <leader>f  :<C-u>CtrlPMixed<CR>
-
-" Ctrlp
-let g:ctrlp_map = '<Nul>'
-let g:ctrlp_extensions = ['tag']
-let g:ctrlp_mruf_relative = 1
-let g:ctrlp_max_height = 25
-let g:ctrlp_show_hidden = 1
 
 " ctrlspace
 let g:ctrlspace_load_last_workspace_on_start = 1
