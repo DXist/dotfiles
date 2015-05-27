@@ -14,7 +14,36 @@
       - go
     homebrew_taps:
         - caskroom/cask
+    PREFERENCES: "{{ lookup('env', 'HOME')}}/Library/Preferences"
+
   tasks:
+    - name: Check preferences
+      command: test -L {{ PREFERENCES }}
+      register: is_symlink_check
+      tags:
+        - move_preferences
+
+    - name: Move preferences
+      shell: shopt -s nullglob && mv {{ PREFERENCES }}/* {{ PREFERENCES }}/.??* {{ playbook_dir }}/roles/Darwin/Preferences/
+      when: is_symlink_check.rc
+      tags:
+        - move_preferences
+
+    - name: Remove empty directory
+      command: rmdir {{ PREFERENCES }}
+      sudo: yes
+      when: is_symlink_check.rc
+
+      tags:
+        - move_preferences
+
+    - name: Symlink preferences
+      command:  ln -s {{ playbook_dir }}/roles/Darwin/Preferences {{ PREFERENCES }}
+      when: is_symlink_check.rc
+
+      tags:
+        - move_preferences
+
     - name: install casks
       homebrew_cask: name={{ item }} state=present
       with_items:
@@ -33,12 +62,6 @@
       with_items:
         - { src: .tmux.Darwin.conf, path: ~/.tmux.platform.conf }
         - { src: .bashrc.Darwin, path: ~/.bashrc.platform }
-        - { src: org.pqrs.Karabiner.plist, path: ~/Library/Preferences/org.pqrs.Karabiner.plist }
-        - { src: org.pqrs.Seil.plist, path: ~/Library/Preferences/org.pqrs.Seil.plist }
-        - { src: com.googlecode.iterm2.plist, path: ~/Library/Preferences/com.googlecode.iterm2.plist }
-        - { src: com.apple.universalaccess.plist, path: ~/Library/Preferences/com.apple.universalaccess.plist }
-        - { src: com.apple.symbolichotkeys.plist, path: ~/Library/Preferences/com.apple.symbolichotkeys.plist }
-        - { src: com.google.Chrome.plist, path: ~/Library/Preferences/com.google.Chrome.plist }
 
       tags:
         - osxconfigs
