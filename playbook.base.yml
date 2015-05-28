@@ -1,4 +1,28 @@
 ---
 - hosts: localhost
+  pre_tasks:
+  - name: Install system deps
+    sudo: yes
+    apt: name={{ item }} state=present force=yes
+    with_items:
+      - git
+      - exuberant-ctags
+      - cmake
+      - python-dev
+      - libyaml-dev
+      - python-pygments
+      - golang
+      - silversearcher-ag
+      - tmux
+      - bash-completion
+      - virtualenvwrapper
+      - python-pip
+    tags:
+      - system_reqs
+
+  - name: Install tmuxp
+    sudo: yes
+    command: pip install tmuxp
+
   roles:
     - common
