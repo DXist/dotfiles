@@ -86,13 +86,16 @@ if [[ "${GOPATH}" != *$HOME/goworkspace* ]]; then
 fi
 
 venvwrapper=`which virtualenvwrapper.sh`
-if [ -r  "$venvwrapper" ]; then
+
+if [ -r  "$venvwrapper" -o -n "$(type -t workon)" ]; then
 	export WORKON_HOME=~/envs
 	export PROJECT_HOME=~/workspace
 	if [ -z "$VIRTUALENVWRAPPER_PYTHON" ]; then
 		export VIRTUALENVWRAPPER_PYTHON=`which python`
 	fi
-	. $venvwrapper
+	if [ -r "$venvwrapper" ]; then
+		. "$venvwrapper"
+	fi
 fi
 
 if [ -r /etc/bash_completion.d/git ]; then
@@ -100,7 +103,7 @@ if [ -r /etc/bash_completion.d/git ]; then
 fi
 
 if [ -z "$TMUX" ]; then
-    # we're not in a tmux session
+	# we're not in a tmux session
 
 	# Predictable SSH authentication socket location.
 	SOCK="/tmp/ssh-agent-$USER-tmux"
@@ -111,10 +114,10 @@ if [ -z "$TMUX" ]; then
 		export SSH_AUTH_SOCK=$SOCK
 	fi
 
-    if [ ! -z "$SSH_TTY" ]; then
-        # We logged in via SSH
-        # start tmux
-        tmux attach
+	if [ ! -z "$SSH_TTY" ]; then
+		# We logged in via SSH
+		# start tmux
+		tmux attach
     fi
 fi
 
