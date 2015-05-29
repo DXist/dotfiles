@@ -24,5 +24,12 @@
     sudo: yes
     command: pip install tmuxp
 
+  - name: Install Debian specific links
+    file: src={{ playbook_dir }}/roles/Debian/files/{{ item.src }} dest="{{ item.path }}" state=link force=true
+    with_items:
+      - { src: .bashrc.Debian, path: ~/.bashrc.platform }
+    tags:
+      - debianconfigs
+
   roles:
     - common

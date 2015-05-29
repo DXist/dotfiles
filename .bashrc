@@ -98,10 +98,6 @@ if [ -r  "$venvwrapper" -o -n "$(type -t workon)" ]; then
 	fi
 fi
 
-if [ -r /etc/bash_completion.d/git ]; then
-	. /etc/bash_completion.d/git
-fi
-
 if [ -z "$TMUX" ]; then
 	# we're not in a tmux session
 
