@@ -98,25 +98,6 @@ if [ -r  "$venvwrapper" -o -n "$(type -t workon)" ]; then
 	fi
 fi
 
-if [ -z "$TMUX" ]; then
-	# we're not in a tmux session
-
-	# Predictable SSH authentication socket location.
-	SOCK="/tmp/ssh-agent-$USER-tmux"
-	if test $SSH_AUTH_SOCK && [ $SSH_AUTH_SOCK != $SOCK ]
-	then
-		rm -f $SOCK
-		ln -sf $SSH_AUTH_SOCK $SOCK
-		export SSH_AUTH_SOCK=$SOCK
-	fi
-
-	if [ ! -z "$SSH_TTY" ]; then
-		# We logged in via SSH
-		# start tmux
-		tmux attach
-    fi
-fi
-
 # disable flow control
 stty -ixon
 alias reset='reset && stty -ixon'
@@ -155,4 +136,21 @@ fi
 
 if hash tmuxp.bash 2>/dev/null; then
 	source tmuxp.bash
+fi
+
+if [ -z "$TMUX" ]; then
+	# we're not in a tmux session
+	# Predictable SSH authentication socket location.
+	SOCK="/tmp/ssh-agent-$USER-tmux"
+	if test $SSH_AUTH_SOCK && [ $SSH_AUTH_SOCK != $SOCK ]
+	then
+		rm -f $SOCK
+		ln -sf $SSH_AUTH_SOCK $SOCK
+		export SSH_AUTH_SOCK=$SOCK
+	fi
+	if [ ! -z "$SSH_TTY" ]; then
+		# We logged in via SSH
+		# start tmux
+		tmux attach
+	fi
 fi
