@@ -1,1 +1,3 @@
 export LS_OPTIONS="-G"
+. /usr/local/share/git-core/contrib/completion/git-completion.bash
+. /usr/local/share/git-core/contrib/completion/git-prompt.sh
