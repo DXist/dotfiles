@@ -64,7 +64,7 @@ export GIT_PS1_SHOWSTASHSTATE=true
 export PIP_DOWNLOAD_CACHE=$HOME/.pip/cache
 export PYTHONSTARTUP=~/.pythonrc
 
-if [ "$TERM" != "dumb" ]; then
+if [[ "$TERM" != "dumb" && "$TERM" != screen* ]]; then
 	if [ -z "$LS_OPTIONS" ]; then
 		export LS_OPTIONS='--color=auto'
 	fi
@@ -138,7 +138,7 @@ if hash tmuxp.bash 2>/dev/null; then
 	source tmuxp.bash
 fi
 
-if [ -z "$TMUX" ]; then
+if [[ -z "$TMUX" && $TERM != screen*  ]]; then
 	# we're not in a tmux session
 	# Predictable SSH authentication socket location.
 	SOCK="/tmp/ssh-agent-$USER-tmux"
