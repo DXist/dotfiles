@@ -251,7 +251,7 @@ map Q gq
 " Undo
 if has('persistent_undo')
 	set undofile				" enable persistent undo
-	set undodir=/tmp/vimundo    " store undofiles in a tmp dir
+	set undodir=~/.vim/tmp/,/tmp
 endif
 
 "diff
