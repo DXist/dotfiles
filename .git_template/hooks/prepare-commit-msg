@@ -7,6 +7,6 @@ msg=$(cat $1)
 has_issue=`expr "$msg" : "\($ISSUE\).*"`
 
 
-if [[ -n "$ISSUE" && -z "$has_issue" ]]; then
+if [ -n "$ISSUE" -a -z "$has_issue" ]; then
     echo -n "$ISSUE $msg" > $1
 fi
