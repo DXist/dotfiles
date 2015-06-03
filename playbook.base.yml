@@ -5,6 +5,7 @@
     sudo: yes
     apt: name={{ item }} state=present force=yes
     with_items:
+      - vim-nox
       - git
       - exuberant-ctags
       - cmake
