@@ -7,6 +7,7 @@
 *.egg-info
 *~
 *.swp
+*.svg
 .noseids.*
 .cs_files
 Session.vim
