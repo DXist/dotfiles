@@ -7,10 +7,10 @@
 **/.cache/**
 **/.neocomplcache/**
 **/.pip/cache/**
-/proc/**
-/sys/**
-/dev/**
-/run/user/**
-/var/run/user/**
-/var/lib/docker/**
-/mnt/
+**/proc/**
+**/sys/**
+**/dev/**
+**/run/user/**
+**/var/run/user/**
+**/var/lib/docker/**
+**/mnt/

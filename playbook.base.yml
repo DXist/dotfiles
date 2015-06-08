@@ -18,6 +18,7 @@
       - bash-completion
       - virtualenvwrapper
       - python-pip
+      - duplicity
     tags:
       - system_reqs
 
