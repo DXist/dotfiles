@@ -13,6 +13,7 @@
       - the_silver_searcher
       - reattach-to-user-namespace
       - go
+      - unrar
     homebrew_taps:
         - caskroom/cask
     PREFERENCES: "{{ lookup('env', 'HOME')}}/Library/Preferences"
