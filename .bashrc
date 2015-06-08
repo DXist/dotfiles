@@ -53,6 +53,8 @@ export EDITOR=vim
 # quit less if one output fits on one screen
 export PAGER="less -FX"
 export LESSOPEN="|pygmentize -g -O encoding=utf-8 %s"
+# ignore commands that start from space
+export HISTCONTROL=ignorespace
 
 # Git config
 export PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '
