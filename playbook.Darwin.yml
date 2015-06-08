@@ -58,6 +58,9 @@
         - vlc
         - libreoffice
         - intellij-idea-ce
+        # - yandexdisk
+      tags:
+        - install_casks
 
     - name: Install OSX specific links
       file: src={{ playbook_dir }}/roles/Darwin/files/{{ item.src }} dest="{{ item.path }}" state=link force=true
