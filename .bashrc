@@ -142,7 +142,7 @@ if [[ -z "$TMUX" && $TERM != screen*  ]]; then
 	# we're not in a tmux session
 	# Predictable SSH authentication socket location.
 	SOCK="/tmp/ssh-agent-$USER-tmux"
-	if test $SSH_AUTH_SOCK && [ $SSH_AUTH_SOCK != $SOCK ]
+	if [ "$SSH_AUTH_SOCK" -a  $SSH_AUTH_SOCK != $SOCK ]
 	then
 		rm -f $SOCK
 		ln -sf $SSH_AUTH_SOCK $SOCK
