@@ -412,7 +412,11 @@ map <Leader><Leader>m <ESC>:Dispatch<CR>
 
 
 map <Leader>i oimport ipdb; ipdb.set_trace()  # FIXME: brakepoint<ESC>
-map <Leader>n :silent let @* = 'b ' . expand('%:p') . ':' . line('.') <bar> echo "Pdb breakpoint copied to selection buffer"<CR>
+if has('clipboard')
+	map <Leader>n :silent let @* = 'b ' . expand('%:p') . ':' . line('.') <bar> echo "Pdb breakpoint copied to selection buffer"<CR>
+else
+	map <Leader>n :echo 'b ' . expand('%:p') . ':' . line('.')<CR>
+endif
 map <Leader>p oimport pprint; pprint.pprint(
 
 
