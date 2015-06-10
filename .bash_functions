@@ -91,4 +91,8 @@ function go() {
 function agsed() {
 	ag -l "$1" | xargs sed -i "s/$1/$2/"
 }
+
+function topgrep() {
+	top -p $(pgrep -d',' $1)
+}
 # vim: ft=sh
