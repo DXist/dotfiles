@@ -22,6 +22,13 @@
     - name: Check preferences
       command: test -L {{ PREFERENCES }}
       register: is_symlink_check
+      ignore_errors: yes
+      tags:
+        - move_preferences
+
+    - name: Remove empty dirs in preferences
+      command: find {{ PREFERENCES }} -type d -empty -delete
+      when: is_symlink_check.rc
       tags:
         - move_preferences
 
