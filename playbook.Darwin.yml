@@ -66,6 +66,7 @@
         - libreoffice
         - intellij-idea-ce
         # - yandexdisk
+        - antirsi
       tags:
         - install_casks
 
