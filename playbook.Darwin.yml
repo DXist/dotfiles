@@ -67,6 +67,7 @@
         - intellij-idea-ce
         # - yandexdisk
         - antirsi
+        - adium
       tags:
         - install_casks
 
