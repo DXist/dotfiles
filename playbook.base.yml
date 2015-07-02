@@ -19,6 +19,7 @@
       - virtualenvwrapper
       - python-pip
       - duplicity
+      - gnupg-agent
     tags:
       - system_reqs
 
