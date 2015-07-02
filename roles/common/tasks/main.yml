@@ -56,5 +56,6 @@
   command: go get github.com/junkblocker/codesearch/...
   environment:
     GOPATH: "{{ lookup('ENV', 'HOME') }}/go"
+  when: SKIP_SUDO is not defined
   tags:
     - gotools
