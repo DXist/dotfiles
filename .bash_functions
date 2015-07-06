@@ -95,4 +95,19 @@ function agsed() {
 function topgrep() {
 	top -p $(pgrep -d',' $1)
 }
+
+function jiraurl() {
+	if [ -z "$JIRA_URL" ]; then
+		echo JIRA_URL is not defined
+		return 1
+	fi
+	BRANCH_NAME=`git rev-parse --abbrev-ref HEAD`
+	ISSUE=`expr "$BRANCH_NAME" : '.*/\([[:upper:]]\+-[[:digit:]]\+\)'`
+
+	if [ -n "$ISSUE" ]; then
+		echo "$JIRA_URL/browse/$ISSUE"
+	else
+		echo "Jira task name is not found in branch name"
+	fi
+}
 # vim: ft=sh
