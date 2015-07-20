@@ -101,7 +101,13 @@ function jiraurl() {
 		echo JIRA_URL is not defined
 		return 1
 	fi
-	BRANCH_NAME=`git rev-parse --abbrev-ref HEAD`
+
+	if [ -z "$1" ]; then
+		BRANCH_NAME=`git rev-parse --abbrev-ref HEAD`
+	else
+		BRANCH_NAME="$1"
+	fi
+
 	ISSUE=`expr "$BRANCH_NAME" : '.*/\([[:upper:]]\+-[[:digit:]]\+\)'`
 
 	if [ -n "$ISSUE" ]; then
