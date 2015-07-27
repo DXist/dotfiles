@@ -32,7 +32,7 @@
 	r = rebase
 	rc = rebase --continue
 	ctags = !test -x .git/hooks/ctags && .git/hooks/ctags
-	switchorigin = !git remote add upstream $(git config --get remote.origin.url) && git fetch upstream && git checkout master && git branch set-upstream-to upstream/master && git remote -v rm origin && git remote -v add origin
+	switchorigin = !git remote add upstream $(git config --get remote.origin.url) && git fetch upstream && git checkout master && git branch --set-upstream-to upstream/master && git remote -v rm origin && git remote -v add origin
 	subupdate = submodule update --init --recursive
 
 [svn]
