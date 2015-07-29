@@ -401,8 +401,6 @@ let g:session_directory = resolve(expand("~/.vim/sessions"))
 let g:session_lock_directory = "/tmp"
 nmap <space> :<c-u>OpenSession<CR>
 
-"py-test-runner
-" map <Leader>mt <ESC>:python RunUnitTestsUnderCursor()<CR>
 " map <Leader>mr <ESC>:python run_test()<CR>
 map <Leader>m <ESC>:silent Make %<CR>
 " run all test suite
