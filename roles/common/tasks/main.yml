@@ -1,8 +1,5 @@
 ---
 
-- name: Install neobundle
-  git: repo=https://github.com/Shougo/neobundle.vim dest={{ playbook_dir }}/.vim/bundle/neobundle.vim
-
 - name: Install dotfiles symlinks
   file: src={{ playbook_dir }}/{{ item }} dest=~/{{ item }} state=link force=true
   with_items:
@@ -51,6 +48,9 @@
     - { path: 'config/pudb', dest: '.config/pudb' }
   tags:
     - links
+
+- name: Install neobundle
+  git: repo=git@github.com:Shougo/neobundle.vim.git dest={{ playbook_dir }}/.vim/bundle/neobundle.vim
 
 - name: Install go tools
   command: go get github.com/junkblocker/codesearch/...
