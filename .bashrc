@@ -70,7 +70,7 @@ if [[ "$TERM" != "dumb" && "$TERM" != screen* ]]; then
 	if [ -z "$LS_OPTIONS" ]; then
 		export LS_OPTIONS='--color=auto'
 	fi
-	if [ -r ~/.dir_colors ]; then
+	if [ -r ~/.dir_colors -a "`which dircolors`" ]; then
 		eval `dircolors ~/.dir_colors`
 	fi
 fi
