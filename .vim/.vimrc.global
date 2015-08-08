@@ -490,9 +490,14 @@ function! s:unite_my_settings()
 endfunction
 
 " ctrlspace
-let g:ctrlspace_load_last_workspace_on_start = 1
-let g:ctrlspace_save_workspace_on_exit = 1
-let g:ctrlspace_save_workspace_on_switch = 1
+let g:CtrlSpaceLoadLastWorkspaceOnStart = 1
+let g:CtrlSpaceSaveWorkspaceOnExit = 1
+let g:CtrlSpaceSaveWorkspaceOnSwitch = 1
+
+if executable('ag')
+	let g:CtrlSpaceGlobCommand = 'ag -l --hidden --nocolor -g ""'
+endif
+
 nmap <space> :<c-u>CtrlSpace<CR>
 nnoremap <silent> <leader>f  :<C-u>CtrlSpace O<CR>
 nnoremap <leader><space> :<c-u>CtrlSpace b<CR>
