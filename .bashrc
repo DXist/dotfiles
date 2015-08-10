@@ -118,6 +118,7 @@ alias vims='vim --servername=vim'
 alias vimc='vim --remote-tab'
 alias less='less -R -x4'
 alias ag='ag --hidden'
+alias ap='ansible-playbook'
 # ncurses emulates 8 color term when TERM is xterm
 # but we need 16 color
 alias tmux='TERM=xterm-16color tmux'
