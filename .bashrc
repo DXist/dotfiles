@@ -65,6 +65,7 @@ export GIT_PS1_SHOWSTASHSTATE=true
 
 export PIP_DOWNLOAD_CACHE=$HOME/.pip/cache
 export PYTHONSTARTUP=~/.pythonrc
+export GPG_TTY=$(tty)
 
 if [[ "$TERM" != "dumb" && "$TERM" != screen* ]]; then
 	if [ -z "$LS_OPTIONS" ]; then
