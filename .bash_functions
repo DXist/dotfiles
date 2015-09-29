@@ -88,8 +88,8 @@ function go() {
 	fi
 }
 
-function agsed() {
-	ag -l "$1" | xargs sed -i "s/$1/$2/"
+function agreplace() {
+	ag -l "$1" | xargs perl -pi -e "s/$1/$2/g"
 }
 
 function topgrep() {
