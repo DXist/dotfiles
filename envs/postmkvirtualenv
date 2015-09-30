@@ -4,4 +4,4 @@
 # install linter
 # install syntax highlighter for less preprocessor
 # install debugger
-pip install pylama pylama-pylint
+pip install pylama pylama-pylint pdbpp

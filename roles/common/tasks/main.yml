@@ -18,6 +18,7 @@
     - .hgrc
     - .ideavimrc
     - .pdbrc
+    - .pdbrc.py
     - .pylama.ini
     - .pythonrc
     - .screenrc

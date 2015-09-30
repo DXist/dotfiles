@@ -410,7 +410,7 @@ map <LocalLeader>m <ESC>:silent Make<CR>
 map <Leader><Leader>m <ESC>:execute ':Start ' . expand(b:dispatch)<CR>
 
 
-map <Leader>i oimport ipdb; ipdb.set_trace()  # FIXME: brakepoint<ESC>
+map <Leader>i oimport pdb; pdb.set_trace()  # FIXME: brakepoint<ESC>
 if has('clipboard')
 	map <Leader>n :silent let @* = 'b ' . expand('%:p') . ':' . line('.') <bar> echo "Pdb breakpoint copied to selection buffer"<CR>
 else
