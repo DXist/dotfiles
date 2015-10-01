@@ -1,7 +1,7 @@
 augroup python_test
 	autocmd!
 	autocmd FileType python setlocal makeprg=./.runtests\ \ $*
-	autocmd FileType python let b:dispatch='PDB=python -m pdb ' . expand('<sfile>:p:h') . '/.runtests %'
+	autocmd FileType python let b:dispatch='PDB="python -m pdb" ' . expand('<sfile>:p:h') . '/.runtests %'
 augroup END
 
 python << EOF
