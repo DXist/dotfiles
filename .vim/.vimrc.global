@@ -93,6 +93,8 @@ if !exists('s:loaded_my_vimrc')
 	" NeoBundle 'airblade/vim-rooter'
 	NeoBundle 'mattn/emmet-vim'
 	NeoBundle 'ekalinin/Dockerfile.vim'
+	NeoBundleLazy 'fisadev/vim-isort', {
+		\ 'autoload': {'filetypes': ['python']}}
 
 	call neobundle#end()
 
