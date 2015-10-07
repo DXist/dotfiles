@@ -8,6 +8,7 @@
 --exclude=.svn
 --exclude=.tox
 --exclude=logs
+--exclude=build
 --exclude=Session.vim
 --langdef=Go
 --langmap=Go:.go
