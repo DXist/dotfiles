@@ -14,6 +14,10 @@
       - reattach-to-user-namespace
       - go
       - unrar
+      - docker
+      - boot2docker
+      - gpg
+      - gpg-agent
     homebrew_taps:
         - caskroom/cask
     PREFERENCES: "{{ lookup('env', 'HOME')}}/Library/Preferences"
