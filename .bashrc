@@ -63,7 +63,6 @@ export GIT_PS1_SHOWDIRTYSTATE=true
 export GIT_PS1_SHOWSTASHSTATE=true
 
 
-export PIP_DOWNLOAD_CACHE=$HOME/.pip/cache
 export PYTHONSTARTUP=~/.pythonrc
 export GPG_TTY=$(tty)
 
