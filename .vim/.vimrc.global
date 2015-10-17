@@ -261,8 +261,8 @@ endif
 
 "diff
 set diffopt+=vertical
-nmap dgl :diffget /2<CR>:diffupdate<CR>
-nmap dgr :diffget /3<CR>:diffupdate<CR>
+nmap dgl :diffget //2<CR>:diffupdate<CR>
+nmap dgr :diffget //3<CR>:diffupdate<CR>
 
 " для различения уровня отступов
 set listchars=tab:\ \ ,trail:·,extends:⋯,precedes:⋯,nbsp:~
