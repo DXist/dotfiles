@@ -8,3 +8,5 @@ if [[ "${PATH}" != *libexec/gnubin* ]]; then
 fi
 
 alias b2d='eval "$(boot2docker shellinit)"'
+# list listening ports
+alias lsofports='lsof -iTCP -sTCP:LISTEN -n -P'
