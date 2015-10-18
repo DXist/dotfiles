@@ -18,6 +18,7 @@
       - boot2docker
       - gpg
       - gpg-agent
+      - fswatch
     homebrew_taps:
         - caskroom/cask
     PREFERENCES: "{{ lookup('env', 'HOME')}}/Library/Preferences"
