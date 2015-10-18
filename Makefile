@@ -15,10 +15,6 @@ endif
 provision:
 	ansible-playbook -i inventory.ini $(PLAYBOOK) $(ANSIBLE_ARGS)
 
-.PHONY: copy_plists
-copy_plists:
-	ansible-playbook -i inventory.ini $(PLAYBOOK) $(ANSIBLE_ARGS)
-
 .PHONY: pull
 pull:
 	git pull --rebase
