@@ -48,6 +48,7 @@ if !exists('s:loaded_my_vimrc')
 	NeoBundle 'tpope/vim-unimpaired'
 	NeoBundle 'tpope/vim-commentary'
 	NeoBundle 'tpope/vim-ragtag'
+	NeoBundle 'tpope/vim-vinegar'
 	NeoBundle 'jmcantrell/vim-virtualenv'
 	NeoBundle 'altercation/vim-colors-solarized'
 	NeoBundle 'scrooloose/syntastic'
