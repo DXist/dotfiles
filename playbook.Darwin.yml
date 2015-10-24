@@ -19,6 +19,7 @@
       - gpg
       - gpg-agent
       - fswatch
+      - npm
     homebrew_taps:
         - caskroom/cask
     PREFERENCES: "{{ lookup('env', 'HOME')}}/Library/Preferences"
@@ -80,6 +81,13 @@
         - adium
       tags:
         - install_casks
+
+    - name: install node packages
+      npm: name={{ item }} global=yes
+      with_items:
+        - jshint
+      tags:
+        - install_node_packages
 
     - name: Install OSX specific links
       file: src={{ playbook_dir }}/roles/Darwin/files/{{ item.src }} dest="{{ item.path }}" state=link force=true

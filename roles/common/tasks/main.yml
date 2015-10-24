@@ -5,6 +5,7 @@
   with_items:
     - .ackrc
     - .agignore
+    - .backup.exclude.list
     - .bash_functions
     - .bash_profile
     - .bashrc
@@ -17,17 +18,17 @@
     - .gnupg
     - .hgrc
     - .ideavimrc
+    - .jshintrc
     - .pdbrc
     - .pdbrc.py
     - .pylama.ini
     - .pythonrc
     - .screenrc
+    - .termcap
+    - .terminfo
     - .tmux.conf
     - .vim
     - .vimrc
-    - .backup.exclude.list
-    - .terminfo
-    - .termcap
   tags:
     - links
 
