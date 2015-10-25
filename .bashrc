@@ -83,10 +83,6 @@ if [[ "${GOPATH}" != *$HOME/go* ]]; then
 	fi
 fi
 
-if [[ "${GOPATH}" != *$HOME/goworkspace* ]]; then
-	export GOPATH=$GOPATH:$HOME/goworkspace
-fi
-
 venvwrapper=`which virtualenvwrapper.sh`
 
 if [ -r  "$venvwrapper" -o -n "$(type -t workon)" ]; then

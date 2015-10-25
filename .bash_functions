@@ -83,10 +83,20 @@ function go() {
 
 	# rebuild gopath ctags
 	if [[ -n "${GOPATH}" && ("$1" = get ) ]]; then
-		goworkspace=${GOPATH%%:*}
+		goworkspace=${GOPATH/:*/}
 		ctagsify ${goworkspace} ${goworkspace}/.tags
 	fi
 }
+
+function gowork() {
+	# APPEND current directory to GOPATH
+	if [[ "${GOPATH}" != *$PWD* ]]; then
+		export GOPATH=${GOPATH/:*/}:$PWD
+	fi
+	PS1=${PS1/(*)[/[}
+	export PS1="(`basename $PWD`)"$PS1
+}
+
 
 function agreplace() {
 	ag -l "$1" | xargs perl -pi -e "s/$1/$2/g"
