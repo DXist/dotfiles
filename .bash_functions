@@ -91,7 +91,7 @@ function go() {
 function gowork() {
 	# APPEND current directory to GOPATH
 	if [[ "${GOPATH}" != *$PWD* ]]; then
-		export GOPATH=${GOPATH/:*/}:$PWD
+		export GOPATH=${GOPATH/:*/:}$PWD
 	fi
 	PS1=${PS1/(*)[/[}
 	export PS1="(`basename $PWD`)"$PS1
