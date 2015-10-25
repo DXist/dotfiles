@@ -23,6 +23,8 @@
     homebrew_taps:
         - caskroom/cask
     PREFERENCES: "{{ lookup('env', 'HOME')}}/Library/Preferences"
+  environment:
+    GIT_TEMPLATE_DIR: ""
 
   tasks:
     - name: Check preferences
