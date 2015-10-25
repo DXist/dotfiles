@@ -1,7 +1,13 @@
 #!/bin/bash
 # This hook is run after every virtualenv is activated.
-PROJ_NAME=`expr $VIRTUAL_ENV : '.*/\(.*\)$'`
-
-if [[ -d ${PROJECT_HOME}/$PROJ_NAME ]]; then
-	cd ${PROJECT_HOME}/$PROJ_NAME
+if [ -f "$VIRTUAL_ENV/$VIRTUALENVWRAPPER_PROJECT_FILENAME"  ]; then
+	virtualenvwrapper_cd  `cat "$VIRTUAL_ENV/$VIRTUALENVWRAPPER_PROJECT_FILENAME"`
+else
+	PROJ_NAME=`basename $VIRTUAL_ENV`
+	if [ -d "$PROJECT_HOME/$PROJ_NAME"  ]; then
+		echo "$PROJECT_HOME/$PROJ_NAME" > "$VIRTUAL_ENV/$VIRTUALENVWRAPPER_PROJECT_FILENAME"
+		virtualenvwrapper_cd "$PROJECT_HOME/$PROJ_NAME"
+	else
+		echo "Please, run virtualenvwrapper_cd $VIRTUAL_ENV $PROJECT_HOME/project_name"
+	fi
 fi
