@@ -3,6 +3,9 @@ setlocal softtabstop=4
 setlocal textwidth=79
 setlocal commentstring=#%s
 setlocal errorformat=\%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z\ \ \ \ %m
+setlocal omnifunc=pythoncomplete#Complete
+nnoremap <buffer> <leader>jf :YcmCompleter GoToDeclaration<CR>
+nnoremap <buffer> <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 if v:version>=703
 	setlocal cc=79

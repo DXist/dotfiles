@@ -306,18 +306,6 @@ augroup group_html
 	autocmd FileType html,htmldjango,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 augroup END
 
-augroup group_javascript
-	au!
-	autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-augroup END
-
-augroup group_python
-	au!
-	autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-	autocmd FileType python nnoremap <buffer> <leader>jf :YcmCompleter GoToDeclaration<CR>
-	autocmd FileType python nnoremap <buffer> <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
-augroup END
-
 augroup group_xml
 	au!
 	autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
