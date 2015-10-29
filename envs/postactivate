@@ -8,6 +8,6 @@ else
 		echo "$PROJECT_HOME/$PROJ_NAME" > "$VIRTUAL_ENV/$VIRTUALENVWRAPPER_PROJECT_FILENAME"
 		virtualenvwrapper_cd "$PROJECT_HOME/$PROJ_NAME"
 	else
-		echo "Please, run virtualenvwrapper_cd $VIRTUAL_ENV $PROJECT_HOME/project_name"
+		echo "Please, cd to the project root and run echo \`pwd\` > $VIRTUAL_ENV/$VIRTUALENVWRAPPER_PROJECT_FILENAME"
 	fi
 fi
