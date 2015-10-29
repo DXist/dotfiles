@@ -22,6 +22,7 @@
       - npm
     homebrew_taps:
         - caskroom/cask
+        - caskroom/homebrew-versions
     PREFERENCES: "{{ lookup('env', 'HOME')}}/Library/Preferences"
   environment:
     GIT_TEMPLATE_DIR: ""
@@ -73,7 +74,7 @@
         - seil
         - karabiner
         - spectacle
-        - iterm2
+        - iterm2-beta
         - skype
         - vlc
         - libreoffice
