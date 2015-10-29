@@ -402,6 +402,9 @@ map <Leader><Leader>m <ESC>:execute ':Start ' . expand(b:dispatch)<CR>
 
 
 map <Leader>i oimport pdb; pdb.set_trace()  # FIXME: brakepoint<ESC>
+
+vmap <silent> <Leader>y :<c-u>silent '<,'>w !yank<CR>
+
 if has('clipboard')
 	map <Leader>n :silent let @* = 'b ' . expand('%:p') . ':' . line('.') <bar> echo "Pdb breakpoint copied to selection buffer"<CR>
 else
@@ -524,7 +527,6 @@ nmap g} <c-W>g}
 " nmap <Leader>rr <ESC>:vertical stag /
 nmap <Leader>j <ESC>:tjump /
 nmap <Leader>jj <ESC>:vertical stjump /
-nmap <Leader>y <ESC>:tag<CR>
 
 " fugitive, git commands
 map <Leader>gs <ESC>:Gstatus<CR>
