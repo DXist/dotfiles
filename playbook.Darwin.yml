@@ -22,7 +22,7 @@
       - npm
     homebrew_taps:
         - caskroom/cask
-        - caskroom/homebrew-versions
+        - caskroom/versions
     PREFERENCES: "{{ lookup('env', 'HOME')}}/Library/Preferences"
   environment:
     GIT_TEMPLATE_DIR: ""
