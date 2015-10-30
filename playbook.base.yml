@@ -26,7 +26,7 @@
 
   - name: Install tmuxp
     sudo: yes
-    command: pip install tmuxp
+    command: pip install tmuxp>=1.9.2
     when: SKIP_SUDO is not defined
 
   - name: Install Debian specific links
