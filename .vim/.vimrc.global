@@ -258,8 +258,8 @@ map Q gq
 
 " Undo
 if has('persistent_undo')
-	set undofile				" enable persistent undo
 	set undodir=~/.vim/tmp/,/tmp
+	set undofile				" enable persistent undo
 endif
 
 "diff

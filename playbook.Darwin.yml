@@ -20,6 +20,7 @@
       - gpg-agent
       - fswatch
       - npm
+      - neovim/neovim/neovim
     homebrew_taps:
         - caskroom/cask
         - caskroom/versions

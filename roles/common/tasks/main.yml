@@ -55,6 +55,16 @@
 - name: Install neobundle
   git: repo=git@github.com:Shougo/neobundle.vim.git dest={{ playbook_dir }}/.vim/bundle/neobundle.vim
 
+- name: Install global python packages
+  pip: name={{ item }}
+  with_items:
+    - neovim
+    - tmuxp
+  when: SKIP_SUDO is not defined
+  sudo: yes
+  tags:
+    - pippackages
+
 - name: Install go tools
   command: go get github.com/junkblocker/codesearch/...
   environment:

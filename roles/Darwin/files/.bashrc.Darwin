@@ -10,3 +10,5 @@ fi
 alias b2d='eval "$(boot2docker shellinit)"'
 # list listening ports
 alias lsofports='lsof -iTCP -sTCP:LISTEN -n -P'
+alias vim=nvim
+export EDITOR=nvim

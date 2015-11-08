@@ -8,4 +8,5 @@ pip install \
 	pylama \
 	pylama-pylint \
 	pdbpp \
-	isort
+	isort \
+	neovim
