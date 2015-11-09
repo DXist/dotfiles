@@ -25,7 +25,7 @@
 	dm = diff --diff-filter=M
 	# check for unapplied hotfixes
 	dcheck = diff HEAD^2...HEAD^1
-	l = log --graph
+	l = log --graph --left-right
 	lst = ls-tree -r --name-only
 	m = merge
 	s = status
