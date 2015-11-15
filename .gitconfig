@@ -20,6 +20,7 @@
 	cm = commit
 	cma = commit -a
 	p = pull
+	pr = pull --rebase
 	d = diff
 	# show only modified changes
 	dm = diff --diff-filter=M
