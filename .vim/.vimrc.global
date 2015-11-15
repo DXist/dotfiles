@@ -1,14 +1,12 @@
 " GENERAL {{{1
 " Note: Skip initialization for vim-tiny or vim-small.
-if !1 | finish | endif
+if 0 | endif
 
-if !exists('s:loaded_my_vimrc')
-	if has('vim_starting')
+if has('vim_starting')
 	set nocompatible               " Be iMproved
 
 	" Required:
 	set runtimepath+=~/.vim/bundle/neobundle.vim/
-	endif
 
 	" Required:
 	call neobundle#begin(expand('~/.vim/bundle/'))
@@ -116,7 +114,6 @@ if !exists('s:loaded_my_vimrc')
 	autocmd BufWritePost .vimrc.global source ~/.vim/.vimrc.global
 	" автообновление проектов
 	autocmd BufWritePost projects.vim source ~/.vim/projects.vim
-	let s:loaded_my_vimrc = 1
 endif
 
 set history=1000
