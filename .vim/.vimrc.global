@@ -201,7 +201,8 @@ set autoread				" auto reload externally changed files
 "au FocusLost * if &modifiable && &modified | write | endif
 
 function! RemoveTrailingWhitespace()
-	if &ft != "diff"
+	let filetypes_to_exclude = ["diff", "markdown", "qf", "help"]
+	if index(filetypes_to_exclude, &ft) == -1
 		let b:curcol = col(".")
 		let b:curline = line(".")
 		" отсекаем неэкранированные пробелы на конце при сохранении
