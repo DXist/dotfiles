@@ -146,8 +146,12 @@ endif
 set title
 " nocursorline in insert mode
 set cursorline
-au InsertEnter * set nocursorline
-au InsertLeave * set cursorline
+augroup insert_cursor
+	autocmd!
+	autocmd InsertEnter * set nocursorline
+	autocmd InsertLeave * set cursorline
+augroup END
+
 set visualbell              " mute error bell"
 set scrolloff=4             " min 4 symbols bellow cursor"
 set linebreak               " break lines by words"
