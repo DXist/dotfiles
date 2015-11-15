@@ -593,7 +593,10 @@ map <LocalLeader><space> :TagbarToggle<CR>
 "let g:tagbar_singleclick = 1
 " delimitMate
 let g:delimitMate_nesting_quotes = ['"']
-au FileType html,htmldjango let b:delimitMate_matchpairs = "(:),[:],{:}"
+augroup filetype_delimitemate
+	autocmd!
+	autocmd FileType html,htmldjango let b:delimitMate_matchpairs = "(:),[:],{:}"
+augroup END
 "let g:delimitMate_smart_quotes = 0
 "let g:delimitMate_quotes = '"'
 " UltiSnips
