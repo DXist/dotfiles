@@ -218,6 +218,13 @@ augroup group_general
 	autocmd BufWritePre * call RemoveTrailingWhitespace()
 augroup END
 
+" Useful for copy
+nmap <Leader>z :call <SID>zoom_window()<cr>
+function! s:zoom_window()
+	tabedit %
+	setlocal foldcolumn=0 norelativenumber
+endfunction
+
 " netrw
 let g:netrw_localcopycmd = '/bin/cp'
 let g:netrw_liststyle = 3
