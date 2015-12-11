@@ -4,6 +4,7 @@
     homebrew_installed_packages:
       - brew-cask
       - coreutils
+      - python
       - cmake
       - git
       - vim
