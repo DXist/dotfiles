@@ -93,12 +93,19 @@
       tags:
         - install_node_packages
 
+    - name: Ensure application directories exist
+      file: path="{{ item }}" state=directory
+      with_items:
+        - "~/Library/Application Support/Karabiner/"
+      tags:
+        - osxconfigs
+
     - name: Install OSX specific links
       file: src={{ playbook_dir }}/roles/Darwin/files/{{ item.src }} dest="{{ item.path }}" state=link force=true
       with_items:
         - { src: .tmux.Darwin.conf, path: ~/.tmux.platform.conf }
         - { src: .bashrc.Darwin, path: ~/.bashrc.platform }
-        - { src: private.xml, path: '~/Library/Application Support/Karabiner/private.xml' }
+        - { src: private.xml, path: "~/Library/Application Support/Karabiner/private.xml" }
 
       tags:
         - osxconfigs

@@ -12,3 +12,9 @@ Key components of my dev environment:
 * tmux
 * Vim
 * bash
+
+Fresh OS X System
+
+* Install Command Line Tools
+* Enable trim if you use third party SSDs:
+	sudo trimforce enable 
