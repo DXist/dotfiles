@@ -32,4 +32,4 @@ pull:
 
 .PHONY: update_vim
 update_vim:
-	vim +neobundleinstall! +qall
+	vim +NeoBundleUpdate +qall

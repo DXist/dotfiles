@@ -22,6 +22,7 @@ Fresh OS X System
 * provision using `make`
 * run apps in current session
 	* Seil
+	  Configure Caps Lock behaviour in System Preferences
 	* Karabin
 	* Spectacle
 	* Google Chrome
