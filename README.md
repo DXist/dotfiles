@@ -14,7 +14,15 @@ Key components of my dev environment:
 * bash
 
 Fresh OS X System
+-----------------
 
 * Install Command Line Tools
 * Enable trim if you use third party SSDs:
 	sudo trimforce enable 
+* provision using `make`
+* run apps in current session
+	* Seil
+	* Karabin
+	* Spectacle
+	* Google Chrome
+	* Iterm2
