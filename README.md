@@ -27,6 +27,9 @@ Checklist - fresh OS X System
 	* Spectacle
 	* Google Chrome
 	* Iterm2
+	* Skype
 
-* Minimize Dock
-* Create 6 workspaces
+* To automate:
+	* Minimize Dock
+	* Disable mru sort
+	* Create 6 workspaces

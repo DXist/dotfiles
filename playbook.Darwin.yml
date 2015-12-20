@@ -68,6 +68,9 @@
       tags:
         - stop_pref_daemon
 
+    - name: Stop preferences daemon
+      command: pkill -U {{ lookup('env', 'USER') }} cfprefsd
+
     - name: install casks
       homebrew_cask: name={{ item }} state=present
       with_items:
@@ -92,6 +95,14 @@
         - jshint
       tags:
         - install_node_packages
+
+    - name: install python packages
+      pip: name={{ item }}
+      with_items:
+        - virtualenvwrapper
+        - ansible
+      tags:
+        - install_python_packages
 
     - name: Ensure application directories exist
       file: path="{{ item }}" state=directory
