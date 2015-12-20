@@ -17,8 +17,9 @@ Checklist - fresh OS X System
 -----------------------------
 
 * Install Command Line Tools
-* Enable trim if you use third party SSDs:
-	sudo trimforce enable 
+* SSD related:
+	* Enable trim if you use third party SSDs: sudo trimforce enable 
+	* disable local Time Machine snapthots: sudo tmutil disablelocal
 * provision using `make`
 * run apps in current session
 	* Seil
