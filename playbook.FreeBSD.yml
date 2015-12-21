@@ -1,6 +1,6 @@
 ---
 - hosts: localhost
-
+  gather_facts: no
   pre_tasks:
     - name: Install FreeBSD specific bashrc
       file: src={{ playbook_dir }}/roles/FreeBSD/files/{{ item.src }} dest={{ item.path }} state=link force=true

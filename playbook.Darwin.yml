@@ -1,5 +1,6 @@
 ---
 - hosts: localhost
+  gather_facts: no
   vars:
     homebrew_installed_packages:
       - brew-cask
@@ -101,6 +102,7 @@
       with_items:
         - virtualenvwrapper
         - ansible
+        - glances
       tags:
         - install_python_packages
 
