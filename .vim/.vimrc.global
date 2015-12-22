@@ -87,7 +87,7 @@ if has('vim_starting')
 
 	NeoBundleLazy 'chase/vim-ansible-yaml', {
 		\ 'autoload': {'filetypes': ['yaml', 'ansible']}}
-
+	" NeoBundle 'pearofducks/ansible-vim'
 	NeoBundle 'szw/vim-ctrlspace'
 	" NeoBundle 'airblade/vim-rooter'
 	NeoBundle 'mattn/emmet-vim'
@@ -499,7 +499,7 @@ let g:CtrlSpaceSaveWorkspaceOnExit = 1
 let g:CtrlSpaceSaveWorkspaceOnSwitch = 1
 
 if executable('ag')
-	let g:CtrlSpaceGlobCommand = 'ag -l --hidden --nocolor -g ""'
+	let g:CtrlSpaceGlobCommand = 'ag -l --hidden --skip-vcs-ignores --nocolor -g ""'
 endif
 
 nmap <space> :<c-u>CtrlSpace<CR>

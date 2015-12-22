@@ -152,4 +152,8 @@ ix() {
     curl $opts -F f:1='<-' $* ix.io/$id
 }
 
+function denter() {
+	docker exec -it "$1" /bin/bash
+}
+
 # vim: ft=sh
