@@ -499,7 +499,7 @@ let g:CtrlSpaceSaveWorkspaceOnExit = 1
 let g:CtrlSpaceSaveWorkspaceOnSwitch = 1
 
 if executable('ag')
-	let g:CtrlSpaceGlobCommand = 'ag -l --hidden --skip-vcs-ignores --nocolor -g ""'
+	let g:CtrlSpaceGlobCommand = 'ag -l --hidden --nocolor -g ""'
 endif
 
 nmap <space> :<c-u>CtrlSpace<CR>

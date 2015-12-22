@@ -10,3 +10,6 @@ import os
 os.environ['DJANGO_SETTINGS_MODULE'] = 'project.settings'
 
 EOF
+
+let g:CtrlSpaceGlobCommand = 'ag -l --hidden --skip-vcs-ignores --nocolor -g ""'
+let g:unite_source_grep_default_opts='--hidden --nocolor --nogroup --smart-case --skip-vcs-ignores'
