@@ -69,9 +69,6 @@
       tags:
         - stop_pref_daemon
 
-    - name: Stop preferences daemon
-      command: pkill -U {{ lookup('env', 'USER') }} cfprefsd
-
     - name: install casks
       homebrew_cask: name={{ item }} state=present
       with_items:
