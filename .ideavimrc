@@ -1,1 +1,3 @@
 map ,s :w<CR>
+set relativenumber
+source ~/.vim/.vimrc.global
