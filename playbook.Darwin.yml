@@ -84,6 +84,7 @@
         # - yandexdisk
         - adium
         - doitim
+        - vagrant
         - anaconda
       tags:
         - install_casks
