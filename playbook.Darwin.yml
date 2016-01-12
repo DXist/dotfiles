@@ -84,6 +84,8 @@
         # - yandexdisk
         - adium
         - doitim
+        - virtualbox
+        - virtualbox-extension-pack
         - vagrant
         - anaconda
       tags:
