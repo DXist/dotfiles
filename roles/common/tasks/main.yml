@@ -43,6 +43,17 @@
   tags:
     - links
 
+- stat: path={{ playbook_dir }}/.gitconfig.local
+  register: gitconfiglocal
+  tags:
+    - links
+
+- name: Install optional local gitconfig
+  file: src={{ playbook_dir }}/.gitconfig.local dest=~/.gitconfig.local state=link force=true
+  when: gitconfiglocal.stat.exists
+  tags:
+    - links
+
 - name: Install gitignore symlink
   file: src={{ playbook_dir }}/gitignore dest=~/.gitignore state=link force=true
   tags:
