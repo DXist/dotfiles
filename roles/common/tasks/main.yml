@@ -14,7 +14,6 @@
     - .git_template
     - .gitattributes
     - .gitconfig
-    - .gitignore
     - .gnupg
     - .hgrc
     - .ideavimrc
@@ -61,7 +60,7 @@
 
 - name: Check tmuxp dir
   file: src={{ playbook_dir }}/.tmuxp dest=~/.tmuxp state=link force=true
-  when: tmuxp.stat.isdir
+  when: tmuxp.stat.exists and tmuxp.stat.isdir
   tags:
     - links
 
