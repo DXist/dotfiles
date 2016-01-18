@@ -59,6 +59,8 @@ export HISTCONTROL=ignorespace
 # Git config
 export PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '
 
+# If experience performance issues for large repositoriges
+# git config bash.showDirtyState false
 export GIT_PS1_SHOWDIRTYSTATE=true
 export GIT_PS1_SHOWSTASHSTATE=true
 
@@ -131,6 +133,7 @@ if [ "$TMUX" ]; then
 	alias sudo='TERM=screen sudo'
 	alias su='TERM=screen su'
 	alias ssh='TERM=screen ssh'
+	alias vagrant='TERM=screen vagrant'
 fi
 
 if hash tmuxp.bash 2>/dev/null; then
