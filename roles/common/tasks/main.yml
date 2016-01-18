@@ -43,6 +43,11 @@
   tags:
     - links
 
+- name: Install gitignore symlink
+  file: src={{ playbook_dir }}/gitignore dest=~/.gitignore state=link force=true
+  tags:
+    - links
+
 - name: get root HOME
   shell: echo $HOME
   when: SKIP_SUDO is not defined

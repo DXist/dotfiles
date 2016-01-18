@@ -1,16 +1,1 @@
-*~
-.csearchindex
-.cs_files
-.cs_workspaces
-CS_SESSION
-*.swp
-Session.vim
-*.pyc
-*.pyo
-.ropeproject
-.DS_Store
-svn-commit.tmp
-Guardfile
-.vimrc
-.runtests
-saved-breakpoints-*
+/.bashrc.local
