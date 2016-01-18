@@ -54,6 +54,17 @@
   tags:
     - links
 
+- stat: path={{ playbook_dir }}/.tmuxp
+  register: tmuxp
+  tags:
+    - links
+
+- name: Check tmuxp dir
+  file: src={{ playbook_dir }}/.tmuxp dest=~/.tmuxp state=link force=true
+  when: tmuxp.stat.isdir
+  tags:
+    - links
+
 - name: Install gitignore symlink
   file: src={{ playbook_dir }}/gitignore dest=~/.gitignore state=link force=true
   tags:
