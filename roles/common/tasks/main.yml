@@ -122,12 +122,9 @@
     - pippackages
 
 - name: Install go tools
-  command: go get {{ item }}
+  command: go get github.com/junkblocker/codesearch/...
   environment:
     GOPATH: "{{ lookup('ENV', 'HOME') }}/go"
   when: SKIP_SUDO is not defined
-	with_items:
-		- github.com/junkblocker/codesearch/...
-		- github.com/github/hub
   tags:
     - gotools
