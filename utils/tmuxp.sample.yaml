@@ -1,23 +1,25 @@
 session_name: project
+shell_command_before:
+  - workon project
 windows:
   - window_name: runserver
     panes:
     - shell_command:
-      - workon project
       - ./manage.py runserver
   - window_name: ''
     focus: True
     panes:
       - shell_command:
-        - workon project
         - vim
 
   - window_name: ''
+    layout: even-horizontal
     panes:
-      - shell_command:
-        - workon project
+      - "blank"
+      - "blank"
 
   - window_name: ''
+    layout: even-horizontal
     panes:
-      - shell_command:
-        - workon project
+      - "blank"
+      - "blank"
