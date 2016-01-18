@@ -32,6 +32,17 @@
   tags:
     - links
 
+- stat: path={{ playbook_dir }}/.bashrc.local
+  register: bashrclocal
+  tags:
+    - links
+
+- name: Install optional local profile
+  file: src={{ playbook_dir }}/.bashrc.local dest=~/.bashrc.local state=link force=true
+  when: bashrclocal.stat.exists
+  tags:
+    - links
+
 - name: get root HOME
   shell: echo $HOME
   when: SKIP_SUDO is not defined
