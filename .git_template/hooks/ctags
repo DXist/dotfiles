@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 . ~/.bashrc
 # skip repositories out of workspace
-if [[ "`git rev-parse --show-toplevel`" = $PROJECT_HOME* ]]; then
+top_level_dir=`git rev-parse --show-toplevel`
+if [[ "$top_level_dir" = $PROJECT_HOME* && "$top_level_dir" != *dotfiles* ]]; then
 	git_dir=$(git rev-parse --git-dir)
 	ctagsify . $git_dir/tags
 	cindexify
