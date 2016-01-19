@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 . ~/.bashrc
-git_dir=$(git rev-parse --git-dir)
-ctagsify . $git_dir/tags
-cindexify
+# skip repositories out of workspace
+if [[ "`git rev-parse --show-toplevel`" = $PROJECT_HOME* ]]; then
+	git_dir=$(git rev-parse --git-dir)
+	ctagsify . $git_dir/tags
+	cindexify
+fi
