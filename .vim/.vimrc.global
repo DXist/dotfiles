@@ -580,6 +580,9 @@ let g:EasyMotion_do_shade = 0
 let g:EasyMotion_smartcase = 1
 let g:EasyMotion_use_smartsign_us = 1
 
+" camel case motion
+call camelcasemotion#CreateMotionMappings('<leader>')
+
 " OS X hacks
 " copy selection to copy buffer
 command! -range Pbcopy silent '<,'>w !reattach-to-user-namespace pbcopy
