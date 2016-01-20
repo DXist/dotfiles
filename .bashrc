@@ -127,6 +127,7 @@ alias tailf='LESSOPEN="" less +F'
 
 alias cindex='cindex -exclude ~/.agignore'
 alias cindexprojects='xargs -a ~/.codesearch cindex -exclude ~/.agignore'
+alias hpr='hub pull-request'
 export CSEARCHINDEX='.csearchindex'
 
 if [ "$TMUX" ]; then
