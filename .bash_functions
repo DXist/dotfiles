@@ -93,7 +93,8 @@ function gowork() {
 	if [[ "${GOPATH}" != *$PWD* ]]; then
 		export GOPATH=${GOPATH/:*/:}$PWD
 	fi
-	PS1=${PS1/(*)[/[}
+
+	# PS1="${PS1/(*)[/[}"
 	export PS1="(`basename $PWD`)"$PS1
 }
 
@@ -154,6 +155,10 @@ ix() {
 
 function denter() {
 	docker exec -it "$1" /bin/bash
+}
+
+function define() {
+	gmtrn-cli "$@" |less
 }
 
 # vim: ft=sh

@@ -91,6 +91,8 @@
   file: path={{ item }} state=directory
   with_items:
     - ~/go
+    # for go build
+    - ~/tmp
     - ~/envs
     - ~/.config
   tags:
@@ -121,9 +123,13 @@
     - pippackages
 
 - name: Install go tools
-  command: go get github.com/junkblocker/codesearch/...
+  command: go get {{ item }}
   environment:
     GOPATH: "{{ lookup('ENV', 'HOME') }}/go"
   when: SKIP_SUDO is not defined
+  with_items:
+    - github.com/junkblocker/codesearch/...
+    - github.com/vladimir-g/gmtrn/cmd/gmtrn-cli
+
   tags:
     - gotools
