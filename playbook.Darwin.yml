@@ -89,6 +89,7 @@
         - virtualbox-extension-pack
         - vagrant
         - anaconda
+        - transmission
       tags:
         - install_casks
 
