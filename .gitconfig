@@ -20,6 +20,7 @@
 	cm = commit
 	cma = commit -a
 	cp = cherry-pick
+	cpc = cherry-pick --continue
 	p = pull
 	pr = pull --rebase
 	d = diff
