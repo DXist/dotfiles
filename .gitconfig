@@ -19,6 +19,7 @@
 	c = checkout
 	cm = commit
 	cma = commit -a
+	cp = cherry-pick
 	p = pull
 	pr = pull --rebase
 	d = diff
