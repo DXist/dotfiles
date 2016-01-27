@@ -20,6 +20,7 @@
     - .jshintrc
     - .pdbrc
     - .pdbrc.py
+    - .psqlrc
     - .pylama.ini
     - .pythonrc
     - .screenrc
