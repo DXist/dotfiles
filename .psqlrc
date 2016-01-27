@@ -1,3 +1,4 @@
+-- show slow queries
 \pset null '[NULL]'
 
 -- http://www.postgresql.org/docs/9.3/static/app-psql.html#APP-PSQL-PROMPTING
@@ -12,8 +13,93 @@
 -- Use best available output format
 \x auto
 \set VERBOSITY verbose
-\set HISTFILE ~/.psql_history- :DBNAME
+-- host/db specific history files
+\set HISTFILE ~/.psql_history- :HOST - :DBNAME
+-- get rid of duplicates in history
 \set HISTCONTROL ignoredups
 \set COMP_KEYWORD_CASE upper
 
+-- Useful aliases
+
+-- server information
+
+\set config 'SELECT name, CASE unit WHEN $$kB$$ THEN pg_size_pretty(setting::bigint * 1024) WHEN $$8kB$$ THEN pg_size_pretty(setting::bigint * 8192) ELSE setting || COALESCE(unit, $$$$) END AS setting, source FROM pg_settings WHERE source <> $$default$$;'
+
+\set _activity_columns 'pid, usename, datname, application_name, waiting, query_start, state'
+
+-- :actall -- show all connections
+\set actall 'SELECT :_activity_columns, client_addr FROM pg_stat_activity ORDER BY datname, usename, application_name';
+
+-- :act -- show non-idle connections
+\set act 'SELECT :_activity_columns FROM pg_stat_activity WHERE state <> \'idle\'';
+
+-- :actq -- show non-idle connections with query text
+\set actq 'SELECT :_activity_columns, query FROM pg_stat_activity WHERE state <> \'idle\' ORDER BY query_start';
+
+-- :slow -- show slow connections (active for over 30 seconds)
+\set slow 'SELECT :_activity_columns FROM pg_stat_activity WHERE current_timestamp - query_start > interval \'30 seconds\' AND state = \'active\'';
+
+-- :blk -- show blocked connections
+\set blk 'SELECT :_activity_columns FROM pg_stat_activity WHERE waiting;'
+
+-- :lck -- show pg_locks
+\set lck 'TABLE pg_locks;'
+
+-- :locks -- show detailed view of locks
+\set locks 'SELECT CASE granted WHEN true THEN ''t'' ELSE ''*F*'' END || CASE WHEN fastpath THEN '' fp'' ELSE '''' END AS grnt, mode, locktype, CASE locktype WHEN ''relation'' THEN relation::regclass::text WHEN ''page'' THEN page::text WHEN ''tuple'' THEN relation::regclass || '' ('' || page::text || '','' || tuple::text || '')'' WHEN ''virtualxid'' THEN CASE WHEN virtualxid = virtualtransaction THEN ''(own)'' ELSE virtualxid::text END WHEN ''transactionid'' THEN transactionid::text || CASE WHEN mode = ''ExclusiveLock'' THEN '' (own)'' ELSE '''' END WHEN ''object'' THEN classid::regclass || '': '' || objid::text || '', '' || objsubid::text ELSE ''??'' || locktype END AS on, virtualtransaction as vxact, l.pid::text || CASE WHEN l.pid = pg_backend_pid() THEN ''*'' ELSE '''' END AS pid, sa.application_name, sa.usename, sa.state, sa.query_start FROM pg_locks l LEFT JOIN pg_stat_activity sa ON l.pid = sa.pid LEFT JOIN pg_database d ON l.database = d.oid WHERE d.datname = current_database() OR l.database = 0 OR l.database IS NULL ORDER BY l.pid, relation, locktype;'
+
+-- :conn -- list connection count grouped by database and username
+\set conn 'SELECT datname, usename, count(*), array_agg(DISTINCT client_addr) client_addrs, array_agg(application_name) application_names FROM pg_stat_activity GROUP BY datname, usename ORDER BY 1, 2';
+
+-- :uptime -- show postmaster uptime
+\set uptime 'SELECT now() - pg_postmaster_start_time();'
+
+-- :q PID; -- show query text for connection with pid = PID
+\set q 'SELECT query FROM pg_stat_activity WHERE pid ='
+
+-- :expall QUERY; -- run EXPLAIN ANALYZE with all options for QUERY
+\set expall 'EXPLAIN (analyze, buffers, costs, timing, verbose) '
+
+-- show slow queries
 \set show_slow_queries 'SELECT (total_time / 1000 / 60) as total_minutes, (total_time/calls) as average_time, query FROM pg_stat_statements ORDER BY 1 DESC LIMIT 100;'
+
+-- kill transactions that have been "idle in transaction" for more than 10 minutes (9.3)
+\set kill_old_transactions 'select count(pg_terminate_backend(pid)) as nb_killed_proc from pg_stat_activity where query = \'<IDLE> in transaction\' and current_timestamp - query_start > \'5 min\'';
+
+-- table size
+\set table_size 'select nspname || \'.\' || relname AS \"relation\", pg_size_pretty(pg_relation_size(C.oid)) AS "size" from pg_class C left join pg_namespace N on (N.oid = C.relnamespace) where nspname not in (\'pg_catalog\', \'information_schema\') order by pg_relation_size(C.oid) desc limit 20;'
+
+-- database size
+\set database_size 'SELECT d.datname AS Name, pg_catalog.pg_get_userbyid(d.datdba) AS Owner, CASE WHEN pg_catalog.has_database_privilege(d.datname, \'CONNECT\') THEN pg_catalog.pg_size_pretty(pg_catalog.pg_database_size(d.datname)) ELSE \'No Access\' END AS Size FROM pg_catalog.pg_database d ORDER BY CASE WHEN pg_catalog.has_database_privilege(d.datname, \'CONNECT\') THEN pg_catalog.pg_database_size(d.datname) ELSE NULL END DESC LIMIT 20;'
+
+-- buffer cache hit ratio
+\set buffer_cache_hit_ratio 'select datname, blks_hit::float/(blks_hit+blks_read) as hit_ratio from pg_stat_database where blks_read+blks_hit <> 0;'
+
+--------------------------------------------------------------------------------
+-- transaction control
+
+\set b 'BEGIN;'
+
+\set r 'ROLLBACK;'
+
+\set beginser 'BEGIN TRANSACTION ISOLATION LEVEL SERIALIZABLE;'
+
+\set beginrr 'BEGIN TRANSACTION ISOLATION LEVEL REPEATABLE READ;'
+
+\set beginrc 'BEGIN TRANSACTION ISOLATION LEVEL READ COMMITTED;'
+
+--------------------------------------------------------------------------------
+-- query utilities
+
+\set loosescan 'WITH RECURSIVE t AS (SELECT min(:col) AS col FROM :tablename UNION ALL SELECT (SELECT min(:col) FROM :tablename WHERE :col > t.col) FROM t WHERE t.col IS NOT NULL) SELECT col FROM t WHERE col IS NOT NULL UNION ALL SELECT NULL WHERE EXISTS(SELECT * FROM :tablename WHERE :col IS NULL);'
+
+-- get estimated row count for a table
+-- usage:
+-- > \set table 'public.mytable' \\ :count
+\set count 'SELECT reltuples::int FROM pg_class WHERE oid = :''table''::regclass';
+
+-- get a comma-delimited list of column names, quoted as necessary, for the table named in :table
+-- usage:
+-- > \set table pg_catalog.pg_class \set colprefix r \\ :columns
+\set colprefix ''
+\set columns 'SELECT array_to_string(array(SELECT CASE WHEN :''colprefix'' <> '''' THEN :''colprefix'' || ''.'' ELSE '''' END || quote_ident(attname) FROM pg_attribute WHERE attrelid = :''table''::regclass AND attnum > 0 AND NOT attisdropped ORDER BY attnum), '', '')';
