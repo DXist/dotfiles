@@ -14,3 +14,7 @@ fi
 alias b2d='eval "$(boot2docker shellinit)"'
 # list listening ports
 alias lsofports='lsof -iTCP -sTCP:LISTEN -n -P'
+
+function dict() {
+    open dict://"$1"
+}
