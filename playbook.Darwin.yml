@@ -90,6 +90,7 @@
         - vagrant
         - anaconda
         - transmission
+        - gimp
       tags:
         - install_casks
 
