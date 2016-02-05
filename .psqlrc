@@ -37,7 +37,8 @@
 \set actq 'SELECT :_activity_columns, query FROM pg_stat_activity WHERE state <> \'idle\' ORDER BY query_start';
 
 -- :slow -- show slow connections (active for over 30 seconds)
-\set slow 'SELECT :_activity_columns FROM pg_stat_activity WHERE current_timestamp - query_start > interval \'30 seconds\' AND state = \'active\'';
+\set slow_interval '30 seconds'
+\set slow 'SELECT :_activity_columns FROM pg_stat_activity WHERE current_timestamp - query_start > interval :''slow_interval'' AND state = \'active\'';
 
 -- :blk -- show blocked connections
 \set blk 'SELECT :_activity_columns FROM pg_stat_activity WHERE waiting;'
