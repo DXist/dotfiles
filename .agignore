@@ -21,7 +21,6 @@ usr
 .env
 reports
 .tags
-tags
 pylint_report
 .coverage
 .git
