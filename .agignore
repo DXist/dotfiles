@@ -13,7 +13,6 @@
 .cs_files
 Session.vim
 .DS_Store
-migrations
 build
 _build
 deb_dist
