@@ -22,6 +22,7 @@
     - .pdbrc.py
     - .psqlrc
     - .pylama.ini
+    - .pylintrc
     - .pythonrc
     - .screenrc
     - .termcap
