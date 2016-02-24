@@ -17,6 +17,7 @@
     - .gnupg
     - .hgrc
     - .ideavimrc
+    - .isort.cfg
     - .jshintrc
     - .pdbrc
     - .pdbrc.py
