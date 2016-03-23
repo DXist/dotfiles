@@ -23,6 +23,7 @@
       - fswatch
       - npm
       - hub
+      - sf-pwgen
     homebrew_taps:
         - caskroom/cask
         - caskroom/versions

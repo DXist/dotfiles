@@ -19,3 +19,7 @@ alias lsofports='lsof -iTCP -sTCP:LISTEN -n -P'
 function dict() {
     open dict://"$1"
 }
+
+function pwgen() {
+    sf-pwgen -l 31 -c 10
+}
