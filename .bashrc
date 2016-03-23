@@ -55,6 +55,11 @@ export PAGER="less -FX"
 export LESSOPEN="|pygmentize -g -O encoding=utf-8 %s"
 # ignore commands that start from space
 export HISTCONTROL=ignorespace
+# Turn on parallel history
+shopt -s histappend
+history -a
+# Make bash check its window size after a process completes
+shopt -s checkwinsize
 
 # Git config
 export PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '
