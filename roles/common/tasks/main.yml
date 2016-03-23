@@ -19,6 +19,7 @@
     - .ideavimrc
     - .isort.cfg
     - .jshintrc
+    - .less
     - .pdbrc
     - .pdbrc.py
     - .psqlrc
