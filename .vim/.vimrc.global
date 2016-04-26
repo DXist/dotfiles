@@ -610,6 +610,8 @@ let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 let g:ultisnips_python_style='sphinx'
 
 "}}}
+"isort
+let g:vim_isort_map = '<C-s>'
 "}}}
 " Local settings
 " ================

@@ -76,6 +76,12 @@ function g() {
 }
 complete -o bashdefault -o default -o nospace -F __git_wrap__git_main g
 
+function d() {
+	docker "$@"
+}
+complete -F _docker d
+
+
 function go() {
 	TMPDIR=~/tmp `which go` "$@"
 	status="$?"
