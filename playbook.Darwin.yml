@@ -24,6 +24,7 @@
       - npm
       - hub
       - sf-pwgen
+      - parallel
     homebrew_taps:
         - caskroom/cask
         - caskroom/versions
@@ -111,15 +112,15 @@
       tags:
         - install_python_packages
 
-    - name: install jupiter plugins
-      shell: "jupyter nbextension install https://rawgithub.com/lambdalisue/jupyter-vim-binding/master/vim_binding.js --nbextensions=$(jupyter --data-dir)/nbextensions/vim_binding"
-      tags:
-        - configure_jupiter
+    # - name: install jupiter plugins
+    #   shell: "jupyter nbextension install https://rawgithub.com/lambdalisue/jupyter-vim-binding/master/vim_binding.js --nbextensions=$(jupyter --data-dir)/nbextensions/vim_binding"
+    #   tags:
+    #     - configure_jupiter
 
-    - name: enable jupiter plugins
-      command: "jupyter nbextension enable vim_binding/vim_binding"
-      tags:
-        - configure_jupiter
+    # - name: enable jupiter plugins
+    #   command: "jupyter nbextension enable vim_binding/vim_binding"
+    #   tags:
+    #     - configure_jupiter
 
     - name: Ensure application directories exist
       file: path="{{ item }}" state=directory
