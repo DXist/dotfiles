@@ -54,7 +54,7 @@
 
     - name: Remove empty directory
       command: rmdir {{ PREFERENCES }}
-      sudo: yes
+      become: yes
       when: is_symlink_check.rc
 
       tags:
@@ -109,6 +109,7 @@
         - virtualenvwrapper
         - ansible
         - glances
+        - objgraph
       tags:
         - install_python_packages
 

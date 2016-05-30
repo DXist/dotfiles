@@ -3,7 +3,7 @@
   gather_facts: no
   pre_tasks:
   - name: Install system deps
-    sudo: yes
+    become: yes
     apt: name={{ item }} state=present force=yes
     when: SKIP_SUDO is not defined
     with_items:

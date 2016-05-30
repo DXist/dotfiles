@@ -97,6 +97,7 @@ if has('vim_starting')
 	NeoBundle 'ekalinin/Dockerfile.vim'
 	NeoBundleLazy 'fisadev/vim-isort', {
 		\ 'autoload': {'filetypes': ['python']}}
+	NeoBundle 'Glench/Vim-Jinja2-Syntax'
 
 	call neobundle#end()
 

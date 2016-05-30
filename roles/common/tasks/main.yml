@@ -76,7 +76,7 @@
 - name: get root HOME
   shell: echo $HOME
   when: SKIP_SUDO is not defined
-  sudo: yes
+  become: yes
   register: root_home
   tags:
     - links
@@ -84,7 +84,7 @@
 - name: Install dotfiles symlinks to root
   file: src={{ playbook_dir }}/{{ item }} dest={{ root_home.stdout }}/{{ item }} state=link force=true
   when: SKIP_SUDO is not defined
-  sudo: yes
+  become: yes
   with_items:
     - .termcap
     - .terminfo
@@ -120,9 +120,9 @@
   pip: name={{ item }}
   with_items:
     - neovim
-    - tmuxp
+    - 'tmuxp>=1.0.0'
   when: SKIP_SUDO is not defined
-  sudo: yes
+  become: yes
   tags:
     - pippackages
 
