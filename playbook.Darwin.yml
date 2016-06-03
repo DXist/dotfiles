@@ -23,6 +23,7 @@
       - fswatch
       - npm
       - hub
+      - gist
       - sf-pwgen
       - parallel
     homebrew_taps:
