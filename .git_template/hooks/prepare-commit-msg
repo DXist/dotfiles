@@ -1,12 +1,20 @@
 #!/usr/bin/env bash
-
-
-BRANCH_NAME=`git rev-parse --abbrev-ref HEAD`
-ISSUE=`expr "$BRANCH_NAME" : '.*/\([[:upper:]]\+-[[:digit:]]\+\)'`
 msg=$(cat $1)
-has_issue=`expr "$msg" : "\($ISSUE\).*"`
+prefix=""
+suffix=""
 
+case $2 in
+	message|template|'')
+		BRANCH_NAME=`git rev-parse --abbrev-ref HEAD`
+		ISSUE=`expr "$BRANCH_NAME" : '.*/\([[:upper:]]\+-[[:digit:]]\+\)'`
 
-if [ -n "$ISSUE" -a -z "$has_issue" ]; then
-    echo -n "$ISSUE $msg" > $1
-fi
+		hash glass 2>&1
+
+		if [ "$ISSUE" -a $? = 0 ]; then
+			prefix="$ISSUE "
+			suffix="$(glass -s status --template '{{printf "#time %0.0fm" .Minutes }}') "
+		fi
+		;;
+esac
+
+printf "${prefix}${suffix}${msg}" > "$1"

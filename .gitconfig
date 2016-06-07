@@ -38,6 +38,7 @@
 	ctags = !test -x .git/hooks/ctags && .git/hooks/ctags
 	switchorigin = !git remote add upstream $(git config --get remote.origin.url) && git fetch upstream && git checkout master && git branch --set-upstream-to upstream/master && git remote -v rm origin && git remote -v add origin
 	subupdate = submodule update --init --recursive
+	linesworked = !f() { git log --numstat --pretty='%H' --author='Rinat Shigapov' $@ | awk 'NF==3 {plus+=$1; minus+=$2} END {printf(\"+%d, -%d\n\", plus, minus)}' }; f
 
 [svn]
 	pushmergeinfo = 1

@@ -167,4 +167,9 @@ function define() {
 	gmtrn-cli "$@" |less
 }
 
+
+function linesworked() {
+	git log --numstat --pretty='%H' --author='Rinat Shigapov' $@ | awk 'NF==3 {plus+=$1; minus+=$2} END {printf("+%d, -%d\n", plus, minus)}'
+}
+
 # vim: ft=sh
