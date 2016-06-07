@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 msg=$(cat $1)
 prefix=""
-suffix=""
+timeglass=""
 
 case $2 in
 	message|template|'')
@@ -12,9 +12,9 @@ case $2 in
 
 		if [ "$ISSUE" -a $? = 0 ]; then
 			prefix="$ISSUE "
-			suffix="$(glass -s status --template '{{printf "#time %0.0fm" .Minutes }}') "
+			timeglass="$(glass -s status --template '{{printf "#time %0.0fm" .Minutes }}') "
 		fi
 		;;
 esac
 
-printf "${prefix}${suffix}${msg}" > "$1"
+printf "${prefix}${timeglass}${msg}" > "$1"
