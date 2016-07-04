@@ -114,7 +114,7 @@
     - links
 
 - name: Install neobundle
-  git: repo=git@github.com:Shougo/neobundle.vim.git dest={{ playbook_dir }}/.vim/bundle/neobundle.vim
+  git: repo=git@github.com:Shougo/neobundle.vim.git dest={{ playbook_dir }}/.vim/bundle/neobundle.vim accept_hostkey=true
 
 - name: Install global python packages
   pip: name={{ item }}
