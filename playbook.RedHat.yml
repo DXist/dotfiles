@@ -11,6 +11,7 @@
       - git
       - ctags
       - cmake
+      - gcc-c++
       - python-devel
       - libyaml-devel
       - python-pygments
@@ -25,6 +26,13 @@
     tags:
       - system_reqs
       - redhatconfigs
+
+  - name: Install RedHat specific links
+    file: src={{ playbook_dir }}/roles/RedHat/files/{{ item.src }} dest="{{ item.path }}" state=link force=true
+    with_items:
+      - { src: .bashrc.RedHat, path: ~/.bashrc.platform }
+    tags:
+      - debianconfigs
 
   roles:
     - common
