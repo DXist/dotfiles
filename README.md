@@ -2,6 +2,7 @@ My personal dotfiles configured by Ansible.
 
 I use them on following platforms:
 
+* Fedora
 * openSUSE
 * Debian
 * MacOS X
