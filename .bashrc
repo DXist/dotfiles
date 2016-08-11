@@ -2,9 +2,10 @@
 
 
 # Source global definitions
-if [ -r /etc/bashrc ]; then
-	. /etc/bashrc
-fi
+# import /etc/bashrc in ~/.bashrc.local if you need it
+# if [ -r /etc/bashrc ]; then
+# 	. /etc/bashrc
+# fi
 
 # functions
 . ~/.bash_functions
