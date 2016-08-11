@@ -87,13 +87,13 @@
         - intellij-idea-ce
         # - yandexdisk
         - adium
-        - doitim
         - virtualbox
         - virtualbox-extension-pack
         - vagrant
         - anaconda
         - transmission
         - gimp
+        - toggldesktop
       tags:
         - install_casks
 
