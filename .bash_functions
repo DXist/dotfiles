@@ -104,6 +104,20 @@ function gowork() {
 	export PS1="(`basename $PWD`)"$PS1
 }
 
+function cg() {
+    cd $GOPATH/src/github.com/$1;
+}
+
+_cg()
+{
+    local cur=${COMP_WORDS[COMP_CWORD]}
+    PROJECTS_DIR="$GOPATH/src/github.com/"
+    cd ${PROJECTS_DIR}
+    PROJECTS=$(ls ${LOOK_FOR})
+    COMPREPLY=( $(compgen -W "${PROJECTS}" -- $cur) )
+}
+complete -F _cg cg
+
 
 function agreplace() {
 	ag -l "$1" | xargs perl -pi -e "s/$1/$2/g"
