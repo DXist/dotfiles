@@ -105,16 +105,16 @@ function gowork() {
 }
 
 function cg() {
-    cd $GOPATH/src/github.com/$1;
+    cd $GOPATH/src/github.com/DXist/$1;
 }
 
 _cg()
 {
     local cur=${COMP_WORDS[COMP_CWORD]}
-    PROJECTS_DIR="$GOPATH/src/github.com/"
+    PROJECTS_DIR="$GOPATH/src/github.com/DXist"
     cd ${PROJECTS_DIR}
-    PROJECTS=$(ls ${LOOK_FOR})
-    COMPREPLY=( $(compgen -W "${PROJECTS}" -- $cur) )
+    # PROJECTS=$(ls ${LOOK_FOR})
+    COMPREPLY=( $(compgen -d -- "$cur") )
 }
 complete -F _cg cg
 
