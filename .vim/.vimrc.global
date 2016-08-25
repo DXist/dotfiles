@@ -543,10 +543,10 @@ nmap <Leader>j <ESC>:tjump /
 nmap <Leader>jj <ESC>:vertical stjump /
 
 " fugitive, git commands
-map <Leader>gs <ESC>:Gstatus<CR>
-map <Leader>gd <ESC>:Gdiff<CR>
-map <Leader>gc <ESC>:Gcommit<CR>
-map <Leader>gca <ESC>:Gcommit -a<CR>
+" map <Leader>gs <ESC>:Gstatus<CR>
+" map <Leader>gd <ESC>:Gdiff<CR>
+" map <Leader>gc <ESC>:Gcommit<CR>
+" map <Leader>gca <ESC>:Gcommit -a<CR>
 " Git fugitive menu
 noremap <Leader>g :emenu Git.<C-Z>
 menu Git.Status :Gstatus<CR>
@@ -587,6 +587,50 @@ let g:EasyMotion_use_smartsign_us = 1
 
 " camel case motion
 call camelcasemotion#CreateMotionMappings('<leader>')
+
+" vim-go
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_types = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+let g:go_fmt_command = "goimports"
+
+au FileType go nmap <LocalLeader>r <Plug>(go-run)
+au FileType go nmap <LocalLeader>b <Plug>(go-build)
+au FileType go nmap <LocalLeader>t <Plug>(go-test)
+au FileType go nmap <LocalLeader>c <Plug>(go-coverage)
+
+" By default the mapping gd is enabled, which opens the target identifier in current buffer. You can also open the definition/declaration, in a new vertical, horizontal, or tab, for the word under your cursor:
+
+au FileType go nmap <LocalLeader>ds <Plug>(go-def-split)
+au FileType go nmap <LocalLeader>dv <Plug>(go-def-vertical)
+au FileType go nmap <LocalLeader>dt <Plug>(go-def-tab)
+
+" Open the relevant Godoc for the word under the cursor with <leader>gd or open it vertically with <leader>gv
+
+au FileType go nmap <LocalLeader>gd <Plug>(go-doc)
+au FileType go nmap <LocalLeader>gv <Plug>(go-doc-vertical)
+
+" Or open the Godoc in browser
+
+au FileType go nmap <LocalLeader>gb <Plug>(go-doc-browser)
+
+" Show a list of interfaces which is implemented by the type under your cursor with <leader>s
+
+au FileType go nmap <LocalLeader>s <Plug>(go-implements)
+
+" Show type info for the word under your cursor with <leader>i (useful if you have disabled auto showing type info via g:go_auto_type_info)
+
+au FileType go nmap <LocalLeader>i <Plug>(go-info)
+
+" Rename the identifier under the cursor to a new name
+
+au FileType go nmap <LocalLeader>e <Plug>(go-rename)
+
+let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
+let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 
 " OS X hacks
 " copy selection to copy buffer

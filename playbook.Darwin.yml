@@ -15,6 +15,7 @@
       - the_silver_searcher
       - reattach-to-user-namespace
       - go
+      - glide
       - unrar
       - docker
       - boot2docker
@@ -74,7 +75,7 @@
         - stop_pref_daemon
 
     - name: install casks
-      homebrew_cask: name={{ item }} state=present
+      homebrew_cask: name='{{ item }}' state=present
       with_items:
         - google-chrome
         - seil
