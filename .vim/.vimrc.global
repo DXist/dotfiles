@@ -597,37 +597,39 @@ let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 let g:go_fmt_command = "goimports"
 
-au FileType go nmap <LocalLeader>r <Plug>(go-run)
-au FileType go nmap <LocalLeader>b <Plug>(go-build)
-au FileType go nmap <LocalLeader>t <Plug>(go-test)
-au FileType go nmap <LocalLeader>c <Plug>(go-coverage)
+augroup filetypedetect_go
+	au FileType go nmap <LocalLeader>r <Plug>(go-run)
+	au FileType go nmap <LocalLeader>b <Plug>(go-build)
+	au FileType go nmap <LocalLeader>t <Plug>(go-test)
+	au FileType go nmap <LocalLeader>c <Plug>(go-coverage)
 
-" By default the mapping gd is enabled, which opens the target identifier in current buffer. You can also open the definition/declaration, in a new vertical, horizontal, or tab, for the word under your cursor:
+	" By default the mapping gd is enabled, which opens the target identifier in current buffer. You can also open the definition/declaration, in a new vertical, horizontal, or tab, for the word under your cursor:
 
-au FileType go nmap <LocalLeader>ds <Plug>(go-def-split)
-au FileType go nmap <LocalLeader>dv <Plug>(go-def-vertical)
-au FileType go nmap <LocalLeader>dt <Plug>(go-def-tab)
+	au FileType go nmap <LocalLeader>ds <Plug>(go-def-split)
+	au FileType go nmap <LocalLeader>dv <Plug>(go-def-vertical)
+	au FileType go nmap <LocalLeader>dt <Plug>(go-def-tab)
 
-" Open the relevant Godoc for the word under the cursor with <leader>gd or open it vertically with <leader>gv
+	" Open the relevant Godoc for the word under the cursor with <leader>gd or open it vertically with <leader>gv
 
-au FileType go nmap <LocalLeader>gd <Plug>(go-doc)
-au FileType go nmap <LocalLeader>gv <Plug>(go-doc-vertical)
+	au FileType go nmap <LocalLeader>gd <Plug>(go-doc)
+	au FileType go nmap <LocalLeader>gv <Plug>(go-doc-vertical)
 
-" Or open the Godoc in browser
+	" Or open the Godoc in browser
 
-au FileType go nmap <LocalLeader>gb <Plug>(go-doc-browser)
+	au FileType go nmap <LocalLeader>gb <Plug>(go-doc-browser)
 
-" Show a list of interfaces which is implemented by the type under your cursor with <leader>s
+	" Show a list of interfaces which is implemented by the type under your cursor with <leader>s
 
-au FileType go nmap <LocalLeader>s <Plug>(go-implements)
+	au FileType go nmap <LocalLeader>s <Plug>(go-implements)
 
-" Show type info for the word under your cursor with <leader>i (useful if you have disabled auto showing type info via g:go_auto_type_info)
+	" Show type info for the word under your cursor with <leader>i (useful if you have disabled auto showing type info via g:go_auto_type_info)
 
-au FileType go nmap <LocalLeader>i <Plug>(go-info)
+	au FileType go nmap <LocalLeader>i <Plug>(go-info)
 
-" Rename the identifier under the cursor to a new name
+	" Rename the identifier under the cursor to a new name
 
-au FileType go nmap <LocalLeader>e <Plug>(go-rename)
+	au FileType go nmap <LocalLeader>e <Plug>(go-rename)
+augroup END
 
 let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
 let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
