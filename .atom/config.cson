@@ -1,0 +1,8 @@
+"*":
+  core:
+    projectHome: "/Users/rinatshigapov/workspace"
+  "easy-motion-redux": {}
+  "exception-reporting":
+    userId: "7a358ff6-95ed-95fa-8642-e28589883250"
+  welcome:
+    showOnStartup: false

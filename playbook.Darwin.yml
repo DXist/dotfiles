@@ -95,6 +95,7 @@
         - transmission
         - gimp
         - toggldesktop
+        - atom
       tags:
         - install_casks
 
@@ -146,6 +147,15 @@
       file: src={{ playbook_dir }}/fonts/Singularity.ttf dest=~/Library/Fonts/Singularity.ttf state=link force=true
       tags:
         - install_fonts
+
+    - name: Install atom packages
+      command: apm install {{ item }}
+      with_items:
+        - vim-mode
+        - ex-mode
+        - easy-motion-redux
+      tags:
+        - install_atom_packages
 
   roles:
     - geerlingguy.homebrew

@@ -5,6 +5,7 @@
   with_items:
     - .ackrc
     - .agignore
+    - .atom
     - .backup.exclude.list
     - .bash_functions
     - .bash_profile
