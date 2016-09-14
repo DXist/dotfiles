@@ -91,6 +91,7 @@
     - .terminfo
   tags:
     - links
+    - root-links
 
 - name: Create required directories
   file: path={{ item }} state=directory

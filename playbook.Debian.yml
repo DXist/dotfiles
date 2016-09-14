@@ -1,6 +1,8 @@
 ---
 - hosts: localhost
   gather_facts: no
+  vars:
+    DCONF: "{{ lookup('env', 'HOME')}}/.config/dconf"
   pre_tasks:
   - name: Install system deps
     become: yes
@@ -31,6 +33,48 @@
       - { src: .bashrc.Debian, path: ~/.bashrc.platform }
     tags:
       - debianconfigs
+
+  - name:
+    file: src={{ playbook_dir }}/roles/Debian/files/{{ item.src }} dest="{{ item.path }}" state=link force=true
+    with_items:
+      - { src: .bashrc.Debian, path: ~/.bashrc.platform }
+    when: ansible_env.DESKTOP_SESSION in ['ubuntu']
+    tags:
+      - debianconfigs
+
+  - name: Check dconf
+    command: test -L {{ DCONF }}
+    register: is_symlink_check
+    ignore_errors: yes
+    tags:
+      - move_dconf
+
+  - name: Remove empty dirs in dconf
+    command: find {{ DCONF }} -type d -empty -delete
+    when: is_symlink_check.rc
+    tags:
+      - move_dconf
+
+  - name: Move dconf
+    shell: shopt -s nullglob && mv {{ DCONF }}/* {{ DCONF }}/.??* {{ playbook_dir }}/roles/Debian/dconf/ executable=/bin/bash
+    when: is_symlink_check.rc
+    tags:
+      - move_dconf
+
+  - name: Remove empty directory
+    command: rmdir {{ DCONF }}
+    become: yes
+    when: is_symlink_check.rc
+
+    tags:
+      - move_dconf
+
+  - name: Symlink dconf
+    command:  ln -s {{ playbook_dir }}/roles/Debian/dconf {{ DCONF }}
+    when: is_symlink_check.rc
+
+    tags:
+      - move_dconf
 
   roles:
     - common
