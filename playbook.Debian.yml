@@ -24,6 +24,7 @@
       - python-pip
       - duplicity
       - gnupg-agent
+      - ncurses-term
     tags:
       - system_reqs
 
@@ -31,14 +32,6 @@
     file: src={{ playbook_dir }}/roles/Debian/files/{{ item.src }} dest="{{ item.path }}" state=link force=true
     with_items:
       - { src: .bashrc.Debian, path: ~/.bashrc.platform }
-    tags:
-      - debianconfigs
-
-  - name:
-    file: src={{ playbook_dir }}/roles/Debian/files/{{ item.src }} dest="{{ item.path }}" state=link force=true
-    with_items:
-      - { src: .bashrc.Debian, path: ~/.bashrc.platform }
-    when: ansible_env.DESKTOP_SESSION in ['ubuntu']
     tags:
       - debianconfigs
 
