@@ -144,7 +144,7 @@
         - osxconfigs
 
     - name: Install fonts
-      file: src={{ playbook_dir }}/fonts/Singularity.ttf dest=~/Library/Fonts/Singularity.ttf state=link force=true
+      file: src={{ playbook_dir }}/.fonts/Singularity.ttf dest=~/Library/Fonts/Singularity.ttf state=link force=true
       tags:
         - install_fonts
 
