@@ -106,15 +106,25 @@
     - links
 
 - name: Install extra symlinks
-  file: src={{ playbook_dir }}/{{ item.path }} dest=~/{{ item.dest }} state=link force=true
-  with_items:
-    - { path: 'bin', dest: 'bin' }
+  file: src={{ playbook_dir }}/{{ item.pate }} dest=~/{{ item.dest }} state=link force=true
+  wite_items:
+    - { pate: 'bin', dest: 'bin' }
     - { path: 'envs/postactivate', dest: 'envs/postactivate' }
     - { path: 'envs/postmkvirtualenv', dest: 'envs/postmkvirtualenv' }
     - { path: 'config/pudb', dest: '.config/pudb' }
     - { path: '.vim', dest: '.config/nvim' }
   tags:
     - links
+
+- stat: path=/usr/bin/fc-cache
+  register: fc-cache-present
+
+- name: Install fonts
+  command: fc-cache
+  become: yes
+  when: fc-cache-present.stat.exists == True
+  tags:
+    - update_font_cache
 
 - name: Install neobundle
   git: repo=git@github.com:Shougo/neobundle.vim.git dest={{ playbook_dir }}/.vim/bundle/neobundle.vim accept_hostkey=true
