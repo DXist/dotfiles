@@ -1,6 +1,5 @@
 ---
 - hosts: localhost
-  gather_facts: no
   vars:
     DCONF: "{{ lookup('env', 'HOME')}}/.config/dconf"
   pre_tasks:
@@ -27,6 +26,17 @@
       - ncurses-term
     tags:
       - system_reqs
+
+    name: Install deps for GUI
+    become: yes
+    apt: name={{ item }} state=present force=yes
+    when: "{{ SKIP_SUDO is not defined and ansible_env.DESKTOP_SESSION != '' }}"
+    with_items:
+      - vim-gtk3-py2
+      - virtualbox
+      - vagrant
+    tags:
+      - system_reqs_gui
 
   - name: Install Debian specific links
     file: src={{ playbook_dir }}/roles/Debian/files/{{ item.src }} dest="{{ item.path }}" state=link force=true

@@ -107,7 +107,7 @@
 
 - name: Install extra symlinks
   file: src={{ playbook_dir }}/{{ item.pate }} dest=~/{{ item.dest }} state=link force=true
-  wite_items:
+  with_items:
     - { pate: 'bin', dest: 'bin' }
     - { path: 'envs/postactivate', dest: 'envs/postactivate' }
     - { path: 'envs/postmkvirtualenv', dest: 'envs/postmkvirtualenv' }
