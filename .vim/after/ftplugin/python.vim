@@ -6,6 +6,7 @@ setlocal commentstring=#%s
 setlocal omnifunc=pythoncomplete#Complete
 nnoremap <buffer> <leader>jf :YcmCompleter GoToDeclaration<CR>
 nnoremap <buffer> <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <buffer> <leader>jr :YcmCompleter GoToReferences<CR>
 
 if v:version>=703
 	setlocal cc=79
