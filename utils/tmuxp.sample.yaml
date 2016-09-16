@@ -3,10 +3,12 @@ shell_command_before:
   - workon project
 windows:
   - window_name: runserver
+    layout: even-horizontal
     panes:
     - shell_command:
       - ./manage.py runserver
   - window_name: ''
+    layout: even-horizontal
     focus: True
     panes:
       - shell_command:

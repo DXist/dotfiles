@@ -106,9 +106,9 @@
     - links
 
 - name: Install extra symlinks
-  file: src={{ playbook_dir }}/{{ item.pate }} dest=~/{{ item.dest }} state=link force=true
+  file: src={{ playbook_dir }}/{{ item.path }} dest=~/{{ item.dest }} state=link force=true
   with_items:
-    - { pate: 'bin', dest: 'bin' }
+    - { path: 'bin', dest: 'bin' }
     - { path: 'envs/postactivate', dest: 'envs/postactivate' }
     - { path: 'envs/postmkvirtualenv', dest: 'envs/postmkvirtualenv' }
     - { path: 'config/pudb', dest: '.config/pudb' }
@@ -117,12 +117,14 @@
     - links
 
 - stat: path=/usr/bin/fc-cache
-  register: fc-cache-present
+  register: fc_cache_present
+  tags:
+    - update_font_cache
 
 - name: Install fonts
   command: fc-cache
   become: yes
-  when: fc-cache-present.stat.exists == True
+  when: fc_cache_present.stat.exists
   tags:
     - update_font_cache
 
