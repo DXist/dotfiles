@@ -6,7 +6,7 @@ timeglass=""
 case $2 in
 	message|template|'')
 		BRANCH_NAME=`git rev-parse --abbrev-ref HEAD`
-		ISSUE=`expr "$BRANCH_NAME" : '.*/\([[:upper:]]\+-[[:digit:]]\+\)'`
+		ISSUE=`expr "$BRANCH_NAME" : '.*/?\([[:upper:]]\+-[[:digit:]]\+\)'`
 
 
 		if [ "$ISSUE" ]; then
