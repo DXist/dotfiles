@@ -1,0 +1,8 @@
+session_name: dotfiles
+windows:
+  - window_name: dotfiles
+    layout: even-horizontal
+    panes:
+    - shell_command:
+      - cd $PROJECT_HOME/dotfiles
+      - vim
