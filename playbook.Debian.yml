@@ -3,12 +3,22 @@
   vars:
     DCONF: "{{ lookup('env', 'HOME')}}/.config/dconf"
   pre_tasks:
+    - name: Configure apt repositories
+      become: yes
+      apt_repository: repo={{ item }} validate_certs=no state=present
+      when: SKIP_SUDO is not defined
+      with_items:
+        - ppa:neovim-ppa/unstable
+      tags:
+        - system_reqs
+
     - name: Install system deps
       become: yes
       apt: name={{ item }} state=present force=yes
       when: SKIP_SUDO is not defined
       with_items:
         - vim-nox
+        - neovim
         # available only in new Debians
         #- vim-nox-py2
         - git

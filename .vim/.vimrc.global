@@ -421,7 +421,7 @@ map <Leader>i oimport pdb; pdb.set_trace()  # FIXME: brakepoint<ESC>
 
 vmap <silent> <Leader>y :<c-u>silent '<,'>w !yank<CR>
 
-if has('clipboard')
+if !has('nvim') && has('clipboard')
 	map <Leader>n :silent let @* = 'b ' . expand('%:p') . ':' . line('.') <bar> echo "Pdb breakpoint copied to selection buffer"<CR>
 else
 	map <Leader>n :echo 'b ' . expand('%:p') . ':' . line('.')<CR>
