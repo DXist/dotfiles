@@ -64,7 +64,7 @@ if has('vim_starting')
 	NeoBundle 'thinca/vim-template'
 	NeoBundle 'me-vlad/spellfiles.vim'
 	" broken in my configuration
-	" NeoBundle 'SirVer/ultisnips'
+	NeoBundle 'SirVer/ultisnips'
 	NeoBundle 'honza/vim-snippets'
 	NeoBundle 'benatkin/vim-move-between-tabs'
 

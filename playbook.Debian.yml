@@ -9,6 +9,8 @@
       when: SKIP_SUDO is not defined
       with_items:
         - vim-nox
+        # available only in new Debians
+        #- vim-nox-py2
         - git
         - exuberant-ctags
         - cmake
@@ -32,6 +34,7 @@
       apt: name={{ item }} state=present force=yes
       when: "{{ SKIP_SUDO is not defined and 'DESKTOP_SESSION' in ansible_env }}"
       with_items:
+        - vim-gtk3
         - vim-gtk3-py2
         - virtualbox
         - vagrant
