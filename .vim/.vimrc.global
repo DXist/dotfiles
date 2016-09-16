@@ -52,7 +52,8 @@ if has('vim_starting')
 	let test#strategy = "dispatch"
 	NeoBundle 'jmcantrell/vim-virtualenv'
 	NeoBundle 'altercation/vim-colors-solarized'
-	NeoBundle 'scrooloose/syntastic'
+	" NeoBundle 'scrooloose/syntastic'
+	NeoBundle 'neomake/neomake'
 	NeoBundle 'bkad/CamelCaseMotion'
 	NeoBundle 'Lokaltog/vim-easymotion'
 	NeoBundle 'Raimondi/delimitMate'
@@ -119,6 +120,7 @@ if has('vim_starting')
 	autocmd BufWritePost .vimrc.global source ~/.vim/.vimrc.global
 	" автообновление проектов
 	autocmd BufWritePost projects.vim source ~/.vim/projects.vim
+	autocmd! BufWritePost * Neomake
 endif
 
 set history=1000
@@ -564,6 +566,13 @@ let g:Gitv_DoNotMapCtrlKey = 0
 
 let g:virtualenv_auto_activate = 1
 let g:virtualenv_stl_format = '(%n)'
+
+" Neomake
+
+let g:neomake_error_sign = {'text': '✗', 'texthl': 'Special'}
+let g:neomake_warning_sign = {'text': '⚠', 'texthl': 'WarningMsg'}
+let g:neomake_message_sign = {'text': '➤', 'texthl': 'Todo'}
+let g:neomake_info_sign = {'text': 'ℹ', 'texthl': 'Todo'}
 
 " Syntastic
 
