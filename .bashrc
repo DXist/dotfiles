@@ -31,11 +31,6 @@ if [ -r ~/.bashrc.platform ]; then
 	. ~/.bashrc.platform
 fi
 
-# local settings
-if [ -r ~/.bashrc.local ]; then
-	. ~/.bashrc.local
-fi
-
 export LANG="en_US.UTF-8"
 export LC_CTYPE="en_US.UTF-8"
 export LC_NUMERIC="en_US.UTF-8"
@@ -95,7 +90,7 @@ venvwrapper=`which virtualenvwrapper.sh`
 
 if [ -r  "$venvwrapper" -o -n "$(type -t workon)" ]; then
 	export WORKON_HOME=~/envs
-	export PROJECT_HOME=~/workspace
+	export PROJECT_HOME=${PROJECT_HOME:-$HOME/workspace}
 	if [ -z "$VIRTUALENVWRAPPER_PYTHON" ]; then
 		export VIRTUALENVWRAPPER_PYTHON=`which python`
 	fi
@@ -164,3 +159,9 @@ if [[ -z "$TMUX" && $TERM != screen*  ]]; then
 		tmux attach
 	fi
 fi
+
+# local settings
+if [ -r ~/.bashrc.local ]; then
+	. ~/.bashrc.local
+fi
+
