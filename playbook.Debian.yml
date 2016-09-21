@@ -60,8 +60,6 @@
         - system_reqs_gui
         - system_reqs_debs
 
-
-
   tasks:
     - name: Install Debian specific links
       file: src={{ playbook_dir }}/roles/Debian/files/{{ item.src }} dest="{{ item.path }}" state=link force=true

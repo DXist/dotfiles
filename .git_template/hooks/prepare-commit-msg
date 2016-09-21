@@ -6,8 +6,7 @@ timeglass=""
 case $2 in
 	message|template|'')
 		BRANCH_NAME=`git rev-parse --abbrev-ref HEAD`
-		ISSUE=`expr "$BRANCH_NAME" : '.*/?\([[:upper:]]\+-[[:digit:]]\+\)'`
-
+		ISSUE=$(echo $BRANCH_NAME | grep -Eo '([[:upper:]]+-[0-9]{4,})')
 
 		if [ "$ISSUE" ]; then
 			prefix="$ISSUE "
@@ -18,4 +17,4 @@ case $2 in
 		;;
 esac
 
-printf "${prefix}${timeglass}${msg}" > "$1"
+echo -ne "${prefix}${timeglass}${msg}" > "$1"
