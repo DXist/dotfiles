@@ -70,7 +70,7 @@ if has('vim_starting')
 	NeoBundle 'SirVer/ultisnips'
 	NeoBundle 'honza/vim-snippets'
 	NeoBundle 'benatkin/vim-move-between-tabs'
-	NeoBundle 'editorconfig/editorconfig-vim'
+	NeoBundle 'ConradIrwin/vim-bracketed-paste'
 
 	" optional plugins
 	" Vim plugin that displays tags in a window, ordered by class etc.
