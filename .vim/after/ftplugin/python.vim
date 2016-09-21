@@ -14,15 +14,15 @@ endif
 
 let b:delimitMate_smart_quotes = 0
 
-python << EOF
-import os
-import sys
-import vim
+" python << EOF
+" import os
+" import sys
+" import vim
 
-if not sys.path.count('.'): sys.path.insert(0, '.')
-for p in sys.path:
-    # Add each directory in sys.path, if it exists.
-    if os.path.isdir(p):
-        # Command 'set' needs backslash before each space.
-        vim.command(r"set path+=%s" % (p.replace(" ", r"\ ")))
-EOF
+" if not sys.path.count('.'): sys.path.insert(0, '.')
+" for p in sys.path:
+"     # Add each directory in sys.path, if it exists.
+"     if os.path.isdir(p):
+"         # Command 'set' needs backslash before each space.
+"         vim.command(r"set path+=%s" % (p.replace(" ", r"\ ")))
+" EOF

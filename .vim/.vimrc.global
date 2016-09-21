@@ -5,6 +5,8 @@ if 0 | endif
 if has('vim_starting')
 	set nocompatible               " Be iMproved
 
+	" for local host overrides
+	set runtimepath+=~/.vim/.overrides/
 	" Required:
 	set runtimepath+=~/.vim/bundle/neobundle.vim/
 
@@ -68,6 +70,7 @@ if has('vim_starting')
 	NeoBundle 'SirVer/ultisnips'
 	NeoBundle 'honza/vim-snippets'
 	NeoBundle 'benatkin/vim-move-between-tabs'
+	NeoBundle 'editorconfig/editorconfig-vim'
 
 	" optional plugins
 	" Vim plugin that displays tags in a window, ordered by class etc.
@@ -116,11 +119,6 @@ if has('vim_starting')
 	" allow perdirectory rc-files
 	set exrc
 	set secure
-	" автообновление настроек
-	autocmd BufWritePost .vimrc.global source ~/.vim/.vimrc.global
-	" автообновление проектов
-	autocmd BufWritePost projects.vim source ~/.vim/projects.vim
-	autocmd! BufWritePost * Neomake
 endif
 
 set history=1000
@@ -224,6 +222,11 @@ endfunction
 augroup group_general
 	autocmd!
 	autocmd BufWritePre * call RemoveTrailingWhitespace()
+	" автообновление настроек
+	autocmd BufWritePost .vimrc.global source ~/.vim/.vimrc.global
+	" автообновление проектов
+	autocmd BufWritePost projects.vim source ~/.vim/projects.vim
+	autocmd! BufWritePost * Neomake
 augroup END
 
 " Useful for copy
@@ -334,6 +337,8 @@ augroup group_c
 	autocmd FileType c,cpp nnoremap <buffer> <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 	autocmd FileType c,cpp nnoremap <buffer> <leader>jf :YcmCompleter GoToDeclaration<CR>
 augroup END
+
+augroup group_python
 
 
 "YouCompleteMe conflicts with delimitMate]
