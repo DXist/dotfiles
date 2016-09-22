@@ -1,12 +1,14 @@
 session_name: dotfiles
+options:
+  default-path: $PROJECT_HOME/dotfiles
+
 windows:
   - window_name: dotfiles
     layout: even-horizontal
     panes:
-    - shell_command:
-      - cd $PROJECT_HOME/dotfiles
-      - vim
+      - shell_command:
+        - vim
   - window_name: ''
     layout: even-horizontal
-    - shell_command:
-      - cd $PROJECT_HOME/dotfiles
+    panes:
+      - shell_command:

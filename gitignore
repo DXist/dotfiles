@@ -12,5 +12,8 @@ Session.vim
 svn-commit.tmp
 Guardfile
 .vimrc
+pylama.ini
+.tmuxp.yml
+.python-version
 .runtests
 saved-breakpoints-*

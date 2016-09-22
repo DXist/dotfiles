@@ -118,6 +118,19 @@ _cg()
 }
 complete -F _cg cg
 
+install_dev_tools() {
+	dev_tools="
+	pylama
+	pylama-pylint
+	isort
+	neovim
+	"
+	pip install $dev_tools
+	pip install pdbpp
+	pip3 install $dev_tools
+	easy_install-3.5 pdbpp
+}
+
 
 function agreplace() {
 	ag -l "$1" | xargs perl -pi -e "s/$1/$2/g"

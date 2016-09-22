@@ -26,6 +26,10 @@
         - cmake
         - python-dev
         - libyaml-dev
+        # for pyenv python
+        - libsqlite3-dev
+        - libbz2-dev
+        - libreadline-dev
         - python-pygments
         - golang
         - silversearcher-ag

@@ -99,6 +99,12 @@ if [ -r  "$venvwrapper" -o -n "$(type -t workon)" ]; then
 	fi
 fi
 
+export PYENV_ROOT="$HOME/.pyenv"
+
+if [[ "${PATH}" != *$HOME/$PYENV_ROOT/bin* ]]; then
+	export PATH=$PYENV_ROOT/bin:$PATH
+fi
+
 # disable flow control
 stty -ixon
 alias reset='reset && stty -ixon'
@@ -159,6 +165,9 @@ if [[ -z "$TMUX" && $TERM != screen*  ]]; then
 		tmux attach
 	fi
 fi
+
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
 
 # local settings
 if [ -r ~/.bashrc.local ]; then

@@ -130,6 +130,18 @@
 
 - name: Install neobundle
   git: repo=git@github.com:Shougo/neobundle.vim.git dest={{ playbook_dir }}/.vim/bundle/neobundle.vim accept_hostkey=true
+  tags:
+    - neobundle
+
+- name: Install pyenv
+  git: repo='https://github.com/yyuu/pyenv.git' dest='{{ lookup('ENV', 'HOME') }}/.pyenv'
+  tags:
+    - pyenv
+
+- name: Install pyenv-virtualenv
+  git: repo='https://github.com/yyuu/pyenv-virtualenv.git' dest='{{ lookup('ENV', 'HOME') }}/.pyenv/plugins/pyenv-virtualenv'
+  tags:
+    - pyenv-virtualenv
 
 - name: Install global python packages
   pip: name={{ item }}
