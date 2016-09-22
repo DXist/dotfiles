@@ -6,3 +6,7 @@ windows:
     - shell_command:
       - cd $PROJECT_HOME/dotfiles
       - vim
+  - window_name: ''
+    layout: even-horizontal
+    - shell_command:
+      - cd $PROJECT_HOME/dotfiles

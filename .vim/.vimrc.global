@@ -28,13 +28,13 @@ if has('vim_starting')
 	\     'unix' : 'gmake',
 	\    },
 	\ }
-	NeoBundle 'Shougo/unite.vim'
-	NeoBundleLazy 'Shougo/unite-outline', {'autoload':{'unite_sources':'outline'}}
-	NeoBundleLazy 'tsukkee/unite-tag', {'autoload':{'unite_sources':'tag'}}
-	NeoBundleLazy 'junkblocker/unite-codesearch', {'autoload':{'unite_sources':'codesearch'}}
-	NeoBundleLazy 'osyo-manga/unite-quickfix', {'autoload':{'unite_sources': ['quickfix', 'location_list']}}
-	NeoBundleLazy 'thinca/vim-unite-history', { 'autoload' : { 'unite_sources' : ['history/command', 'history/search']}}
-	NeoBundleLazy 'tsukkee/unite-help', {'autoload':{'unite_sources':'help'}}
+	" NeoBundle 'Shougo/unite.vim'
+	" NeoBundleLazy 'Shougo/unite-outline', {'autoload':{'unite_sources':'outline'}}
+	" NeoBundleLazy 'tsukkee/unite-tag', {'autoload':{'unite_sources':'tag'}}
+	" NeoBundleLazy 'junkblocker/unite-codesearch', {'autoload':{'unite_sources':'codesearch'}}
+	" NeoBundleLazy 'osyo-manga/unite-quickfix', {'autoload':{'unite_sources': ['quickfix', 'location_list']}}
+	" NeoBundleLazy 'thinca/vim-unite-history', { 'autoload' : { 'unite_sources' : ['history/command', 'history/search']}}
+	" NeoBundleLazy 'tsukkee/unite-help', {'autoload':{'unite_sources':'help'}}
 	NeoBundle 'mhinz/vim-hugefile'
 	NeoBundle 'tpope/vim-fugitive'
 	" syntax files for git
@@ -50,8 +50,11 @@ if has('vim_starting')
 	NeoBundle 'tpope/vim-ragtag'
 	NeoBundle 'tpope/vim-vinegar'
 	NeoBundle 'janko-m/vim-test'
-	" make test commands execute using dispatch.vim
-	let test#strategy = "dispatch"
+	NeoBundle 'christoomey/vim-tmux-runner'
+	let g:VtrStripLeadingWhitespace = 0
+	let g:VtrClearEmptyLines = 0
+	let g:VtrAppendNewline = 1
+
 	NeoBundle 'jmcantrell/vim-virtualenv'
 	NeoBundle 'altercation/vim-colors-solarized'
 	" NeoBundle 'scrooloose/syntastic'
@@ -143,6 +146,11 @@ set showcmd
 set mouse=a
 if !has('nvim')
 	set ttymouse=xterm2
+" make test commands execute using dispatch.vim
+endif
+
+if has('nvim')
+	let test#strategy = 'neovim'
 endif
 " change window header to titlestring
 set title
@@ -415,10 +423,16 @@ let g:session_directory = resolve(expand("~/.vim/sessions"))
 let g:session_lock_directory = "/tmp"
 nmap <space> :<c-u>OpenSession<CR>
 
+" vim-test
 " map <Leader>mr <ESC>:python run_test()<CR>
-map <Leader>m <ESC>:TestNearest<CR>
-" run all test suite
-map <LocalLeader>m <ESC>:TestSuite<CR>
+nmap <silent> <leader>tn :TestNearest<CR>
+nmap <silent> <leader>tf :TestFile<CR>
+nmap <silent> <leader>ts :TestSuite<CR>
+nmap <silent> <leader>tl :TestLast<CR>
+nmap <silent> <leader>tv :TestVisit<CR>
+
+" nmap <silent> <leader>m <ESC>Make test<CR>
+
 
 " run interactive debug run"
 map <Leader><Leader>m <ESC>:execute ':Start ' . expand(b:dispatch)<CR>
@@ -436,74 +450,74 @@ endif
 map <Leader>p oimport pprint; pprint.pprint(
 
 
-" Unite
-" The prefix key.
+" " Unite
+" " The prefix key.
 
-let g:unite_source_history_yank_enable = 1
-let g:unite_source_menu_menus = {}
-let g:unite_enable_short_source_mes = 0
-let g:unite_source_codesearch_command = 'csearch -indexpath .csearchindex'
-let g:unite_source_codesearch_ignore_case = 1
+" let g:unite_source_history_yank_enable = 1
+" let g:unite_source_menu_menus = {}
+" let g:unite_enable_short_source_mes = 0
+" let g:unite_source_codesearch_command = 'csearch -indexpath .csearchindex'
+" let g:unite_source_codesearch_ignore_case = 1
 
-if executable('ag')
-	let g:unite_source_grep_command='ag'
-	let g:unite_source_grep_default_opts='--hidden --nocolor --nogroup --smart-case'
-	let g:unite_source_grep_recursive_opt=''
-elseif executable('ack')
-	let g:unite_source_grep_command='ack'
-	let g:unite_source_grep_default_opts='--no-group --no-color'
-	let g:unite_source_grep_recursive_opt=''
-endif
+" if executable('ag')
+" 	let g:unite_source_grep_command='ag'
+" 	let g:unite_source_grep_default_opts='--hidden --nocolor --nogroup --smart-case'
+" 	let g:unite_source_grep_recursive_opt=''
+" elseif executable('ack')
+" 	let g:unite_source_grep_command='ack'
+" 	let g:unite_source_grep_default_opts='--no-group --no-color'
+" 	let g:unite_source_grep_recursive_opt=''
+" endif
 
-nnoremap    [unite]   <Nop>
-nnoremap <silent> <leader>d  :<C-u>Unite -resume codesearch<CR>
-" nnoremap <silent> <leader>f  :<C-u>Unite buffer file_rec/async file/new<CR>
-nnoremap <silent> <leader>r  :<C-u>UniteResume<CR>
-nnoremap <silent> <leader>t  :<C-u>Unite -resume tag<CR>
+" nnoremap    [unite]   <Nop>
+" nnoremap <silent> <leader>d  :<C-u>Unite -resume codesearch<CR>
+" " nnoremap <silent> <leader>f  :<C-u>Unite buffer file_rec/async file/new<CR>
+" nnoremap <silent> <leader>r  :<C-u>UniteResume<CR>
+" nnoremap <silent> <leader>t  :<C-u>Unite -resume tag<CR>
 
-nnoremap <silent> <leader>a  :<C-u>Unite grep:.<CR>
-nnoremap <silent> <leader>8  :<C-u>UniteWithCursorWord grep:.<CR>
+" nnoremap <silent> <leader>a  :<C-u>Unite grep:.<CR>
+" nnoremap <silent> <leader>8  :<C-u>UniteWithCursorWord grep:.<CR>
 
-nnoremap <silent> [unite]b  :<C-u>Unite bookmark:default<CR>
-nnoremap <silent> [unite]r  :<C-u>Unite register<CR>
-nnoremap <silent> [unite]o  :<C-u>Unite outline<CR>
-nnoremap <silent> [unite]ma
-		\ :<C-u>Unite mapping<CR>
-nnoremap  [unite]s  :<C-u>Unite source<CR>
+" nnoremap <silent> [unite]b  :<C-u>Unite bookmark:default<CR>
+" nnoremap <silent> [unite]r  :<C-u>Unite register<CR>
+" nnoremap <silent> [unite]o  :<C-u>Unite outline<CR>
+" nnoremap <silent> [unite]ma
+" 		\ :<C-u>Unite mapping<CR>
+" nnoremap  [unite]s  :<C-u>Unite source<CR>
 
 
-augroup group_unite
-	au!
-	autocmd FileType unite call s:unite_my_settings()
-augroup END
+" augroup group_unite
+" 	au!
+" 	autocmd FileType unite call s:unite_my_settings()
+" augroup END
 
-function! s:unite_my_settings()
-	" Overwrite settings.
+" function! s:unite_my_settings()
+" 	" Overwrite settings.
 
-	imap <buffer> <C-w>     <Plug>(unite_delete_backward_path)
-	imap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
-	imap <silent><buffer><expr> <C-t> unite#do_action('tabopen')
-	imap <silent><buffer><expr> <C-s> unite#do_action('split')
-	imap <silent><buffer><expr> <C-s> unite#do_action('split')
-	imap <silent><buffer> <tab> <c-x><c-f>
-	iunmap <silent><buffer> <c-n>
-	iunmap <silent><buffer> <c-p>
+" 	imap <buffer> <C-w>     <Plug>(unite_delete_backward_path)
+" 	imap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
+" 	imap <silent><buffer><expr> <C-t> unite#do_action('tabopen')
+" 	imap <silent><buffer><expr> <C-s> unite#do_action('split')
+" 	imap <silent><buffer><expr> <C-s> unite#do_action('split')
+" 	imap <silent><buffer> <tab> <c-x><c-f>
+" 	iunmap <silent><buffer> <c-n>
+" 	iunmap <silent><buffer> <c-p>
 
-	imap <buffer> <C-w>     <Plug>(unite_delete_backward_path)
-	nmap <buffer> x     <Plug>(unite_quick_match_choose_action)
-	nmap <buffer> <C-z>     <Plug>(unite_toggle_transpose_window)
-	imap <buffer> <C-z>     <Plug>(unite_toggle_transpose_window)
-	imap <buffer> <C-y>     <Plug>(unite_narrowing_path)
-	nmap <buffer> <C-y>     <Plug>(unite_narrowing_path)
-	nmap <buffer> <C-r>     <Plug>(unite_narrowing_input_history)
-	imap <buffer> <C-r>     <Plug>(unite_narrowing_input_history)
+" 	imap <buffer> <C-w>     <Plug>(unite_delete_backward_path)
+" 	nmap <buffer> x     <Plug>(unite_quick_match_choose_action)
+" 	nmap <buffer> <C-z>     <Plug>(unite_toggle_transpose_window)
+" 	imap <buffer> <C-z>     <Plug>(unite_toggle_transpose_window)
+" 	imap <buffer> <C-y>     <Plug>(unite_narrowing_path)
+" 	nmap <buffer> <C-y>     <Plug>(unite_narrowing_path)
+" 	nmap <buffer> <C-r>     <Plug>(unite_narrowing_input_history)
+" 	imap <buffer> <C-r>     <Plug>(unite_narrowing_input_history)
 
-	imap <buffer> <C-j>     <Plug>(unite_select_next_line)
-	imap <buffer> <C-k>     <Plug>(unite_select_previous_line)
-	nnoremap <silent><buffer><expr> l
-			\ unite#smart_map('l', unite#do_action('default'))
+" 	imap <buffer> <C-j>     <Plug>(unite_select_next_line)
+" 	imap <buffer> <C-k>     <Plug>(unite_select_previous_line)
+" 	nnoremap <silent><buffer><expr> l
+" 			\ unite#smart_map('l', unite#do_action('default'))
 
-endfunction
+" endfunction
 
 " ctrlspace
 let g:CtrlSpaceLoadLastWorkspaceOnStart = 1
