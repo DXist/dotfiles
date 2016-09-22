@@ -57,12 +57,13 @@ function cindexify() {
 }
 
 function pip() {
-	`which pip` "$@"
+	command pip "$@"
 	status="$?"
 	[[ $status = 0 ]] || return $status
 
 	# rebuild virtualenv ctags
 	if [[ -n "${VIRTUAL_ENV}" && ("$1" = install || "$1" = uninstall) ]]; then
+		pyenv rehash
 		ctagsify ${VIRTUAL_ENV} ${VIRTUAL_ENV}/.tags
 	fi
 }
@@ -126,9 +127,7 @@ install_dev_tools() {
 	neovim
 	"
 	pip install $dev_tools
-	pip install pdbpp
-	pip3 install $dev_tools
-	easy_install-3.5 pdbpp
+	easy_install pdbpp
 }
 
 
