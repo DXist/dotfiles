@@ -319,6 +319,9 @@ inoremap ^F ^X^F
 " longest option behaves wierd when common match is short
 set completeopt=menuone
 
+" blinking in Neovim 'User defined completion' drives me crazy
+set shortmess+=c
+
 " Enable omni completion.
 augroup group_css
 	au!
