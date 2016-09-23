@@ -1,14 +1,18 @@
-session_name: project
-shell_command_before:
-  - workon project
+# Tmuxp workspace config
+# See http://tmuxp.readthedocs.io/en/latest/about.html for details
+session_name: example
+options:
+  default-path: $PROJECT_HOME/example
+
 windows:
-  - window_name: runserver
+  - window_name: server
+
     layout: even-horizontal
     panes:
-    - shell_command:
-      - ./manage.py runserver
-  - window_name: ''
-    layout: even-horizontal
+      - shell_command:
+      - shell_command:
+
+  - window_name: vim
     focus: True
     panes:
       - shell_command:
@@ -17,11 +21,4 @@ windows:
   - window_name: ''
     layout: even-horizontal
     panes:
-      - "blank"
-      - "blank"
-
-  - window_name: ''
-    layout: even-horizontal
-    panes:
-      - "blank"
-      - "blank"
+      - shell_command:
