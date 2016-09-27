@@ -434,6 +434,7 @@ nmap <silent> <leader>tf :TestFile<CR>
 nmap <silent> <leader>ts :TestSuite<CR>
 nmap <silent> <leader>tl :TestLast<CR>
 nmap <silent> <leader>tv :TestVisit<CR>
+let test#python#pytest#options = '-s'
 
 " nmap <silent> <leader>m <ESC>Make test<CR>
 
