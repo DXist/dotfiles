@@ -12,6 +12,7 @@ Session.vim
 svn-commit.tmp
 Guardfile
 .vimrc
+.nvimrc
 pylama.ini
 .tmuxp.yml
 .python-version

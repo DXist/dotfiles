@@ -40,6 +40,7 @@
         - duplicity
         - gnupg-agent
         - ncurses-term
+        - glances
       tags:
         - system_reqs
 

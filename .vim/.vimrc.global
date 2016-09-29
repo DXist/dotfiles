@@ -152,7 +152,9 @@ endif
 
 if has('nvim')
 	let test#strategy = 'neovim'
+	tnoremap <Esc> <C-\><C-n>
 endif
+
 " change window header to titlestring
 set title
 " nocursorline in insert mode
