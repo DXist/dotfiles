@@ -599,6 +599,11 @@ let g:neomake_error_sign = {'text': '✗', 'texthl': 'Special'}
 let g:neomake_warning_sign = {'text': '⚠', 'texthl': 'WarningMsg'}
 let g:neomake_message_sign = {'text': '➤', 'texthl': 'Todo'}
 let g:neomake_info_sign = {'text': 'ℹ', 'texthl': 'Todo'}
+let g:neomake_verbose = 0
+let g:neomake_verbose = 0
+let g:neomake_open_list = 0
+nmap <leader>lf <ESC>:lfirst<CR>
+nmap <leader>ln <ESC>:lnext<CR>
 
 " Syntastic
 
