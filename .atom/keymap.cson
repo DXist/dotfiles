@@ -30,5 +30,10 @@
 # If you are unfamiliar with CSON, you can read more about it in the
 # Atom Flight Manual:
 # http://flight-manual.atom.io/using-atom/sections/basic-customization/#_cson
-'atom-text-editor.vim-mode.normal-mode':
+'atom-text-editor:not(.mini).vim-mode.normal-mode':
   's': 'easy-motion-redux:letter'
+
+#'atom-text-editor.vim-mode.normal-mode':
+#  's': 'jumpy:toggle'
+#'atom-text-editor:not(.mini).vim-mode:not(.insert-mode):not(.jumpy-jump-mode)':
+#    's': 'jumpy:toggle'

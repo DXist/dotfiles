@@ -1,8 +1,26 @@
 "*":
   core:
+    customFileTypes:
+      "source.ini": [
+        ".buckconfig"
+        ".hgrc"
+      ]
+      "source.json": [
+        ".arcconfig"
+        "BUCK.autodeps"
+      ]
+      "source.python": [
+        "BUCK"
+      ]
+    disabledPackages: [
+      "jumpy"
+      "tree-view"
+    ]
     projectHome: "/Users/rinatshigapov/workspace"
   "easy-motion-redux": {}
   "exception-reporting":
     userId: "7a358ff6-95ed-95fa-8642-e28589883250"
+  jumpy:
+    matchPattern: "([A-Z]+([0-9a-z])*)|[a-z0-9]{1,}"
   welcome:
     showOnStartup: false

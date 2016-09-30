@@ -155,6 +155,8 @@
         - vim-mode
         - ex-mode
         - easy-motion-redux
+        - autocomplete-python
+        - autocomplete-go
       tags:
         - install_atom_packages
 
