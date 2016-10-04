@@ -31,8 +31,8 @@ if has('vim_starting')
 
 	NeoBundle 'Shougo/unite.vim'
 	NeoBundleLazy 'Shougo/unite-outline', {'autoload':{'unite_sources':'outline'}}
-	NeoBundleLazy 'tsukkee/unite-tag', {'autoload':{'unite_sources':'tag'}}
-	NeoBundleLazy 'junkblocker/unite-codesearch', {'autoload':{'unite_sources':'codesearch'}}
+	" NeoBundle 'tsukkee/unite-tag', {'autoload':{'unite_sources':'tag'}}
+	NeoBundle 'junkblocker/unite-codesearch', {'autoload':{'unite_sources':'codesearch'}}
 	NeoBundleLazy 'osyo-manga/unite-quickfix', {'autoload':{'unite_sources': ['quickfix', 'location_list']}}
 	NeoBundleLazy 'thinca/vim-unite-history', { 'autoload' : { 'unite_sources' : ['history/command', 'history/search']}}
 	NeoBundleLazy 'tsukkee/unite-help', {'autoload':{'unite_sources':'help'}}
@@ -431,11 +431,11 @@ nmap <space> :<c-u>OpenSession<CR>
 
 " vim-test
 " map <Leader>mr <ESC>:python run_test()<CR>
-nmap <silent> <leader>tn :TestNearest<CR>
-nmap <silent> <leader>tf :TestFile<CR>
-nmap <silent> <leader>ts :TestSuite<CR>
-nmap <silent> <leader>tl :TestLast<CR>
-nmap <silent> <leader>tv :TestVisit<CR>
+nmap <silent> <leader>tn :TestNearest<CR><C-\><C-n>
+nmap <silent> <leader>tf :TestFile<CR><C-\><C-n>
+nmap <silent> <leader>ts :TestSuite<CR><C-\><C-n>
+nmap <silent> <leader>tl :TestLast<CR><C-\><C-n>
+nmap <silent> <leader>tv :TestVisit<CR><C-\><C-n>
 let test#python#pytest#options = '-s'
 
 " nmap <silent> <leader>m <ESC>Make test<CR>
@@ -463,8 +463,19 @@ map <Leader>p oimport pprint; pprint.pprint(
 let g:unite_source_history_yank_enable = 1
 let g:unite_source_menu_menus = {}
 let g:unite_enable_short_source_mes = 0
-let g:unite_source_codesearch_command = 'csearch -indexpath .csearchindex'
-let g:unite_source_codesearch_ignore_case = 1
+let g:unite_source_codesearch_igQuickfixnore_case = 1
+nnoremap <silent> <leader>cd  :<C-u>UniteResume<CR>
+nnoremap <leader>ct <esc>:call CsearchToggle()<CR>
+
+function! CsearchToggle()
+	if g:unite_source_codesearch_use_cwd
+		let g:unite_source_codesearch_use_cwd = 0
+		echo 'codesearch: GLOBAL'
+	else
+		let g:unite_source_codesearch_use_cwd = 1
+		echo 'codesearch: LOCAL'
+	endif
+endfunction
 
 if executable('ag')
 	let g:unite_source_grep_command='ag'
@@ -477,6 +488,7 @@ elseif executable('ack')
 endif
 
 nnoremap    [unite]   <Nop>
+" nnoremap <leader>d  :<C-u>tabnew <bar> 0read <bang>csearch -indexpath $VIRTUAL_ENV/.csearchindex<space>
 nnoremap <silent> <leader>d  :<C-u>Unite -resume codesearch<CR>
 " nnoremap <silent> <leader>f  :<C-u>Unite buffer file_rec/async file/new<CR>
 nnoremap <silent> <leader>r  :<C-u>UniteResume<CR>
@@ -604,6 +616,7 @@ let g:neomake_verbose = 0
 let g:neomake_open_list = 0
 nmap <leader>lf <ESC>:lfirst<CR>
 nmap <leader>ln <ESC>:lnext<CR>
+nmap <leader>lo <ESC>:lopen<CR>
 
 " Syntastic
 
@@ -700,6 +713,7 @@ let g:ultisnips_python_style='sphinx'
 "}}}
 "isort
 let g:vim_isort_map = '<C-s>'
+nnoremap <leader>ci <ESC>:Isort<CR>
 "}}}
 " Local settings
 " ================

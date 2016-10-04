@@ -19,6 +19,8 @@ deb_dist
 usr
 .tox
 .env
+/env
+.idea
 reports
 .tags
 pylint_report

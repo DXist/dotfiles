@@ -133,10 +133,9 @@ alias pbpaste='reattach-to-user-namespace pbpaste'
 alias tailf='LESSOPEN="" less +F'
 
 alias cindex='cindex -exclude ~/.agignore'
-alias cindexprojects='xargs -a ~/.codesearch cindex -exclude ~/.agignore'
+alias csearch_pwd='csearch -f `pwd`'
 alias hpr='hub pull-request'
 alias hb='hub browse'
-export CSEARCHINDEX='.csearchindex'
 
 if [ "$TMUX" ]; then
 	alias sudo='TERM=screen sudo'

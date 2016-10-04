@@ -45,7 +45,11 @@ function ctagsify() {
 
 function cindexify() {
 	what=${1:-.}
-	tagfile=${2:-.csearchindex}
+	flock=`which flock`
+
+	if [ "$flock" ]; then
+		flock="$flock -n /tmp/cindexify.lock"
+	fi
 
 	cindex_prg=`which cindex`
 	if [ -z $cindex_prg ]; then
@@ -53,7 +57,7 @@ function cindexify() {
 		return
 	fi
 
-	$cindex_prg -exclude ~/.agignore -indexpath ${tagfile} ${what} 2>/dev/null &
+	$flock $cindex_prg -exclude ~/.agignore ${what} 2>/dev/null &
 }
 
 function pip() {
@@ -61,10 +65,11 @@ function pip() {
 	status="$?"
 	[[ $status = 0 ]] || return $status
 
-	# rebuild virtualenv ctags
+	# rebuild virtualenv ctags, codesearch index
 	if [[ -n "${VIRTUAL_ENV}" && ("$1" = install || "$1" = uninstall) ]]; then
 		pyenv rehash
 		ctagsify ${VIRTUAL_ENV} ${VIRTUAL_ENV}/.tags
+		cindexify ${VIRTUAL_ENV}
 	fi
 }
 
