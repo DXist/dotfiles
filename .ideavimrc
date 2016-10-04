@@ -1,3 +1,53 @@
 map ,s :w<CR>
 set relativenumber
-source ~/.vim/.vimrc.global
+set vim-surround
+let mapleader = ","
+
+" Window movement
+map <c-j> <c-w>j
+map <c-k> <c-w>k
+map <c-l> <c-w>l
+map <c-h> <c-w>h
+"
+" Fast saving
+nmap <leader>s :w<cr>
+nmap <leader>x :silent w !sudo tee %<cr>:e!<cr>
+"
+"Tab in visual mode
+xmap <Tab> >gv
+xmap <S-Tab> <gv
+" key mapping for tab navigation
+nmap <C-n> gt
+nmap <C-p> gT
+
+" Reload .ideavimrc
+nnoremap <<leader>cr :source ~/.ideavimrc<CR>
+
+" clear search highlight
+nmap <silent> <leader>h :silent :nohlsearch<CR>
+
+cmap <C-A>      <Home>
+cmap <C-B>      <Left>
+cmap <C-D>      <Del>
+cmap <C-F>      <Right>
+cmap <Esc>b <S-Left>
+cmap <Esc>f <S-Right>
+cmap <Esc>d <S-Right><C-W>
+
+" nmap <leader>g :action GotoDeclaration<cr>
+" nmap <leader>b :action Back<cr>
+
+nmap <leader>f :action GotoFile<cr>
+nmap <leader>ca :action FindAction<cr>
+nmap <leader>cc :action GotoClass<cr>
+nmap <leader>cs :action GotoSymbol<cr>
+nmap <leader>cm :action FileStructurePopup<cr>
+nmap <leader>cd :action ShowErrorDescription<cr>
+
+" IdeaVim uses 'a' for alt instead of Vim's 'm'
+" nmap <a-j> 15gj
+" nmap <a-k> 15gk
+
+" Won't work in visual mode (with vmap) for some reason.
+" Use default map of <c-/> for that.
+nmap gcc :action CommentByLineComment<cr>
