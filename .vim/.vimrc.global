@@ -31,7 +31,7 @@ if has('vim_starting')
 
 	NeoBundle 'Shougo/unite.vim'
 	NeoBundleLazy 'Shougo/unite-outline', {'autoload':{'unite_sources':'outline'}}
-	" NeoBundle 'tsukkee/unite-tag', {'autoload':{'unite_sources':'tag'}}
+	NeoBundle 'tsukkee/unite-tag', {'autoload':{'unite_sources':'tag'}}
 	NeoBundle 'junkblocker/unite-codesearch', {'autoload':{'unite_sources':'codesearch'}}
 	NeoBundleLazy 'osyo-manga/unite-quickfix', {'autoload':{'unite_sources': ['quickfix', 'location_list']}}
 	NeoBundleLazy 'thinca/vim-unite-history', { 'autoload' : { 'unite_sources' : ['history/command', 'history/search']}}
@@ -464,6 +464,7 @@ let g:unite_source_history_yank_enable = 1
 let g:unite_source_menu_menus = {}
 let g:unite_enable_short_source_mes = 0
 let g:unite_source_codesearch_igQuickfixnore_case = 1
+let g:unite_source_grep_default_opts ='-inH'
 nnoremap <silent> <leader>cd  :<C-u>UniteResume<CR>
 nnoremap <leader>ct <esc>:call CsearchToggle()<CR>
 
@@ -489,7 +490,7 @@ endif
 
 nnoremap    [unite]   <Nop>
 " nnoremap <leader>d  :<C-u>tabnew <bar> 0read <bang>csearch -indexpath $VIRTUAL_ENV/.csearchindex<space>
-nnoremap <silent> <leader>d  :<C-u>Unite -resume codesearch<CR>
+nnoremap <silent> <leader>d  :<C-u>Unite -resume -input=(class<bar>def)\\  codesearch<CR>
 " nnoremap <silent> <leader>f  :<C-u>Unite buffer file_rec/async file/new<CR>
 nnoremap <silent> <leader>r  :<C-u>UniteResume<CR>
 nnoremap <silent> <leader>t  :<C-u>Unite -resume tag<CR>
