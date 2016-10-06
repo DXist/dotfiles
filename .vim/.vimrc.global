@@ -36,7 +36,8 @@ if has('vim_starting')
 	NeoBundleLazy 'osyo-manga/unite-quickfix', {'autoload':{'unite_sources': ['quickfix', 'location_list']}}
 	NeoBundleLazy 'thinca/vim-unite-history', { 'autoload' : { 'unite_sources' : ['history/command', 'history/search']}}
 	NeoBundleLazy 'tsukkee/unite-help', {'autoload':{'unite_sources':'help'}}
-	NeoBundle 'ctrlpvim/ctrlp'
+	NeoBundle 'ctrlpvim/ctrlp.vim'
+	NeoBundle 'ivalkeen/vim-ctrlp-tjump'
 	NeoBundle 'mhinz/vim-hugefile'
 	NeoBundle 'tpope/vim-fugitive'
 	" syntax files for git
@@ -539,11 +540,14 @@ function! s:unite_my_settings()
 endfunction
 
 " ctrlp
-let g:ctrlp_map = ';'
-let g:ctrlp_extensions = ['tag']
+let g:ctrlp_map = '<Nul>'
+let g:ctrlp_types = ['buffertag', 'mru', 'tag']
+let g:ctrlp_extensions = ['buffertag', 'tag']
+let g:ctrlp_lazy_update = 1
 let g:ctrlp_mruf_relative = 1
 let g:ctrlp_max_height = 25
 let g:ctrlp_show_hidden = 1
+nnoremap ; <ESC>:CtrlPBufTag<CR>
 
 " ctrlspace
 let g:CtrlSpaceLoadLastWorkspaceOnStart = 1
@@ -582,12 +586,13 @@ if exists("$GOPATH")
 endif
 
 " tjump-style tag move
-nmap g] g<C-]>
-nmap g} <c-W>g}
+" nmap g] g<C-]>
+" nmap g} <c-W>g}
 " nmap <Leader>r <ESC>:tag /
 " nmap <Leader>rr <ESC>:vertical stag /
-nmap <Leader>j <ESC>:tjump /
-nmap <Leader>jj <ESC>:vertical stjump /
+" nmap <Leader>j <ESC>:tjump /
+" nmap <Leader>jj <ESC>:vertical stjump /
+nnoremap g<c-]> :CtrlPtjump<cr>
 
 " fugitive, git commands
 " map <Leader>gs <ESC>:Gstatus<CR>
