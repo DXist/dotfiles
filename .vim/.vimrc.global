@@ -168,7 +168,7 @@ augroup insert_cursor
 augroup END
 
 set visualbell              " mute error bell"
-set scrolloff=4             " min 4 symbols bellow cursor"
+set scrolloff=10             " min 10 symbols bellow cursor"
 set linebreak               " break lines by words"
 " новое окно помещаем справа от текущего
 set splitright
