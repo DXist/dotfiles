@@ -305,8 +305,7 @@ set list
 
 " FOLDING - сворачивание {{{1
 if has('folding')
-	set foldcolumn=3
-	set fdm=indent
+	" set foldcolumn=3
 	set fdn=2
 	set fml=15
 	set foldopen+=insert
@@ -538,6 +537,13 @@ function! s:unite_my_settings()
 			\ unite#smart_map('l', unite#do_action('default'))
 
 endfunction
+
+" ctrlp
+let g:ctrlp_map = ';'
+let g:ctrlp_extensions = ['tag']
+let g:ctrlp_mruf_relative = 1
+let g:ctrlp_max_height = 25
+let g:ctrlp_show_hidden = 1
 
 " ctrlspace
 let g:CtrlSpaceLoadLastWorkspaceOnStart = 1

@@ -2,6 +2,7 @@ setlocal expandtab
 setlocal softtabstop=4
 setlocal textwidth=79
 setlocal commentstring=#%s
+setlocal fdm=indent
 " setlocal errorformat=\%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z\ \ \ \ %m
 setlocal omnifunc=pythoncomplete#Complete
 nnoremap <buffer> <leader>jf :YcmCompleter GoToDeclaration<CR>

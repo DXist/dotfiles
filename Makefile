@@ -41,3 +41,8 @@ pull:
 update_vim:
 	vim +NeoBundleUpdate +qall
 	vim +GoInstallBinaries +qall
+
+.PHONY: update_nvim
+update_nvim:
+	nvim +NeoBundleUpdate +qall
+	nvim +GoInstallBinaries +qall
