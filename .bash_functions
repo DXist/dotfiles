@@ -126,8 +126,7 @@ complete -F _cg cg
 
 install_dev_tools() {
 	dev_tools="
-	pylama
-	pylama-pylint
+	pylint
 	isort
 	neovim
 	"

@@ -5,8 +5,7 @@
 # install syntax highlighter for less preprocessor
 # install debugger
 pip install \
-	pylama \
-	pylama-pylint \
+	pylint \
 	pdbpp \
 	isort \
 	neovim
