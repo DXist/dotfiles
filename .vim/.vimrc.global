@@ -464,7 +464,7 @@ map <Leader>p oimport pprint; pprint.pprint(
 let g:unite_source_history_yank_enable = 1
 let g:unite_source_menu_menus = {}
 let g:unite_enable_short_source_mes = 0
-let g:unite_source_codesearch_ignore_case = 1
+let g:unite_source_codesearch_ignore_case = 0
 let g:unite_source_grep_default_opts ='-inH'
 nnoremap <silent> <leader>cd  :<C-u>UniteResume<CR>
 nnoremap <leader>ct <esc>:call CsearchToggle()<CR>
@@ -631,6 +631,7 @@ let g:neomake_open_list = 0
 nmap <leader>lf <ESC>:lfirst<CR>
 nmap <leader>ln <ESC>:lnext<CR>
 nmap <leader>lo <ESC>:lopen<CR>
+
 
 " Syntastic
 

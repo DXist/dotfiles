@@ -40,7 +40,7 @@ cmap <Esc>d <S-Right><C-W>
 nmap <leader>f :action GotoFile<cr>
 nmap <leader>ca :action FindAction<cr>
 nmap <leader>cc :action GotoClass<cr>
-nmap <leader>cs :action GotoSymbol<cr>
+nmap <leader>d :action GotoSymbol<cr>
 nmap <leader>cm :action FileStructurePopup<cr>
 nmap <leader>cd :action ShowErrorDescription<cr>
 
