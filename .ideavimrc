@@ -38,11 +38,14 @@ cmap <Esc>d <S-Right><C-W>
 " nmap <leader>b :action Back<cr>
 
 nmap <leader>f :action GotoFile<cr>
-nmap <leader>ca :action FindAction<cr>
+nmap <leader>ca :action GotoAction<cr>
 nmap <leader>cc :action GotoClass<cr>
 nmap <leader>d :action GotoSymbol<cr>
 nmap <leader>cm :action FileStructurePopup<cr>
 nmap <leader>cd :action ShowErrorDescription<cr>
+nmap <leader>t :action Run<cr>
+nmap <leader>8 :action FindUsages<cr>
+nmap <c-[> :action EditorEscape<cr>
 
 " IdeaVim uses 'a' for alt instead of Vim's 'm'
 " nmap <a-j> 15gj
