@@ -2,8 +2,9 @@
 - hosts: localhost
   gather_facts: no
   vars:
+    homebrew_install_path: "/usr/local/Homebrew"
     homebrew_installed_packages:
-      - brew-cask
+      - cask
       - coreutils
       - python
       - cmake
@@ -30,6 +31,26 @@
     homebrew_taps:
         - caskroom/cask
         - caskroom/versions
+    homebrew_cask_apps:
+        - google-chrome
+        - seil
+        - karabiner
+        - spectacle
+        - iterm2
+        - skype
+        - vlc
+        - libreoffice
+        - intellij-idea-ce
+        # - yandexdisk
+        - adium
+        - virtualbox
+        - virtualbox-extension-pack
+        - vagrant
+        - anaconda
+        - transmission
+        - gimp
+        - toggldesktop
+        - atom
     PREFERENCES: "{{ lookup('env', 'HOME')}}/Library/Preferences"
   environment:
     GIT_TEMPLATE_DIR: ""
@@ -73,31 +94,6 @@
       command: pkill -U {{ lookup('env', 'USER') }} cfprefsd
       tags:
         - stop_pref_daemon
-
-    - name: install casks
-      homebrew_cask: name='{{ item }}' state=present
-      with_items:
-        - google-chrome
-        - seil
-        - karabiner
-        - spectacle
-        - iterm2-beta
-        - skype
-        - vlc
-        - libreoffice
-        - intellij-idea-ce
-        # - yandexdisk
-        - adium
-        - virtualbox
-        - virtualbox-extension-pack
-        - vagrant
-        - anaconda
-        - transmission
-        - gimp
-        - toggldesktop
-        - atom
-      tags:
-        - install_casks
 
     - name: install node packages
       npm: name={{ item }} global=yes

@@ -29,6 +29,7 @@
     - .pylintrc
     - .pythonrc
     - .screenrc
+    - .spacemacs
     - .termcap
     - .terminfo
     - .tmux.conf
