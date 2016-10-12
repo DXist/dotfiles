@@ -28,9 +28,12 @@
       - gist
       - sf-pwgen
       - parallel
+      - emacs
+      - emacs-plus
     homebrew_taps:
         - caskroom/cask
         - caskroom/versions
+        - d12frosted/emacs-plus
     homebrew_cask_apps:
         - google-chrome
         - seil
@@ -51,6 +54,7 @@
         - gimp
         - toggldesktop
         - atom
+        - xquartz
     PREFERENCES: "{{ lookup('env', 'HOME')}}/Library/Preferences"
   environment:
     GIT_TEMPLATE_DIR: ""
