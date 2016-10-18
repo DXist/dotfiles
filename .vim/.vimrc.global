@@ -594,17 +594,17 @@ endif
 " nmap <Leader>rr <ESC>:vertical stag /
 " nmap <Leader>j <ESC>:tjump /
 " nmap <Leader>jj <ESC>:vertical stjump /
-nnoremap g<c-]> :CtrlPtjump<cr>
+" nnoremap g<c-]> :CtrlPtjump<cr>
 
 " fugitive, git commands
 " map <Leader>gs <ESC>:Gstatus<CR>
-" map <Leader>gd <ESC>:Gdiff<CR>
+map <Leader>gd <ESC>:Gdiff<CR>
 " map <Leader>gc <ESC>:Gcommit<CR>
 " map <Leader>gca <ESC>:Gcommit -a<CR>
 " Git fugitive menu
 noremap <Leader>g :emenu Git.<C-Z>
 menu Git.Status :Gstatus<CR>
-menu Git.Diff :Gdiff<CR>
+" menu Git.Diff :Gdiff<CR>
 menu Git.Commit :Gcommit %<CR>
 menu Git.Checkout :Gread<CR>
 menu Git.Remove :Gremove<CR>
