@@ -76,6 +76,10 @@ function pip() {
 function g() {
 	if [[ $# = 0 ]]; then
 		git status
+
+		if [ "${JIRA_URL}" ]; then
+			jiraurl
+		fi
 	else
 		git "$@"
 	fi
@@ -155,7 +159,7 @@ function jiraurl() {
 		BRANCH_NAME="$1"
 	fi
 
-	ISSUE=`expr "$BRANCH_NAME" : '.*/\([[:upper:]]\+-[[:digit:]]\+\)'`
+	ISSUE=$(echo $BRANCH_NAME | grep -Eo '([[:upper:]]+-[0-9]{4,})')
 
 	if [ -n "$ISSUE" ]; then
 		echo "$JIRA_URL/browse/$ISSUE"

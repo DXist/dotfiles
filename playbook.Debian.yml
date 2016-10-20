@@ -41,6 +41,8 @@
         - gnupg-agent
         - ncurses-term
         - glances
+        - npm
+        - nodejs
       tags:
         - system_reqs
 

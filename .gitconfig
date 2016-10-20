@@ -33,6 +33,7 @@
 	lst = ls-tree -r --name-only
 	m = merge
 	s = status
+	setupstream = !git branch --set-upstream-to=origin/$(git rev-parse --abbrev-ref HEAD)
 	r = rebase
 	rc = rebase --continue
 	ctags = !test -x .git/hooks/ctags && .git/hooks/ctags

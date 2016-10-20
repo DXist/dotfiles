@@ -24,6 +24,7 @@
       - gpg-agent
       - fswatch
       - npm
+      - node
       - hub
       - gist
       - sf-pwgen
@@ -98,13 +99,6 @@
       command: pkill -U {{ lookup('env', 'USER') }} cfprefsd
       tags:
         - stop_pref_daemon
-
-    - name: install node packages
-      npm: name={{ item }} global=yes
-      with_items:
-        - jshint
-      tags:
-        - install_node_packages
 
     - name: install python packages
       pip: name={{ item }}

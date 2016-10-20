@@ -165,3 +165,12 @@
 
   tags:
     - gotools
+
+- name: install node packages
+  npm: name={{ item }} global=yes
+  become: yes
+  when: SKIP_SUDO is not defined
+  with_items:
+    - jshint
+  tags:
+    - install_node_packages
