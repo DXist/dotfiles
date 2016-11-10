@@ -32,6 +32,9 @@
 	lm = log --graph --left-right
 	lst = ls-tree -r --name-only
 	m = merge
+    ; Explicit is better than implicit.  If we want to merge
+    ; we should do so ourselves.
+    pull = pull --ff-only
 	s = status
 	setupstream = !git branch --set-upstream-to=origin/$(git rev-parse --abbrev-ref HEAD)
 	r = rebase
