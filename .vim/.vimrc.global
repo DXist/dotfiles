@@ -709,7 +709,7 @@ let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 command! -range Pbcopy silent '<,'>w !reattach-to-user-namespace pbcopy
 
 " tabularize
-vmap <bar> :Tabularize /\S\+<CR>
+vmap <bar> :AddTabularPipeline multiple_spaces / \{2,}/ map(a:lines, "substitute(v:val, ' \{2,}', '  ', 'g')") <bar> tabular#TabularizeStrings(a:lines, '  ', 'l0')
 
 " VARIOUS {{{2
 "tagbar
@@ -721,6 +721,7 @@ augroup filetype_delimitemate
 	autocmd!
 	autocmd FileType html,htmldjango let b:delimitMate_matchpairs = "(:),[:],{:}"
 augroup END
+imap <S-tab> <nop>
 "let g:delimitMate_smart_quotes = 0
 "let g:delimitMate_quotes = '"'
 " UltiSnips
