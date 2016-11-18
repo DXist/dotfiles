@@ -58,14 +58,14 @@
       tags:
         - system_reqs_gui
 
-    - name: Install GUI debs
-      apt: deb={{ item }} state=present
-      when: "{{ SKIP_SUDO is not defined and 'DESKTOP_SESSION' in ansible_env }}"
-      with_items:
-        - "https://atom-installer.github.com/v1.10.2/atom-amd64.deb"
-      tags:
-        - system_reqs_gui
-        - system_reqs_debs
+    # - name: Install GUI debs
+    #   apt: deb={{ item }} state=present
+    #   when: "{{ SKIP_SUDO is not defined and 'DESKTOP_SESSION' in ansible_env }}"
+    #   with_items:
+    #     - "https://atom-installer.github.com/v1.10.2/atom-amd64.deb"
+    #   tags:
+    #     - system_reqs_gui
+    #     - system_reqs_debs
 
   tasks:
     - name: Install Debian specific links
