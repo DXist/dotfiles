@@ -1,8 +1,7 @@
 # Tmuxp workspace config
 # See http://tmuxp.readthedocs.io/en/latest/about.html for details
 session_name: example
-options:
-  default-path: $PROJECT_HOME/example
+start_directory: $PROJECT_HOME/example
 
 windows:
   - window_name: server
