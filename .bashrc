@@ -165,8 +165,11 @@ if [[ -z "$TMUX" && $TERM != screen*  ]]; then
 	fi
 fi
 
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+
+if hash pyenv 2>/dev/null; then
+	eval "$(pyenv init -)"
+	eval "$(pyenv virtualenv-init -)"
+fi
 
 # local settings
 if [ -r ~/.bashrc.local ]; then
