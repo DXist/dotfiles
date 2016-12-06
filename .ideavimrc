@@ -37,6 +37,8 @@ cmap <Esc>d <S-Right><C-W>
 " nmap <leader>g :action GotoDeclaration<cr>
 " nmap <leader>b :action Back<cr>
 
+nmap <leader>a :action FindInPath<cr>
+nmap <leader>ca :action GotoAction<cr>
 nmap <leader>f :action GotoFile<cr>
 nmap <leader>ca :action GotoAction<cr>
 nmap <leader>cc :action GotoClass<cr>
