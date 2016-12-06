@@ -10,16 +10,6 @@
       tags:
         - debianconfigs
 
-    - name: Remove dconf directory
-      file: name={{ DCONF }} state="absent"
-      tags:
-        - dconf
-
-    - name: Symlink dconf
-      file:  src={{ playbook_dir }}/roles/Debian/dconf dest={{ DCONF }} state="link"
-      tags:
-        - dconf
-
     - name: Configure apt repositories
       become: yes
       apt_repository: repo={{ item }} validate_certs=no state=present
@@ -83,6 +73,17 @@
     #   tags:
     #     - system_reqs_gui
     #     - system_reqs_debs
+
+  tasks:
+    - name: Remove dconf directory
+      file: name={{ DCONF }} state="absent"
+      tags:
+        - dconf
+
+    - name: Symlink dconf
+      file:  src={{ playbook_dir }}/roles/Debian/dconf dest={{ DCONF }} state="link"
+      tags:
+        - dconf
 
   roles:
     - common
