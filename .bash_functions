@@ -60,18 +60,21 @@ function cindexify() {
 	$flock $cindex_prg -exclude ~/.agignore ${what} 2>/dev/null &
 }
 
-function pip() {
-	command pip "$@"
-	status="$?"
-	[[ $status = 0 ]] || return $status
+if [ -z "$SSH_TTY" ]; then
+	# reindex virtual environments only on local machine
+	function pip() {
+		command pip "$@"
+		status="$?"
+		[[ $status = 0 ]] || return $status
 
-	# rebuild virtualenv ctags, codesearch index
-	if [[ -n "${VIRTUAL_ENV}" && ("$1" = install || "$1" = uninstall) ]]; then
-		pyenv rehash
-		ctagsify ${VIRTUAL_ENV} ${VIRTUAL_ENV}/.tags
-		cindexify ${VIRTUAL_ENV}
-	fi
-}
+		# rebuild virtualenv ctags, codesearch index
+		if [[ -n "${VIRTUAL_ENV}" && ("$1" = install || "$1" = uninstall) ]]; then
+			pyenv rehash
+			ctagsify ${VIRTUAL_ENV} ${VIRTUAL_ENV}/.tags
+			cindexify ${VIRTUAL_ENV}
+		fi
+	}
+fi
 
 function g() {
 	if [[ $# = 0 ]]; then
