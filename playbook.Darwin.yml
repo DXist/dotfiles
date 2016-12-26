@@ -150,7 +150,7 @@
         - ex-mode
         - easy-motion-redux
         - autocomplete-python
-        - autocomplete-go
+        # - autocomplete-go
       tags:
         - install_atom_packages
 
