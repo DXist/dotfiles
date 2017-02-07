@@ -9,4 +9,9 @@ if ! shopt -oq posix; then
   fi
 fi
 
-. /etc/bash_completion.d/git-prompt || . /usr/share/bash-completion/completions/git
+. /etc/bash_completion.d/git-prompt
+
+  if [ -f /usr/share/bash-completion/completions/git ]; then
+	  . /usr/share/bash-completion/completions/git
+  fi
+
