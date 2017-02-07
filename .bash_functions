@@ -60,7 +60,7 @@ function cindexify() {
 	$flock $cindex_prg -exclude ~/.agignore ${what} 2>/dev/null &
 }
 
-if [ -z "$SSH_TTY" ]; then
+# if [ -z "$SSH_TTY" ]; then
 	# reindex virtual environments only on local machine
 	function pip() {
 		command pip "$@"
@@ -74,7 +74,7 @@ if [ -z "$SSH_TTY" ]; then
 			cindexify ${VIRTUAL_ENV}
 		fi
 	}
-fi
+# fi
 
 function g() {
 	if [[ $# = 0 ]]; then
