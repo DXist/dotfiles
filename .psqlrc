@@ -14,7 +14,7 @@
 \x auto
 \set VERBOSITY verbose
 -- host/db specific history files
-\set HISTFILE ~/.psql_history- :HOST - :DBNAME
+\set HISTFILE ~/.psql_history- :DBNAME
 -- get rid of duplicates in history
 \set HISTCONTROL ignoredups
 \set COMP_KEYWORD_CASE upper
