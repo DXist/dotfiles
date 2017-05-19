@@ -6,7 +6,7 @@ timeglass=""
 case $2 in
 	message|template|'')
 		BRANCH_NAME=`git rev-parse --abbrev-ref HEAD`
-		ISSUE=$(echo $BRANCH_NAME | grep -Eo '([[:upper:]]+-[0-9]{4,})')
+		ISSUE=$(echo $BRANCH_NAME | grep -Eo '([[:upper:]]+-[0-9]+)')
 
 		if [ "$ISSUE" ]; then
 			prefix="$ISSUE "
