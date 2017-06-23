@@ -2,6 +2,11 @@ snippet l "Logging inline comment" b
 logger.${2:debug}('${1:message}')
 endsnippet
 
+snippet logger "Get logger" b
+import logging
+logger = logging.getLogger(__name__)
+endsnippet
+
 snippet # "Magic encoding comment" b!
 # coding: utf-8
 endsnippet

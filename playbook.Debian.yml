@@ -50,6 +50,7 @@
         - glances
         - npm
         - nodejs
+        - jq
       tags:
         - system_reqs
 
