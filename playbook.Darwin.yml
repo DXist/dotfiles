@@ -140,7 +140,7 @@
         - { src: .tmux.Darwin.conf, path: ~/.tmux.platform.conf }
         - { src: .bashrc.Darwin, path: ~/.bashrc.platform }
         - { src: private.xml, path: "~/Library/Application Support/Karabiner/private.xml" }
-        - { src: .gitattributes.Darwin, path: "~/.gitattributes" }
+        - { src: .gitattributes.Darwin, path: ".gitattributes" }
 
       tags:
         - osxconfigs
