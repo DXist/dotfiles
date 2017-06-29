@@ -9,7 +9,7 @@
       - python
       - cmake
       - git
-      - vim
+      - neovim
       - ctags
       - bash-completion
       - tmux

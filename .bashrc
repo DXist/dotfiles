@@ -46,6 +46,11 @@ export LC_MEASUREMENT="en_US.UTF-8"
 export LC_IDENTIFICATION="en_US.UTF-8"
 
 export EDITOR=vim
+
+# use neovim instead of vim if available
+if hash nvim 2>/dev/null; then
+	alias vim=nvim
+fi
 # quit less if one output fits on one screen
 export PAGER="less -FX"
 export LESSOPEN="|pygmentize -g -O encoding=utf-8 %s"
