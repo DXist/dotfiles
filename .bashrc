@@ -50,6 +50,7 @@ export EDITOR=vim
 # use neovim instead of vim if available
 if hash nvim 2>/dev/null; then
 	alias vim=nvim
+	export EDITOR=nvim
 fi
 # quit less if one output fits on one screen
 export PAGER="less -FX"
