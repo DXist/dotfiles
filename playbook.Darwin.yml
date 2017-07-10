@@ -58,6 +58,7 @@
         - toggldesktop
         - atom
         - xquartz
+        - telegram
     PREFERENCES: "{{ lookup('env', 'HOME')}}/Library/Preferences"
   environment:
     GIT_TEMPLATE_DIR: ""
