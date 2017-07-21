@@ -630,6 +630,7 @@ let g:neomake_info_sign = {'text': 'ℹ', 'texthl': 'Todo'}
 let g:neomake_verbose = 0
 let g:neomake_verbose = 0
 let g:neomake_open_list = 0
+let g:neomake_python_enabled_makers = ['pylama', 'mypy']
 nmap <leader>lf <ESC>:lfirst<CR>
 nmap <leader>ln <ESC>:lnext<CR>
 nmap <leader>lo <ESC>:lopen<CR>

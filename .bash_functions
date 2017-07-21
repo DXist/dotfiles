@@ -135,6 +135,7 @@ install_dev_tools() {
 	dev_tools="
 	pylint
 	pylama
+	mypy
 	isort
 	neovim
 	"
