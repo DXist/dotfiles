@@ -18,3 +18,5 @@ pylama.ini
 .python-version
 .runtests
 saved-breakpoints-*
+.mypy_cache/
+__pycache__
