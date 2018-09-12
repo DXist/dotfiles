@@ -12,7 +12,7 @@
     - .bashrc
     - .ctags
     - .dir_colors
-    - .docker
+    # - .docker
     - .fonts
     - .git_template
     - .gitattributes
