@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-hash glass 2>/dev/null
-
-if [ $? = 0 ]; then
-	#push time data
-	glass push $1
-	#persist (punch) to newly created commit and reset the timer
-fi
