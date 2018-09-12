@@ -1,5 +1,13 @@
 #!/usr/bin/env bash
 git_dir=$(git rev-parse --git-dir)
 case "$1" in
-	rebase) exec $git_dir/hooks/post-merge ;;
+	rebase)
+		. ~/.bashrc
+		# skip repositories out of workspace
+		top_level_dir=`git rev-parse --show-toplevel`
+		if [[ "$top_level_dir" = $PROJECT_HOME* && "$top_level_dir" != *dotfiles* ]]; then
+			git_dir=$(git rev-parse --git-dir)
+				ctagsify . $git_dir/tags
+				cindexify
+		fi ;;
 esac

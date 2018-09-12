@@ -135,12 +135,14 @@ install_dev_tools() {
 	dev_tools="
 	pylint
 	pylama
-	mypy
 	isort
 	neovim
 	"
 	pip install $dev_tools
 	easy_install pdbpp
+	if [[ `python -c 'import sys; print(sys.version_info>=(3, 4))'` = 'True' ]]; then
+		pip install mypy
+	fi
 }
 
 

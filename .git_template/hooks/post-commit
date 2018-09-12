@@ -7,6 +7,8 @@ if [ $? = 0 ]; then
 	glass reset
 fi
 
+command -v git-lfs >/dev/null 2>&1 && git lfs post-commit "$@"
+
 if [ ! "$GIT_REFLOG_ACTION" ]; then
 	git_dir=$(git rev-parse --git-dir)
 	exec $git_dir/hooks/ctags

@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+command -v git-lfs >/dev/null 2>&1 && git lfs pre-push "$@"
+
+hash glass 2>/dev/null
+
+if [ $? = 0 ]; then
+	#push time data
+	glass push $1
+	#persist (punch) to newly created commit and reset the timer
+fi

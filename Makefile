@@ -9,7 +9,8 @@ ifeq ($(ANSIBLE),)
 	ANSIBLE := $(shell which $(USERBASE)/bin/ansible)
 endif
 
-OS_FAMILY := $(shell $(ANSIBLE) localhost -i inventory.ini -m setup -a 'filter=ansible_os_family' |grep ansible_os_family |cut -d'"' -f4)
+#OS_FAMILY := $(shell $(ANSIBLE) localhost -i inventory.ini -m setup -a 'filter=ansible_os_family' |grep ansible_os_family |cut -d'"' -f4)
+OS_FAMILY := Debian
 
 # OS_FAMILY := $(shell cat $(CURDIR)/roles/os_family)
 # ifeq ($(OS_FAMILY),)
@@ -18,7 +19,7 @@ OS_FAMILY := $(shell $(ANSIBLE) localhost -i inventory.ini -m setup -a 'filter=a
 # endif
 
 PLAYBOOK ?= playbook.$(OS_FAMILY).yml
-ANSIBLE_ARGS ?= --ask-sudo-pass
+ANSIBLE_ARGS ?= --ask-become-pass
 
 .PHONY: all
 all: bootstrap provision update_vim
