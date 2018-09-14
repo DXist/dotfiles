@@ -1,1 +1,11 @@
-ctags
+#!/bin/bash
+command -v git-lfs >/dev/null 2>&1 && git lfs post-merge "$@"
+
+. ~/.bashrc
+# skip repositories out of workspace
+top_level_dir=`git rev-parse --show-toplevel`
+if [[ "$top_level_dir" = $PROJECT_HOME* && "$top_level_dir" != *dotfiles* ]]; then
+	git_dir=$(git rev-parse --git-dir)
+	ctagsify . $git_dir/tags
+	cindexify
+fi
