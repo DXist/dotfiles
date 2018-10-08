@@ -6,12 +6,12 @@ if has('vim_starting')
 	set nocompatible               " Be iMproved
 
 	" for local host overrides
-	set runtimepath+=~/.vim/.overrides/
+	set runtimepath+=~/.config/nvim/.overrides/
 	" Required:
-	set runtimepath+=~/.vim/bundle/neobundle.vim/
+	set runtimepath+=~/.config/nvim/bundle/neobundle.vim/
 
 	" Required:
-	call neobundle#begin(expand('~/.vim/bundle/'))
+	call neobundle#begin(expand('~/.config/nvim/bundle/'))
 
 	" Let NeoBundle manage NeoBundle
 	" Required:
@@ -212,8 +212,8 @@ match SpecialKey /^\t\+/
 " keep a backup file
 set backup
 " бэкапы и swap-файлы храним во временной директории
-set backupdir=~/.vim/backup/,/tmp
-set directory=~/.vim/tmp/,/tmp
+set backupdir=~/.config/nvim/backup/,/tmp
+set directory=~/.config/nvim/tmp/,/tmp
 
 set hidden					" hide buffers when they are abandoned
 set autoread				" auto reload externally changed files
@@ -237,9 +237,9 @@ augroup group_general
 	autocmd!
 	autocmd BufWritePre * call RemoveTrailingWhitespace()
 	" автообновление настроек
-	autocmd BufWritePost .vimrc.global source ~/.vim/.vimrc.global
+	autocmd BufWritePost .vimrc.global source ~/.config/nvim/.vimrc.global
 	" автообновление проектов
-	autocmd BufWritePost projects.vim source ~/.vim/projects.vim
+	autocmd BufWritePost projects.vim source ~/.config/nvim/projects.vim
 	autocmd! BufWritePost * Neomake
 augroup END
 
@@ -291,7 +291,7 @@ map Q gq
 
 " Undo
 if has('persistent_undo')
-	set undodir=~/.vim/tmp/,/tmp
+	set undodir=~/.config/nvim/tmp/,/tmp
 	set undofile				" enable persistent undo
 endif
 
@@ -363,8 +363,8 @@ let g:ycm_key_list_previous_completion = ['<Up>']
 "}}}
 
 " PROJECTS {{{1
-if filereadable(expand('~/.vim/projects.vim'))
-	source ~/.vim/projects.vim
+if filereadable(expand('~/.config/nvim/projects.vim'))
+	source ~/.config/nvim/projects.vim
 endif
 " }}}
 
@@ -739,7 +739,7 @@ nnoremap <leader>ci <ESC>:Isort<CR>
 "}}}
 " Local settings
 " ================
-if filereadable($HOME . "/.vimrc.local")
-    source $HOME/.vimrc.local
+if filereadable($HOME . "/.config/nvim/.vimrc.local")
+    source $HOME/.config/nvim/.vimrc.local
 endif
 " vim: set foldmethod=marker:
