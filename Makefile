@@ -41,4 +41,3 @@ pull:
 .PHONY: update_vim
 update_vim:
 	vim +PlugUpdate +qall
-	vim +GoInstallBinaries +qall
