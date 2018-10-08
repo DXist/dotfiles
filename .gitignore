@@ -2,3 +2,4 @@
 /.gitconfig.local
 /.tmuxp
 *.retry
+.vim/plugged
