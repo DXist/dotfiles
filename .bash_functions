@@ -137,11 +137,12 @@ install_dev_tools() {
 	pylama
 	isort
 	neovim
+	pdbpp
 	"
-	pip install $dev_tools
-	easy_install pdbpp
+	pip install --user $dev_tools
+	# easy_install pdbpp
 	if [[ `python -c 'import sys; print(sys.version_info>=(3, 4))'` = 'True' ]]; then
-		pip install mypy
+		pip install --user mypy
 	fi
 }
 
