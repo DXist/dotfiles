@@ -47,7 +47,7 @@
         - duplicity
         - gnupg-agent
         - ncurses-term
-        - glances
+        # - glances
         - npm
         - nodejs
         - jq
