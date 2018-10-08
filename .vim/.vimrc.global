@@ -42,8 +42,7 @@ if has('vim_starting')
 	Plug 'Raimondi/delimitMate'
 	Plug 'Valloric/YouCompleteMe', {'do': './install.py --gocode-completer'}
 	Plug 'michaeljsmith/vim-indent-object'
-	" Plug 'xolox/vim-misc'
-	" Plug 'xolox/vim-session'
+	Plug 'thaerkh/vim-workspace'
 	Plug 'thinca/vim-template'
 	Plug 'me-vlad/spellfiles.vim'
 	" broken in my configuration
@@ -385,13 +384,12 @@ set switchbuf=usetab
 
 " PLUGINS {{{2
 
-" Session.vim
-let g:session_autosave = "yes"
-let g:session_autosave_periodic = 5
-" expand sym links
-let g:session_directory = resolve(expand("~/.vim/sessions"))
-let g:session_lock_directory = "/tmp"
-nmap <space> :<c-u>OpenSession<CR>
+" vim-workspace
+let g:workspace_autosave = 0
+let g:workspace_persist_undo_history = 0
+let g:workspace_autosave_untrailspaces = 0
+
+nnoremap <leader><space> :ToggleWorkspace<CR>
 
 " vim-test
 " map <Leader>mr <ESC>:python run_test()<CR>
