@@ -45,7 +45,6 @@ if has('vim_starting')
 	Plug 'thaerkh/vim-workspace'
 	Plug 'thinca/vim-template'
 	Plug 'me-vlad/spellfiles.vim'
-	" broken in my configuration
 	Plug 'SirVer/ultisnips'
 	Plug 'honza/vim-snippets'
 	Plug 'benatkin/vim-move-between-tabs'
@@ -66,9 +65,6 @@ if has('vim_starting')
 	Plug 'fatih/vim-go', {'for': ['go'], 'do': ':GoInstallBinaries'}
 
 	Plug 'chase/vim-ansible-yaml', {'for': ['yaml', 'ansible']}
-	" Plug 'pearofducks/ansible-vim'
-	Plug 'szw/vim-ctrlspace'
-	" Plug 'airblade/vim-rooter'
 	Plug 'mattn/emmet-vim', {'for': ['html', 'xhtml']}
 	Plug 'ekalinin/Dockerfile.vim', {'for': ['Dockerfile']}
 	Plug 'fisadev/vim-isort', {'for': ['python']}
