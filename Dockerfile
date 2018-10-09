@@ -1,8 +1,10 @@
 FROM ubuntu:16.04
 
 ARG python=python
+ARG user_id=1000
+ARG group_id=1000
 
-RUN groupadd -g 999 user && useradd -m -u 999 -g user -G sudo user
+RUN groupadd -g ${user_id} dev && useradd -m -u ${group_id} -g dev -G sudo dev
 
 RUN apt-get update && apt-get install -y \
         sudo \
@@ -17,9 +19,9 @@ RUN sed -i 's/%sudo.\+/%sudo   ALL=(ALL:ALL) NOPASSWD:ALL/' /etc/sudoers
 
 RUN pip install ansible
 
-COPY --chown=user:user . /home/user/workspace/dotfiles
+COPY --chown=dev:dev . /home/user/workspace/dotfiles
 
-USER user
+USER dev
 
 WORKDIR /home/user/workspace
 
