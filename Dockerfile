@@ -19,12 +19,12 @@ RUN sed -i 's/%sudo.\+/%sudo   ALL=(ALL:ALL) NOPASSWD:ALL/' /etc/sudoers
 
 RUN pip install ansible
 
-COPY --chown=dev:dev . /home/user/workspace/dotfiles
+COPY --chown=dev:dev . /home/dev/workspace/dotfiles
 
 USER dev
 
-WORKDIR /home/user/workspace
+WORKDIR /home/dev/workspace
 
-RUN cd /home/user/workspace/dotfiles && ansible-playbook -i inventory.ini playbook.Debian.yml
+RUN cd /home/dev/workspace/dotfiles && ansible-playbook -i inventory.ini playbook.Debian.yml
 
-RUN cd /home/user/workspace/dotfiles && nvim +PlugUpdate +qall
+RUN cd /home/dev/workspace/dotfiles && nvim +PlugUpdate +qall
