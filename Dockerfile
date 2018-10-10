@@ -1,6 +1,6 @@
 FROM ubuntu:16.04
 
-ARG python=python
+ARG python=python3
 ARG user_id=1000
 ARG group_id=1000
 
@@ -28,3 +28,5 @@ WORKDIR /home/dev/workspace
 RUN cd /home/dev/workspace/dotfiles && ansible-playbook -i inventory.ini playbook.Debian.yml
 
 RUN cd /home/dev/workspace/dotfiles && nvim +PlugUpdate +qall
+
+RUN bash -c ". /home/dev/.bash_functions && install_dev_tools"
