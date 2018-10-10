@@ -3,3 +3,4 @@
 /.tmuxp
 *.retry
 .vim/plugged
+/docker-compose.override.yml

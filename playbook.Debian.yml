@@ -21,50 +21,52 @@
 
     - name: Install system deps
       become: yes
-      apt: name={{ item }} state=present force=yes
       when: SKIP_SUDO is not defined
-      with_items:
-        # - vim-nox
-        - neovim
-        # available only in new Debians
-        #- vim-nox-py2
-        - git
-        - exuberant-ctags
-        - cmake
-        # - python-dev
-        # - libyaml-dev
-        # for pyenv python
-        # - libsqlite3-dev
-        # - libbz2-dev
-        # - libreadline-dev
-        # - python-pygments
-        - golang
-        - silversearcher-ag
-        - tmux
-        - bash-completion
-        - virtualenvwrapper
-        # - python-pip
-        # - duplicity
-        # - gnupg-agent
-        # - ncurses-term
-        # - glances
-        # - npm
-        # - nodejs
-        - jq
+      apt:
+        state: present
+        force: yes
+        name:
+          # - vim-nox
+          - neovim
+          # available only in new Debians
+          #- vim-nox-py2
+          - git
+          - exuberant-ctags
+          - cmake
+          # - python-dev
+          # - libyaml-dev
+          # for pyenv python
+          # - libsqlite3-dev
+          # - libbz2-dev
+          # - libreadline-dev
+          # - python-pygments
+          - golang
+          - silversearcher-ag
+          - tmux
+          - bash-completion
+          - virtualenvwrapper
+          # - python-pip
+          # - duplicity
+          # - gnupg-agent
+          # - ncurses-term
+          # - glances
+          # - npm
+          # - nodejs
+          - jq
       tags:
         - system_reqs
 
-    - name: Install deps for GUI
-      become: yes
-      apt: name={{ item }} state=present force=yes
-      when: "{{ SKIP_SUDO is not defined and 'DESKTOP_SESSION' in ansible_env }}"
-      with_items:
-        - vim-gtk3
-        - vim-gtk3-py2
-        - virtualbox
-        - vagrant
-      tags:
-        - system_reqs_gui
+    # - name: Install deps for GUI
+    #   become: yes
+    #   when: "{{ SKIP_SUDO is not defined and 'DESKTOP_SESSION' in ansible_env }}"
+    #   apt: name={{ item }} state=present force=yes
+    #   with_items:
+    #     - vim-gtk3
+    #     - vim-gtk3-py2
+    #     - virtualbox
+    #     - vagrant
+    #   tags:
+    #     - system_reqs_gui
 
     # - name: Install GUI debs
     #   apt: deb={{ item }} state=present

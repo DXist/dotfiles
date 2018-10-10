@@ -157,17 +157,17 @@
     GOPATH: "{{ lookup('ENV', 'HOME') }}/go"
   when: SKIP_SUDO is not defined
   with_items:
-    - github.com/junkblocker/codesearch/...
+    # - github.com/junkblocker/codesearch/...
     - github.com/vladimir-g/gmtrn/cmd/gmtrn-cli
 
   tags:
     - gotools
 
-- name: install node packages
-  npm: name={{ item }} global=yes
-  become: yes
-  when: SKIP_SUDO is not defined
-  with_items:
-    - jshint
-  tags:
-    - install_node_packages
+# - name: install node packages
+#   npm: name={{ item }} global=yes
+#   become: yes
+#   when: SKIP_SUDO is not defined
+#   with_items:
+#     - jshint
+#   tags:
+#     - install_node_packages
