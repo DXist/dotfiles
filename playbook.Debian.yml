@@ -48,7 +48,8 @@
           # - python-pip
           # - duplicity
           # - gnupg-agent
-          # - ncurses-term
+          # terminfo database
+          - ncurses-term
           # - glances
           # - npm
           # - nodejs
