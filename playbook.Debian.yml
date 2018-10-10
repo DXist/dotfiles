@@ -24,32 +24,32 @@
       apt: name={{ item }} state=present force=yes
       when: SKIP_SUDO is not defined
       with_items:
-        - vim-nox
+        # - vim-nox
         - neovim
         # available only in new Debians
         #- vim-nox-py2
         - git
         - exuberant-ctags
         - cmake
-        - python-dev
-        - libyaml-dev
+        # - python-dev
+        # - libyaml-dev
         # for pyenv python
-        - libsqlite3-dev
-        - libbz2-dev
-        - libreadline-dev
-        - python-pygments
+        # - libsqlite3-dev
+        # - libbz2-dev
+        # - libreadline-dev
+        # - python-pygments
         - golang
         - silversearcher-ag
         - tmux
         - bash-completion
         - virtualenvwrapper
-        - python-pip
-        - duplicity
-        - gnupg-agent
-        - ncurses-term
+        # - python-pip
+        # - duplicity
+        # - gnupg-agent
+        # - ncurses-term
         # - glances
-        - npm
-        - nodejs
+        # - npm
+        # - nodejs
         - jq
       tags:
         - system_reqs

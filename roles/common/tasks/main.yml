@@ -131,15 +131,15 @@
   tags:
     - update_font_cache
 
-- name: Install pyenv
-  git: repo='https://github.com/yyuu/pyenv.git' dest='{{ lookup('ENV', 'HOME') }}/.pyenv'
-  tags:
-    - pyenv
+# - name: Install pyenv
+#   git: repo='https://github.com/yyuu/pyenv.git' dest='{{ lookup('ENV', 'HOME') }}/.pyenv'
+#   tags:
+#     - pyenv
 
-- name: Install pyenv-virtualenv
-  git: repo='https://github.com/yyuu/pyenv-virtualenv.git' dest='{{ lookup('ENV', 'HOME') }}/.pyenv/plugins/pyenv-virtualenv'
-  tags:
-    - pyenv-virtualenv
+# - name: Install pyenv-virtualenv
+#   git: repo='https://github.com/yyuu/pyenv-virtualenv.git' dest='{{ lookup('ENV', 'HOME') }}/.pyenv/plugins/pyenv-virtualenv'
+#   tags:
+#     - pyenv-virtualenv
 
 - name: Install global python packages
   pip: name={{ item }}

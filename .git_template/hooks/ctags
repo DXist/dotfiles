@@ -5,5 +5,5 @@ top_level_dir=`git rev-parse --show-toplevel`
 if [[ "$top_level_dir" = $PROJECT_HOME* && "$top_level_dir" != *dotfiles* ]]; then
 	git_dir=$(git rev-parse --git-dir)
 	ctagsify . $git_dir/tags
-	cindexify
+	# cindexify
 fi
