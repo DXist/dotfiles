@@ -185,6 +185,3 @@ fi
 if [ -r ~/.bashrc.local ]; then
 	. ~/.bashrc.local
 fi
-
-
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
