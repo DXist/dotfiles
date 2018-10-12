@@ -12,7 +12,7 @@ if has('vim_starting')
 
 	" Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 	" Plug 'Shougo/denite.nvim'
-	Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+	Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 	Plug 'junegunn/fzf.vim'
 
 	Plug 'mhinz/vim-hugefile'
