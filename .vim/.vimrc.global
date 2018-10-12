@@ -440,6 +440,7 @@ nnoremap ; <ESC>:CtrlPBufTag<CR>
 nnoremap <silent> <leader>f  :<C-u>FZF<CR>
 command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4.. --exact'}, <bang>0)
 nnoremap <silent> <leader>a  :<C-u>Ag<CR>
+nnoremap <silent> <leader>8 :<C-u>Ag <C-R><C-W><CR>
 
 
 " An action can be a reference to a function that processes selected lines
