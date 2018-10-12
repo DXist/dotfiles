@@ -14,6 +14,10 @@ if [[ "${PATH}" != *$HOME/bin* ]]; then
 	export PATH=$HOME/bin:$PATH
 fi
 
+if [[ -d $HOME/.local/bin -a "${PATH}" != *$HOME/.local/bin* ]]; then
+	export PATH=$HOME/local/bin:$PATH
+fi
+
 if [[ "${PATH}" != *$HOME/go/bin* ]]; then
 	export PATH=$PATH:$HOME/go/bin
 fi
