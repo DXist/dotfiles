@@ -138,6 +138,7 @@ install_dev_tools() {
 	isort
 	neovim
 	pdbpp
+	ipython
 	"
 	pip install --user $dev_tools
 	# easy_install pdbpp
