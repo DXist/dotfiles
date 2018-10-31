@@ -132,6 +132,21 @@ _cg()
 complete -F _cg cg
 
 install_dev_tools() {
+	if [ -z "$VIRTUAL_ENV" ]; then
+		INSTALL_ARGS='--user'
+	else
+		INSTALL_ARGS=''
+	fi
+
+	# easy_install pdbpp
+	if [[ `python -c 'import sys; print(sys.version_info>=(3, 4))'` = 'True' ]]; then
+		pip install $INSTALL_ARGS mypy
+	else
+		# python3
+		# last pylint doesnt'support quiet mode in python2
+		pip install $INSTALL_ARGS pylint==1.7.6
+	fi
+
 	dev_tools="
 	pylint
 	pylama
@@ -140,11 +155,7 @@ install_dev_tools() {
 	pdbpp
 	ipython
 	"
-	pip install --user $dev_tools
-	# easy_install pdbpp
-	if [[ `python -c 'import sys; print(sys.version_info>=(3, 4))'` = 'True' ]]; then
-		pip install --user mypy
-	fi
+	pip install $INSTALL_ARGS $dev_tools
 }
 
 

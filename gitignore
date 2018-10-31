@@ -19,3 +19,5 @@ Guardfile
 saved-breakpoints-*
 .mypy_cache/
 __pycache__
+*.egg-info
+pylama.ini
