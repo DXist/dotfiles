@@ -2,10 +2,13 @@ ARG BASE=python:3-stretch
 
 FROM ${BASE}
 
+ARG user=dev
+ARG group=dev
+ARG group_id=1000
 ARG user_id=1000
 ARG group_id=1000
 
-RUN groupadd -g ${user_id} dev && useradd -m -u ${group_id} -g dev -G sudo dev
+RUN groupadd -g ${user_id} ${group} && useradd -m -u ${group_id} -g ${group} -G sudo ${user}
 
 RUN apt-get update && apt-get install -y \
         sudo \
@@ -21,14 +24,18 @@ RUN sed -i 's/%sudo.\+/%sudo   ALL=(ALL:ALL) NOPASSWD:ALL/' /etc/sudoers
 
 RUN pip install ansible
 
-COPY --chown=dev:dev . /home/dev/workspace/dotfiles
+#COPY --chown=dev:dev . /home/${user}/workspace/dotfiles
+COPY . /home/${user}/workspace/dotfiles
 
-USER dev
+RUN chown -R ${user}:${group} /home/${user}/workspace/dotfiles
 
-WORKDIR /home/dev/workspace
 
-RUN cd /home/dev/workspace/dotfiles && ansible-playbook -i inventory.ini playbook.Debian.yml
+USER ${user}
 
-RUN cd /home/dev/workspace/dotfiles && nvim +PlugUpdate +qall
+WORKDIR /home/${user}/workspace
 
-RUN bash -c ". /home/dev/.bash_functions && install_dev_tools"
+RUN cd /home/${user}/workspace/dotfiles && ansible-playbook -i inventory.ini playbook.Debian.yml
+
+RUN cd /home/${user}/workspace/dotfiles && nvim +PlugUpdate +qall
+
+RUN bash -c ". /home/${user}/.bash_functions && install_dev_tools"
