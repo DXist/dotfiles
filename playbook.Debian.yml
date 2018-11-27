@@ -31,6 +31,7 @@
           # available only in new Debians
           #- vim-nox-py2
           - git
+          - git-lfs
           - exuberant-ctags
           - cmake
           # - python-dev
