@@ -36,6 +36,7 @@
           - neovim
           # available only in new Debians
           #- vim-nox-py2
+          - less
           - git
           - git-lfs
           - exuberant-ctags
