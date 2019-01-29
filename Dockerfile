@@ -8,7 +8,11 @@ ARG group_id=1000
 ARG user_id=1000
 ARG group_id=1000
 
-RUN groupadd -g ${user_id} ${group} && useradd -m -u ${group_id} -g ${group} -G sudo ${user}
+USER root
+
+RUN (getent group user || groupadd -g ${GROUP_ID} user) && (getent passwd user || useradd -m -u ${USER_ID} -g user user)
+
+RUN gpasswd -a ${user} sudo
 
 RUN apt-get update && apt-get install -y \
         sudo \
