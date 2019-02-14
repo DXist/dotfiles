@@ -13,17 +13,17 @@
     - name: Configure apt repositories
       become: yes
       apt_repository: repo={{ item }} validate_certs=no state=present
-      when: SKIP_SUDO is not defined
+      when: SKIP_SUDO is not defined and ansible_distribution == 'Ubuntu'
       with_items:
         - ppa:neovim-ppa/unstable
       tags:
         - system_reqs
 
-    - name: Setup git lfs repo
-      shell: curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
-      when: SKIP_SUDO is not defined
-      tags:
-        - system_reqs
+    # - name: Setup git lfs repo
+    #   shell: curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
+    #   when: SKIP_SUDO is not defined
+    #   tags:
+    #     - system_reqs
 
     - name: Install system deps
       become: yes
@@ -31,6 +31,7 @@
       apt:
         state: present
         force: yes
+        update_cache: yes
         name:
           # - vim-nox
           - neovim
@@ -41,6 +42,7 @@
           - git-lfs
           - exuberant-ctags
           - cmake
+          - tar
           # - python-dev
           # - libyaml-dev
           # for pyenv python
@@ -48,7 +50,6 @@
           # - libbz2-dev
           # - libreadline-dev
           # - python-pygments
-          - golang
           - silversearcher-ag
           - tmux
           - bash-completion
@@ -64,6 +65,29 @@
           - jq
       tags:
         - system_reqs
+
+    - name: Install golang
+      become: yes
+      when: SKIP_SUDO is not defined
+      unarchive:
+        src: https://dl.google.com/go/go1.11.5.linux-amd64.tar.gz
+        dest: /usr/local/
+        remote_src: yes
+        creates: /usr/local/go/bin/go
+      tags:
+        - golang
+
+    - name: Create go symlinks
+      become: yes
+      when: SKIP_SUDO is not defined
+      file: src=/usr/local/go/bin/{{ item }} dest=/usr/local/bin/{{ item }} state=link
+      with_items:
+        - go
+        - gofmt
+        - godoc
+      tags:
+        - golang
+
 
     # - name: Install deps for GUI
     #   become: yes

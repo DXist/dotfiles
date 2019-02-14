@@ -37,7 +37,10 @@ if has('vim_starting')
 	Plug 'altercation/vim-colors-solarized'
 	" Plug 'scrooloose/syntastic'
 	Plug 'neomake/neomake'
-	Plug 'bkad/CamelCaseMotion'
+	Plug 'chaoren/vim-wordmotion'
+    let g:wordmotion_prefix = '<Leader>'
+
+	" Plug 'bkad/CamelCaseMotion'
 	Plug 'Lokaltog/vim-easymotion'
 	Plug 'Raimondi/delimitMate'
 	Plug 'Valloric/YouCompleteMe', {'do': './install.py --gocode-completer'}
@@ -62,7 +65,7 @@ if has('vim_starting')
 
 	Plug 'othree/html5.vim', {'for': ['html', 'xhtml', 'css']}
 
-	Plug 'fatih/vim-go', {'for': ['go'], 'do': ':GoInstallBinaries'}
+	Plug 'fatih/vim-go' " , {'for': ['go'], 'do': ':GoInstallBinaries'}
 
 	Plug 'chase/vim-ansible-yaml', {'for': ['yaml', 'ansible']}
 	Plug 'mattn/emmet-vim', {'for': ['html', 'xhtml']}
@@ -554,7 +557,7 @@ let g:EasyMotion_smartcase = 1
 let g:EasyMotion_use_smartsign_us = 1
 
 " camel case motion
-call camelcasemotion#CreateMotionMappings('<leader>')
+" call camelcasemotion#CreateMotionMappings('<leader>')
 
 " vim-go
 let g:go_highlight_functions = 1

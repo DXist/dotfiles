@@ -1,23 +1,23 @@
-ARG BASE=python:3-stretch
+ARG BASE=debian:buster
 
 FROM ${BASE}
 
-ARG user=dev
-ARG group=dev
-ARG group_id=1000
-ARG user_id=1000
-ARG group_id=1000
+ARG USER=user
+ARG GROUP=user
+ARG USER_ID=1000
+ARG GROUP_ID=1000
 
 USER root
 
-RUN (getent group user || groupadd -g ${GROUP_ID} user) && (getent passwd user || useradd -m -u ${USER_ID} -g user user)
+RUN (getent group user || groupadd -g ${GROUP_ID} ${GROUP}) && (getent passwd ${USER} || useradd -m -u ${USER_ID} -g ${GROUP} ${USER})
 
-RUN gpasswd -a ${user} sudo
+RUN gpasswd -a ${USER} sudo
 
 RUN apt-get update && apt-get install -y \
         sudo \
         curl \
         locales \
+        locales-all \
         python3-apt \
         python3-pip \
         && rm -rf /var/lib/apt/lists/*
@@ -26,20 +26,27 @@ RUN locale-gen en_US.UTF-8 && update-locale LANG=en_US.UTF-8
 
 RUN sed -i 's/%sudo.\+/%sudo   ALL=(ALL:ALL) NOPASSWD:ALL/' /etc/sudoers
 
-RUN pip install ansible
+RUN pip3 install ansible
 
-#COPY --chown=dev:dev . /home/${user}/workspace/dotfiles
-COPY . /home/${user}/workspace/dotfiles
+#COPY --chown=dev:dev . /home/${USER}/workspace/dotfiles
+COPY . /home/${USER}/workspace/dotfiles
 
-RUN chown -R ${user}:${group} /home/${user}/workspace/dotfiles
+RUN chown -R ${USER}:${group} /home/${USER}/workspace/dotfiles
 
 
-USER ${user}
+USER ${USER}
 
-WORKDIR /home/${user}/workspace
+WORKDIR /home/${USER}/workspace
 
-RUN cd /home/${user}/workspace/dotfiles && ansible-playbook -i inventory.ini playbook.Debian.yml
+RUN cd /home/${USER}/workspace/dotfiles && ansible-playbook -i inventory.ini playbook.Debian.yml
 
-RUN cd /home/${user}/workspace/dotfiles && nvim +PlugUpdate +qall
+RUN cd /home/${USER}/workspace/dotfiles && nvim +PlugUpdate +qall
 
-RUN bash -c ". /home/${user}/.bash_functions && install_dev_tools"
+RUN pip3 install --user \
+        mypy \
+        pylint \
+        pylama \
+        isort \
+        neovim \
+        pdbpp \
+        ipython
