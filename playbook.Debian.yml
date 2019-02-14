@@ -42,6 +42,7 @@
           - git-lfs
           - exuberant-ctags
           - cmake
+          - build-essential
           - tar
           # - python-dev
           # - libyaml-dev

@@ -20,6 +20,7 @@ RUN apt-get update && apt-get install -y \
         locales-all \
         python3-apt \
         python3-pip \
+        python3-dev \
         && rm -rf /var/lib/apt/lists/*
 
 RUN locale-gen en_US.UTF-8 && update-locale LANG=en_US.UTF-8
