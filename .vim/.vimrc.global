@@ -43,7 +43,7 @@ if has('vim_starting')
 	" Plug 'bkad/CamelCaseMotion'
 	Plug 'Lokaltog/vim-easymotion'
 	Plug 'Raimondi/delimitMate'
-	Plug 'Valloric/YouCompleteMe', {'do': './install.py --gocode-completer'}
+	Plug 'Valloric/YouCompleteMe', {'do': 'python3 ./install.py --gocode-completer'}
 	Plug 'michaeljsmith/vim-indent-object'
 	Plug 'thaerkh/vim-workspace'
 	Plug 'thinca/vim-template'
