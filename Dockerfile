@@ -21,12 +21,15 @@ RUN apt-get update && apt-get install -y \
         python3-apt \
         python3-pip \
         python3-dev \
+        libffi-dev \
+        libssl-dev \
         && rm -rf /var/lib/apt/lists/*
 
 RUN locale-gen en_US.UTF-8 && update-locale LANG=en_US.UTF-8
 
 RUN sed -i 's/%sudo.\+/%sudo   ALL=(ALL:ALL) NOPASSWD:ALL/' /etc/sudoers
 
+RUN pip3 install setuptools
 RUN pip3 install ansible
 
 #COPY --chown=dev:dev . /home/${USER}/workspace/dotfiles

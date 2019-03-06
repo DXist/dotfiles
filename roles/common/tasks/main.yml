@@ -141,15 +141,15 @@
 #   tags:
 #     - pyenv-virtualenv
 
-- name: Install global python packages
-  pip: name={{ item }}
-  with_items:
-    - neovim
-    - 'tmuxp>=1.0.0'
-  when: SKIP_SUDO is not defined
-  become: yes
-  tags:
-    - pippackages
+# - name: Install global python packages
+#   pip: name={{ item }}
+#   with_items:
+#     - neovim
+#     - 'tmuxp>=1.0.0'
+#   when: SKIP_SUDO is not defined
+#   become: yes
+#   tags:
+#     - pippackages
 
 - name: Install go tools
   command: go get {{ item }}

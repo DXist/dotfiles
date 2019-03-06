@@ -313,7 +313,7 @@ augroup group_c
 	autocmd FileType c,cpp nnoremap <buffer> <leader>jf :YcmCompleter GoToDeclaration<CR>
 augroup END
 
-augroup group_python
+" augroup group_python
 
 
 "YouCompleteMe conflicts with delimitMate]
