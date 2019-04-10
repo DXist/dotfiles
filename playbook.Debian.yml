@@ -54,8 +54,9 @@
           # - python-pygments
           - silversearcher-ag
           - tmux
+          # in bionic
+          - tmuxp
           - bash-completion
-          - virtualenvwrapper
           # - python-pip
           # - duplicity
           # - gnupg-agent

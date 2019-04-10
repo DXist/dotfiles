@@ -112,7 +112,7 @@
     - name: install python packages
       pip: name={{ item }}
       with_items:
-        - virtualenvwrapper
+        - pipenv
         - ansible
         - glances
         - objgraph

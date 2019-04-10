@@ -1,4 +1,4 @@
-USERBASE := $(shell python -m site --user-base)
+USERBASE := $(shell python3 -m site --user-base)
 ANSIBLE := $(shell which ansible)
 
 ifeq ($(ANSIBLE),)

@@ -19,7 +19,6 @@
       - the_silver_searcher
       - tmux
       - bash-completion
-      - python-virtualenvwrapper
       - python-pip
       - duplicity
       - gnupg2
