@@ -96,18 +96,18 @@ if [[ "${GOPATH}" != *$HOME/go* ]]; then
 	fi
 fi
 
-venvwrapper=`which virtualenvwrapper.sh`
+# venvwrapper=`which virtualenvwrapper.sh`
 
-if [ -r  "$venvwrapper" -o -n "$(type -t workon)" ]; then
-	export WORKON_HOME=~/envs
-	export PROJECT_HOME=${PROJECT_HOME:-$HOME/workspace}
-	if [ -z "$VIRTUALENVWRAPPER_PYTHON" ]; then
-		export VIRTUALENVWRAPPER_PYTHON=`which python`
-	fi
-	if [ -r "$venvwrapper" ]; then
-		. "$venvwrapper"
-	fi
-fi
+# if [ -r  "$venvwrapper" -o -n "$(type -t workon)" ]; then
+# 	export WORKON_HOME=~/envs
+# 	export PROJECT_HOME=${PROJECT_HOME:-$HOME/workspace}
+# 	if [ -z "$VIRTUALENVWRAPPER_PYTHON" ]; then
+# 		export VIRTUALENVWRAPPER_PYTHON=`which python`
+# 	fi
+# 	if [ -r "$venvwrapper" ]; then
+# 		. "$venvwrapper"
+# 	fi
+# fi
 
 export PYENV_ROOT="$HOME/.pyenv"
 

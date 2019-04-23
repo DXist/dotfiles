@@ -1,7 +1,7 @@
 session_name: dotfiles
-start_directory: $PROJECT_HOME/dotfiles
+start_directory: $HOME/workspace/dotfiles
 # options:
-#   default-path: $PROJECT_HOME/dotfiles
+#   default-path: $HOME/workspace/dotfiles
 
 windows:
   - window_name: dotfiles

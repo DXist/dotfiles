@@ -142,14 +142,7 @@
 #     - pyenv-virtualenv
 
 - name: Install global python packages
-  pip: name={{ item }}
-  extra_args: --user
-  with_items:
-    - neovim
-    - pipenv
-    - 'tmuxp>=1.0.0'
-  when: SKIP_SUDO is not defined
-  become: yes
+  shell: pip3 install --user neovim pipenv 'tmuxp>=1.0.0'
   tags:
     - pippackages
 
