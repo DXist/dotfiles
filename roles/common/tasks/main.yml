@@ -142,7 +142,7 @@
 #     - pyenv-virtualenv
 
 - name: Install global python packages
-  shell: pip3 install --user neovim pipenv 'tmuxp>=1.0.0'
+  shell: pip install --user neovim pipenv 'tmuxp>=1.0.0'
   tags:
     - pippackages
 
