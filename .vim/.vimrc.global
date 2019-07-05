@@ -53,6 +53,8 @@ if has('vim_starting')
 	Plug 'benatkin/vim-move-between-tabs'
 	Plug 'ConradIrwin/vim-bracketed-paste'
 	Plug 'godlygeek/tabular'
+	Plug 'python/black', {'for': ['python']}
+
 
 	" optional plugins
 	" Vim plugin that displays tags in a window, ordered by class etc.
@@ -313,7 +315,12 @@ augroup group_c
 	autocmd FileType c,cpp nnoremap <buffer> <leader>jf :YcmCompleter GoToDeclaration<CR>
 augroup END
 
-" augroup group_python
+if has('python3')
+	augroup group_python
+		autocmd!
+		autocmd BufWritePre *.py execute ':Black'
+	augroup END
+endif
 
 
 "YouCompleteMe conflicts with delimitMate]

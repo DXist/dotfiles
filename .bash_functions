@@ -154,6 +154,7 @@ install_dev_tools() {
 	neovim
 	pdbpp
 	ipython
+	black
 	"
 	pip install $INSTALL_ARGS $dev_tools
 }

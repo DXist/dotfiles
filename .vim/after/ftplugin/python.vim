@@ -1,6 +1,6 @@
 setlocal expandtab
 setlocal softtabstop=4
-setlocal textwidth=79
+setlocal textwidth=88
 setlocal commentstring=#%s
 setlocal fdm=indent
 " setlocal errorformat=\%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z\ \ \ \ %m
@@ -10,7 +10,7 @@ nnoremap <buffer> <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <buffer> <leader>jr :YcmCompleter GoToReferences<CR>
 
 if v:version>=703
-	setlocal cc=79
+	setlocal cc=88
 endif
 
 let b:delimitMate_smart_quotes = 0

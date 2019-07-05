@@ -3,4 +3,5 @@
 /.tmuxp
 *.retry
 .vim/plugged
+.vim/black
 /docker-compose.override.yml
