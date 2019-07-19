@@ -53,4 +53,5 @@ RUN pip3 install --user \
         isort \
         neovim \
         pdbpp \
-        ipython
+        ipython \
+        black
