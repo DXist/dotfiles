@@ -55,7 +55,7 @@
           - silversearcher-ag
           - tmux
           # in bionic
-          - tmuxp
+          # - tmuxp
           - bash-completion
           # - python-pip
           # - duplicity
