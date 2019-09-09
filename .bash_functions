@@ -131,6 +131,17 @@ _cg()
 }
 complete -F _cg cg
 
+export DEV_TOOLS="
+	pylint
+	pylama
+	isort
+	neovim
+	pdbpp
+	ipython
+	black
+	mypy
+"
+
 install_dev_tools() {
 	if [ -z "$VIRTUAL_ENV" ]; then
 		INSTALL_ARGS='--user'
@@ -147,17 +158,7 @@ install_dev_tools() {
 		# last pylint doesnt'support quiet mode in python2
 		${PIP} install $INSTALL_ARGS pylint==1.7.6
 	fi
-
-	dev_tools="
-	pylint
-	pylama
-	isort
-	neovim
-	pdbpp
-	ipython
-	black
-	"
-	${PIP} install $INSTALL_ARGS $dev_tools
+	${PIP} install $INSTALL_ARGS ${DEV_TOOLS/mypy/}
 }
 
 

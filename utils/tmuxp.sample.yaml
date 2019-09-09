@@ -1,18 +1,14 @@
 # Tmuxp workspace config
 # See http://tmuxp.readthedocs.io/en/latest/about.html for details
 session_name: example
-start_directory: $PROJECT_HOME/example
+start_directory: $HOME/workspace/example
+
+shell_command_before:
+  - flock .tmuxp.yml pipenv install --skip-lock $DEV_TOOLS && pipenv shell
 
 windows:
-  - window_name: server
-
+  - window_name: example
     layout: even-horizontal
-    panes:
-      - shell_command:
-      - shell_command:
-
-  - window_name: vim
-    focus: True
     panes:
       - shell_command:
         - vim
