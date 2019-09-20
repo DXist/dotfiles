@@ -447,7 +447,7 @@ nnoremap ; <ESC>:CtrlPBufTag<CR>
 " nnoremap <silent> <leader>f  :<C-u>CtrlSpace O<CR>
 " nnoremap <leader><space> :<c-u>CtrlSpace b<CR>
 
-nnoremap <silent> <leader>f  :<C-u>FZF<CR>
+nnoremap <silent> <leader>f  :<C-u>GFiles<CR>
 command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4.. --exact'}, <bang>0)
 nnoremap <silent> <leader>a  :<C-u>Ag<CR>
 nnoremap <silent> <leader>8 :<C-u>Ag <C-R><C-W><CR>
