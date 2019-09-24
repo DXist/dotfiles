@@ -3,17 +3,22 @@
 session_name: example
 start_directory: $HOME/workspace/example
 
+before_script: pipenv install --skip-lock --dev pylint pylama isort neovim pdbpp ipython black mypy
 shell_command_before:
-  - flock .tmuxp.yml pipenv install --skip-lock pylint pylama isort neovim pdbpp ipython black mypy && pipenv shell
+  - '[ -d `pipenv --venv` ] && source `pipenv --venv`/bin/activate && reset'
 
 windows:
   - window_name: example
     layout: even-horizontal
     panes:
       - shell_command:
-        - vim
+        - nvim
+    options:
+      default-command: pipenv shell
 
   - window_name: ''
     layout: even-horizontal
     panes:
       - shell_command:
+    options:
+      default-command: pipenv shell
