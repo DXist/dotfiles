@@ -54,6 +54,7 @@ if has('vim_starting')
 	Plug 'ConradIrwin/vim-bracketed-paste'
 	Plug 'godlygeek/tabular'
 	Plug 'python/black', {'for': ['python']}
+	Plug 'google/yapf', {'rtp': 'plugins/vim', 'for': ['python']}
 
 
 	" optional plugins
@@ -74,6 +75,8 @@ if has('vim_starting')
 	Plug 'ekalinin/Dockerfile.vim', {'for': ['Dockerfile']}
 	Plug 'fisadev/vim-isort', {'for': ['python']}
 	Plug 'Glench/Vim-Jinja2-Syntax', {'for': ['j2', 'html']}
+	Plug 'editorconfig/editorconfig-vim'
+	let g:EditorConfig_exclude_patterns = ['fugitive://.\*']
 
 	call plug#end()
 
@@ -195,7 +198,8 @@ endfunction
 
 augroup group_general
 	autocmd!
-	autocmd BufWritePre * call RemoveTrailingWhitespace()
+	" editorconfig removes trailing whitespaces
+	" autocmd BufWritePre * call RemoveTrailingWhitespace()
 	" автообновление настроек
 	autocmd BufWritePost .vimrc.global source ~/.config/nvim/.vimrc.global
 	" автообновление проектов
@@ -316,10 +320,19 @@ augroup group_c
 augroup END
 
 if has('python3')
-	augroup group_python
-		autocmd!
-		autocmd BufWritePre *.py execute ':Black'
-	augroup END
+	if filereadable('.style.yapf')
+		let g:py_autoformatter = ':YAPF'
+	elseif filereadable('.noautoformat')
+		let g:py_autoformatter = ''
+	else
+		let g:py_autoformatter = ':Black'
+	endif
+	if !empty(g:py_autoformatter)
+		augroup group_python
+			autocmd!
+			autocmd BufWritePre *.py execute g:py_autoformatter
+		augroup END
+	endif
 endif
 
 
