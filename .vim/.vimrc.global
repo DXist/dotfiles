@@ -320,7 +320,7 @@ augroup group_c
 augroup END
 
 if has('python3')
-	if filereadable('.style.yapf')
+	if filereadable('.style.yapf') || (filereadable('setup.cfg') && match(execute('!cat setup.cfg'), 'yapf') >= 0)
 		let g:py_autoformatter = ':YAPF'
 	elseif filereadable('.noautoformat')
 		let g:py_autoformatter = ''
@@ -546,7 +546,7 @@ let g:neomake_info_sign = {'text': 'ℹ', 'texthl': 'Todo'}
 let g:neomake_verbose = 0
 let g:neomake_verbose = 0
 let g:neomake_open_list = 1
-if has('python3')
+if has('python3') && executable('mypy')
 	let g:neomake_python_enabled_makers = ['pylama', 'mypy']
 else
 	let g:neomake_python_enabled_makers = ['pylama']

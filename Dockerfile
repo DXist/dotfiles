@@ -27,6 +27,8 @@ RUN apt-get update && apt-get install -y \
 
 RUN locale-gen en_US.UTF-8 && update-locale LANG=en_US.UTF-8
 
+RUN update-alternatives --install /usr/bin/python python /usr/bin/python3 1
+
 RUN sed -i 's/%sudo.\+/%sudo   ALL=(ALL:ALL) NOPASSWD:ALL/' /etc/sudoers
 
 RUN pip3 install setuptools
