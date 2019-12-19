@@ -1,6 +1,3 @@
-[submodule "utils/gnome-terminal-colors-solarized"]
-	path = utils/gnome-terminal-colors-solarized
-	url = https://github.com/sigurdga/gnome-terminal-colors-solarized.git
 [submodule "utils/konsole-colors-solarized"]
 	path = utils/konsole-colors-solarized
 	url = https://github.com/phiggins/konsole-colors-solarized.git
