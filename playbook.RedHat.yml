@@ -1,27 +1,25 @@
 ---
 - hosts: localhost
   gather_facts: no
-  pre_tasks:
-  - name: Install system deps
-    become: yes
-    dnf: name={{ item }} state=present
-    when: SKIP_SUDO is not defined
-    with_items:
-      - vim
+  vars:
+    system_packages:
       - git
       - ctags
       - cmake
       - gcc-c++
-      - python-devel
-      - libyaml-devel
       - python-pygments
       - golang
       - the_silver_searcher
       - tmux
       - bash-completion
-      - python-pip
-      - duplicity
       - gnupg2
+      #- python-devel
+      #- libyaml-devel
+  pre_tasks:
+  - name: Install system deps
+    become: yes
+    dnf: name="{{ system_packages }}" state=present
+    when: SKIP_SUDO is not defined
     tags:
       - system_reqs
       - redhatconfigs
@@ -31,7 +29,7 @@
     with_items:
       - { src: .bashrc.RedHat, path: ~/.bashrc.platform }
     tags:
-      - debianconfigs
+      - redhatconfigs
 
   roles:
     - common
