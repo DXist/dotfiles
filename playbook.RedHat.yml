@@ -31,5 +31,19 @@
     tags:
       - redhatconfigs
 
+  - name: Init gnome3 terminal solarized scheme
+    command: "git submodule update --init {{ playbook_dir }}/vendor/gnome-terminal-colors-solarized"
+    tags:
+      - gnome-terminal
+
+  - name: Install solarized scheme
+    expect:
+      command: "{{ playbook_dir }}/vendor/gnome-terminal-colors-solarized/install.sh --scheme dark --skip-dircolors"
+      responses:
+        "Please select.*profile": "1"
+        "YES to continue.*": "YES"
+    tags:
+      - gnome-terminal
+
   roles:
     - common
