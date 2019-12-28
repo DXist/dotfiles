@@ -13,7 +13,7 @@
       - tmux
       - bash-completion
       - gnupg2
-      #- python-devel
+      - python-devel
       #- libyaml-devel
   pre_tasks:
   - name: Install system deps
