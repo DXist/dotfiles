@@ -6,9 +6,9 @@
     homebrew_installed_packages:
       - cask
       - coreutils
-      - python
       - cmake
       - git
+      - python
       - neovim
       - ctags
       - bash-completion
@@ -18,28 +18,17 @@
       - go
       - glide
       - unrar
-      - docker
-      - boot2docker
       - gpg
-      - gpg-agent
-      - fswatch
-      - npm
-      - node
-      - hub
-      - gist
+      # - gpg-agent
+      # - fswatch
       - sf-pwgen
-      - parallel
-      - emacs
-      - emacs-plus
-    homebrew_taps:
-        - caskroom/cask
-        - caskroom/versions
-        - d12frosted/emacs-plus
+      # - parallel
+    #homebrew_taps:
+    #    - caskroom/cask
+    #    - caskroom/versions
     homebrew_cask_apps:
-        - google-chrome
+        # - google-chrome
         - slack
-        # - seil
-        # - karabiner
         - karabiner-elements
         - spectacle
         - iterm2
@@ -48,18 +37,12 @@
         - libreoffice
         - intellij-idea-ce
         # - yandexdisk
-        - adium
         - virtualbox
         - virtualbox-extension-pack
         - vagrant
-        - anaconda
         - transmission
         - gimp
-        - toggldesktop
-        - atom
-        - xquartz
-        - telegram
-        - tor
+        #- telegram
     PREFERENCES: "{{ lookup('env', 'HOME')}}/Library/Preferences"
   environment:
     GIT_TEMPLATE_DIR: ""
@@ -109,15 +92,15 @@
       tags:
         - stop_pref_daemon
 
-    - name: install python packages
-      pip: name={{ item }}
-      with_items:
-        - pipenv
-        - ansible
-        - glances
-        - objgraph
-      tags:
-        - install_python_packages
+      # - name: install python packages
+      #pip: name={{ item }}
+      #with_items:
+      #  - pipenv
+      #  - ansible
+      #  - glances
+      #  - objgraph
+      #tags:
+      #  - install_python_packages
 
     # - name: install jupiter plugins
     #   shell: "jupyter nbextension install https://rawgithub.com/lambdalisue/jupyter-vim-binding/master/vim_binding.js --nbextensions=$(jupyter --data-dir)/nbextensions/vim_binding"
@@ -129,12 +112,12 @@
     #   tags:
     #     - configure_jupiter
 
-    - name: Ensure application directories exist
-      file: path="{{ item }}" state=directory
-      with_items:
-        - "~/Library/Application Support/Karabiner/"
-      tags:
-        - osxconfigs
+    #- name: Ensure application directories exist
+    #  file: path="{{ item }}" state=directory
+    #  with_items:
+    #    - "~/Library/Application Support/Karabiner/"
+    #  tags:
+    #    - osxconfigs
 
     - name: Install OSX specific links
       file: src={{ playbook_dir }}/roles/Darwin/files/{{ item.src }} dest="{{ item.path }}" state=link force=true
@@ -152,16 +135,16 @@
       tags:
         - install_fonts
 
-    - name: Install atom packages
-      command: apm install {{ item }}
-      with_items:
-        - vim-mode
-        - ex-mode
-        - easy-motion-redux
-        - autocomplete-python
-        # - autocomplete-go
-      tags:
-        - install_atom_packages
+    #- name: Install atom packages
+    #  command: apm install {{ item }}
+    #  with_items:
+    #    - vim-mode
+    #    - ex-mode
+    #    - easy-motion-redux
+    #    - autocomplete-python
+    #    # - autocomplete-go
+    #  tags:
+    #    - install_atom_packages
 
   roles:
     - geerlingguy.homebrew

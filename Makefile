@@ -27,7 +27,7 @@ all: bootstrap provision update_vim
 .PHONY: bootstrap
 bootstrap:
 ifeq ($(OS_FAMILY), Darwin)
-	$(ANSIBLE)-galaxy install -r roles.Darwin.txt --ignore-errors
+	$(ANSIBLE)-galaxy install -r roles.Darwin.yml --ignore-errors
 endif
 
 .PHONY: provision

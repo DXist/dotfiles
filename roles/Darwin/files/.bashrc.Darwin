@@ -7,12 +7,10 @@ if [[ "${PATH}" != *libexec/gnubin* ]]; then
 	export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
 fi
 
-# deactivate conflicts with virtualenvwrapper
-# if [[ "${PATH}" != *anaconda3/bin* ]]; then
-# 	export PATH="$PATH":~/anaconda3/bin
-# fi
+if [[ "${PATH}" != *libexec/python* ]]; then
+	export PATH="$(brew --prefix python)/libexec/bin:$PATH"
+fi
 
-alias b2d='eval "$(boot2docker shellinit)"'
 # list listening ports
 alias lsofports='lsof -iTCP -sTCP:LISTEN -n -P'
 
