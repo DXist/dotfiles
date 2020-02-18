@@ -46,18 +46,4 @@ WORKDIR /home/${USER}/workspace
 
 RUN cd /home/${USER}/workspace/dotfiles && ansible-playbook -i inventory.ini playbook.Debian.yml
 
-ENV SUDO_FORCE_REMOVE=yes
-
-RUN sudo -E apt -y remove sudo
-
 RUN cd /home/${USER}/workspace/dotfiles && nvim +PlugUpdate +qall
-
-RUN pip3 install --user \
-        mypy \
-        pylint \
-        pylama \
-        isort \
-        neovim \
-        pdbpp \
-        ipython \
-        black

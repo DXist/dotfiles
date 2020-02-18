@@ -142,7 +142,19 @@
 #     - pyenv-virtualenv
 
 - name: Install global python packages
-  shell: pip install --user neovim pipenv 'tmuxp>=1.0.0'
+  pip:
+    name:
+      - pipenv
+      - 'tmuxp>=1.0.0'
+      -  mypy
+      -  pylint
+      -  pylama
+      -  isort
+      -  neovim
+      -  pdbpp
+      -  ipython
+      -  black
+    extra_args: --user
   tags:
     - pippackages
 
