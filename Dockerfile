@@ -54,7 +54,7 @@ RUN ln -s /opt/conda/bin/pip /opt/conda/bin/pip3
 
 USER ${USER}
 
-ENV PATH=/home/user/.local/bin/:/opt/conda/bin:$PATH
+ENV PATH=/home/user/.local/bin:/opt/conda/bin:$PATH
 
 WORKDIR /home/${USER}/workspace
 
