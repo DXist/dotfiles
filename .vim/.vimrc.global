@@ -516,7 +516,7 @@ endif
 
 " fugitive, git commands
 " map <Leader>gs <ESC>:Gstatus<CR>
-map <Leader>gd <ESC>:Gdiff<CR>
+map <Leader>gd <ESC>:Gdiffsplit!<CR>
 " map <Leader>gc <ESC>:Gcommit<CR>
 " map <Leader>gca <ESC>:Gcommit -a<CR>
 " Git fugitive menu
