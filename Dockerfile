@@ -43,12 +43,12 @@ RUN locale-gen en_US.UTF-8 && update-locale LANG=en_US.UTF-8
 
 RUN sed -i 's/%sudo.\+/%sudo   ALL=(ALL:ALL) NOPASSWD:ALL/' /etc/sudoers
 
-RUN curl -o ~/miniconda.sh -O  https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh  && \
+RUN test -x /opt/conda/bin/conda || (curl -o ~/miniconda.sh -O  https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh  && \
      chmod +x ~/miniconda.sh && \
      ~/miniconda.sh -b -p /opt/conda && \
      rm ~/miniconda.sh && \
      /opt/conda/bin/conda install -y python=$PYTHON_VERSION && \
-     /opt/conda/bin/conda clean -ya
+     /opt/conda/bin/conda clean -ya)
 
 RUN ln -s /opt/conda/bin/pip /opt/conda/bin/pip3
 
