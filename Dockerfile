@@ -47,8 +47,12 @@ RUN test -x /opt/conda/bin/conda || (curl -o ~/miniconda.sh -O  https://repo.con
      chmod +x ~/miniconda.sh && \
      ~/miniconda.sh -b -p /opt/conda && \
      rm ~/miniconda.sh && \
+     /opt/conda/bin/conda update --all --yes && \
+     /opt/conda/bin/conda config --set auto_update_conda False && \
      /opt/conda/bin/conda install -y python=$PYTHON_VERSION && \
-     /opt/conda/bin/conda clean -ya)
+     /opt/conda/bin/conda clean -yaf && \
+     find /opt/conda/ -follow -type f -iname '*.a' -o -iname '*.pyc' -o -iname '*.js.map' -delete \
+     )
 
 RUN ln -s /opt/conda/bin/pip /opt/conda/bin/pip3
 
