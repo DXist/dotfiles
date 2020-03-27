@@ -53,7 +53,7 @@ if has('vim_starting')
 	Plug 'benatkin/vim-move-between-tabs'
 	Plug 'ConradIrwin/vim-bracketed-paste'
 	Plug 'godlygeek/tabular'
-	Plug 'python/black', {'for': ['python']}
+	Plug 'python/black', {'for': ['python'], 'branch': 'stable'}
 	Plug 'google/yapf', {'rtp': 'plugins/vim', 'for': ['python']}
 
 
