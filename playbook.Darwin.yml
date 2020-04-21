@@ -48,51 +48,51 @@
     GIT_TEMPLATE_DIR: ""
 
   tasks:
-    - name: Stat preferences
-      stat: path={{ PREFERENCES }}
-      register: preferences_stat
-      tags:
-        - move_preferences
+    # - name: Stat preferences
+    #   stat: path={{ PREFERENCES }}
+    #   register: preferences_stat
+    #   tags:
+    #     - move_preferences
 
-    - name: Check preferences
-      command: test -L {{ PREFERENCES }}
-      register: is_symlink_check
-      ignore_errors: yes
-      when: preferences_stat.stat.exists
-      tags:
-        - move_preferences
+    # - name: Check preferences
+    #   command: test -L {{ PREFERENCES }}
+    #   register: is_symlink_check
+    #   ignore_errors: yes
+    #   when: preferences_stat.stat.exists
+    #   tags:
+    #     - move_preferences
 
-    - name: Remove empty dirs in preferences
-      command: find {{ PREFERENCES }} -type d -empty -delete
-      when: preferences_stat.stat.exists and is_symlink_check.rc
-      tags:
-        - move_preferences
+    # - name: Remove empty dirs in preferences
+    #   command: find {{ PREFERENCES }} -type d -empty -delete
+    #   when: preferences_stat.stat.exists and is_symlink_check.rc
+    #   tags:
+    #     - move_preferences
 
-    - name: Move preferences
-      shell: shopt -s nullglob && mv {{ PREFERENCES }}/* {{ PREFERENCES }}/.??* {{ playbook_dir }}/roles/Darwin/Preferences/
-      when: preferences_stat.stat.exists and is_symlink_check.rc
-      tags:
-        - move_preferences
+    # - name: Move preferences
+    #   shell: shopt -s nullglob && mv {{ PREFERENCES }}/* {{ PREFERENCES }}/.??* {{ playbook_dir }}/roles/Darwin/Preferences/
+    #   when: preferences_stat.stat.exists and is_symlink_check.rc
+    #   tags:
+    #     - move_preferences
 
-    - name: Remove empty directory
-      command: rmdir {{ PREFERENCES }}
-      become: yes
-      when: preferences_stat.stat.exists and is_symlink_check.rc
-      tags:
-        - move_preferences
+    # - name: Remove empty directory
+    #   command: rmdir {{ PREFERENCES }}
+    #   become: yes
+    #   when: preferences_stat.stat.exists and is_symlink_check.rc
+    #   tags:
+    #     - move_preferences
 
-    - name: Symlink preferences
-      command:  ln -s {{ playbook_dir }}/roles/Darwin/Preferences {{ PREFERENCES }}
-      when: not preferences_stat.stat.exists or is_symlink_check.rc
-      tags:
-        - move_preferences
+    # - name: Symlink preferences
+    #   command:  ln -s {{ playbook_dir }}/roles/Darwin/Preferences {{ PREFERENCES }}
+    #   when: not preferences_stat.stat.exists or is_symlink_check.rc
+    #   tags:
+    #     - move_preferences
 
-    - name: Stop preferences daemon
-      command: pkill -U {{ lookup('env', 'USER') }} cfprefsd
-      tags:
-        - stop_pref_daemon
+    # - name: Stop preferences daemon
+    #   command: pkill -U {{ lookup('env', 'USER') }} cfprefsd
+    #   tags:
+    #     - stop_pref_daemon
 
-      # - name: install python packages
+    - name: install python packages
       pip: name={{ item }}
       with_items:
         - pipenv
@@ -102,16 +102,6 @@
         # - objgraph
       tags:
         - install_python_packages
-
-    # - name: install jupiter plugins
-    #   shell: "jupyter nbextension install https://rawgithub.com/lambdalisue/jupyter-vim-binding/master/vim_binding.js --nbextensions=$(jupyter --data-dir)/nbextensions/vim_binding"
-    #   tags:
-    #     - configure_jupiter
-
-    # - name: enable jupiter plugins
-    #   command: "jupyter nbextension enable vim_binding/vim_binding"
-    #   tags:
-    #     - configure_jupiter
 
     #- name: Ensure application directories exist
     #  file: path="{{ item }}" state=directory
@@ -125,7 +115,7 @@
       with_items:
         - { src: .tmux.Darwin.conf, path: ~/.tmux.platform.conf }
         - { src: .bashrc.Darwin, path: ~/.bashrc.platform }
-        - { src: private.xml, path: "~/Library/Application Support/Karabiner/private.xml" }
+        - { src: karabiner.json, path: "~/.config/karabiner/karabiner.json" }
         - { src: .gitattributes.Darwin, path: ".gitattributes" }
 
       tags:
