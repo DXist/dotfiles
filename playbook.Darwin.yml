@@ -93,14 +93,15 @@
         - stop_pref_daemon
 
       # - name: install python packages
-      #pip: name={{ item }}
-      #with_items:
-      #  - pipenv
-      #  - ansible
-      #  - glances
-      #  - objgraph
-      #tags:
-      #  - install_python_packages
+      pip: name={{ item }}
+      with_items:
+        - pipenv
+        - neovim
+        # - ansible
+        # - glances
+        # - objgraph
+      tags:
+        - install_python_packages
 
     # - name: install jupiter plugins
     #   shell: "jupyter nbextension install https://rawgithub.com/lambdalisue/jupyter-vim-binding/master/vim_binding.js --nbextensions=$(jupyter --data-dir)/nbextensions/vim_binding"
