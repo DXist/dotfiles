@@ -6,3 +6,4 @@
 .vim/black
 /docker-compose.override.yml
 /vendor/roles
+.gitattributes
