@@ -460,11 +460,13 @@ nnoremap ; <ESC>:CtrlPBufTag<CR>
 " nnoremap <silent> <leader>f  :<C-u>CtrlSpace O<CR>
 " nnoremap <leader><space> :<c-u>CtrlSpace b<CR>
 
-nnoremap <silent> <leader>f  :<C-u>GFiles<CR>
+nnoremap <leader>f  :<C-u>AFiles<space>
 nnoremap <silent> <leader>gf  :<C-u>Files<CR>
-command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4.. --exact'}, <bang>0)
-nnoremap <silent> <leader>a  :<C-u>Ag<CR>
-nnoremap <silent> <leader>8 :<C-u>Ag <C-R><C-W><CR>
+" command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4.. --exact'}, <bang>0)
+command! -bang -complete=dir -nargs=* AFiles
+    \ call fzf#run(fzf#wrap({'source': 'ag --hidden --ignore .git -g "' . <q-args> . '"'}, <bang>0))
+nnoremap <silent> <leader>a  :<C-u>Rg<space>
+nnoremap <silent> <leader>8 :<C-u>Rg <C-R><C-W><CR>
 
 
 " An action can be a reference to a function that processes selected lines

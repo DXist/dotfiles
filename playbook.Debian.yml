@@ -54,6 +54,7 @@
           # - libreadline-dev
           # - python-pygments
           - silversearcher-ag
+          - ripgrep
           - tmux
           # in bionic
           # - tmuxp
