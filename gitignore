@@ -21,3 +21,4 @@ saved-breakpoints-*
 __pycache__
 *.egg-info
 pylama.ini
+Pipfile
