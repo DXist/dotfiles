@@ -22,6 +22,9 @@ if [[ "${PATH}" != *$HOME/go/bin* ]]; then
 	export PATH=$PATH:$HOME/go/bin
 fi
 
+if [[ "${PATH}" != */usr/lib/go-1.14/bin/* ]]; then
+	export PATH=$PATH:/usr/lib/go-1.14/bin/
+fi
 # Test for an interactive shell.  There is no need to set anything
 # past this point for scp and rcp, and it's important to refrain from
 # outputting anything in those cases.
