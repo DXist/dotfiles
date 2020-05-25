@@ -69,6 +69,7 @@ if has('vim_starting')
 	Plug 'othree/html5.vim', {'for': ['html', 'xhtml', 'css']}
 
 	Plug 'fatih/vim-go', {'do': ':GoUpdateBinaries'}
+	Plug 'sebdah/vim-delve'
 
 	Plug 'chase/vim-ansible-yaml', {'for': ['yaml', 'ansible']}
 	Plug 'mattn/emmet-vim', {'for': ['html', 'xhtml']}
@@ -412,12 +413,21 @@ nnoremap <leader><space> :ToggleWorkspace<CR>
 
 " vim-test
 " map <Leader>mr <ESC>:python run_test()<CR>
-nmap <silent> <leader>tn :TestNearest<CR><C-\><C-n>
-nmap <silent> <leader>tf :TestFile<CR><C-\><C-n>
-nmap <silent> <leader>ts :TestSuite<CR><C-\><C-n>
-nmap <silent> <leader>tl :TestLast<CR><C-\><C-n>
-nmap <silent> <leader>tv :TestVisit<CR><C-\><C-n>
+nmap <silent> <leader>tn :TestNearest<CR>
+nmap <silent> <leader>tf :TestFile<CR>
+nmap <silent> <leader>ts :TestSuite<CR>
+nmap <silent> <leader>tl :TestLast<CR>
+nmap <silent> <leader>tv :TestVisit<CR>
 let test#python#pytest#options = '-s --pdb'
+let test#go#runner = 'ginkgo'
+" function! DebugNearest()
+"   let g:test#go#runner = 'delve'
+"   TestNearest
+"   unlet g:test#go#runner
+" endfunction
+nmap <silent> <leader>td :DlvTest<CR>
+nmap <silent> <leader>tb :DlvToggleBreakpoint<CR>
+nmap <silent> <leader>tc :DlvClearAll<CR>
 
 " nmap <silent> <leader>m <ESC>Make test<CR>
 
@@ -465,7 +475,7 @@ nnoremap <silent> <leader>gf  :<C-u>Files<CR>
 " command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4.. --exact'}, <bang>0)
 command! -bang -complete=dir -nargs=* AFiles
     \ call fzf#run(fzf#wrap({'source': 'ag --hidden --ignore .git -g "' . <q-args> . '"'}, <bang>0))
-nnoremap <silent> <leader>a  :<C-u>Rg<space>
+nnoremap <leader>a  :<C-u>Rg<space>
 nnoremap <silent> <leader>8 :<C-u>Rg <C-R><C-W><CR>
 
 
