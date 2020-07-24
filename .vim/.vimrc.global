@@ -70,6 +70,7 @@ if has('vim_starting')
 
 	Plug 'fatih/vim-go', {'do': ':GoUpdateBinaries'}
 	Plug 'sebdah/vim-delve'
+	Plug 'rust-lang/rust.vim'
 
 	Plug 'chase/vim-ansible-yaml', {'for': ['yaml', 'ansible']}
 	Plug 'mattn/emmet-vim', {'for': ['html', 'xhtml']}
