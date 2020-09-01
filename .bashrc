@@ -22,8 +22,8 @@ if [[ "${PATH}" != *$HOME/go/bin* ]]; then
 	export PATH=$PATH:$HOME/go/bin
 fi
 
-if [[ "${PATH}" != */usr/lib/go-1.14/bin/* ]]; then
-	export PATH=$PATH:/usr/lib/go-1.14/bin/
+if [[ "${PATH}" != *$HOME/cargo/bin* ]]; then
+	export PATH=$PATH:$HOME/cargo/bin
 fi
 # Test for an interactive shell.  There is no need to set anything
 # past this point for scp and rcp, and it's important to refrain from
@@ -147,8 +147,6 @@ alias tailf='LESSOPEN="" less +F'
 
 alias cindex='cindex -exclude ~/.agignore'
 alias csearch_pwd='csearch -f `pwd`'
-alias hpr='hub pull-request'
-alias hb='hub browse'
 
 if [ "$TMUX" ]; then
 	alias sudo='TERM=screen sudo'
