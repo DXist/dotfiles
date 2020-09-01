@@ -7,10 +7,11 @@ ARG USER=user
 ARG GROUP=user
 ARG USER_ID=1000
 ARG GROUP_ID=1000
+ENV DEBIAN_FRONTEND NONINTERACTIVE
 
 USER root
 
-RUN (getent group user || groupadd -g ${GROUP_ID} ${GROUP}) && (getent passwd ${USER} || useradd -m -u ${USER_ID} -g ${GROUP} ${USER})
+RUN (getent group ${GROUP} || groupadd -g ${GROUP_ID} ${GROUP}) && (getent passwd ${USER} || useradd -m -u ${USER_ID} -g ${GROUP} ${USER})
 
 RUN gpasswd -a ${USER} sudo
 
@@ -54,15 +55,13 @@ RUN test -x /opt/conda/bin/conda || (curl -o ~/miniconda.sh -O  https://repo.ana
      find /opt/conda/ -follow -type f -iname '*.a' -o -iname '*.pyc' -o -iname '*.js.map' -delete \
      )
 
-RUN ln -s /opt/conda/bin/pip /opt/conda/bin/pip3
-
 USER ${USER}
 
-ENV PATH=/home/user/.local/bin:/opt/conda/bin:$PATH
+ENV PATH=/home/${USER}/.local/bin:/opt/conda/bin:$PATH
 
 WORKDIR /home/${USER}/workspace
 
-COPY --chown=user:user . /home/${USER}/workspace/dotfiles
+COPY --chown=${USER}:${GROUP} . /home/${USER}/workspace/dotfiles
 
 RUN pip install --user ansible && cd /home/${USER}/workspace/dotfiles && ansible-playbook -i inventory.ini playbook.Debian.yml --skip-tags=system_reqs,pippackages
 

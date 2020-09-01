@@ -158,17 +158,17 @@
   tags:
     - pippackages
 
-- name: Install go tools
-  command: go get {{ item }}
-  environment:
-    GOPATH: "{{ lookup('ENV', 'HOME') }}/go"
-  when: SKIP_SUDO is not defined
-  with_items:
-    # - github.com/junkblocker/codesearch/...
-    - github.com/vladimir-g/gmtrn/cmd/gmtrn-cli
+# - name: Install go tools
+#   command: go get {{ item }}
+#   environment:
+#     GOPATH: "{{ lookup('ENV', 'HOME') }}/go"
+#   when: SKIP_SUDO is not defined
+#   with_items:
+#     # - github.com/junkblocker/codesearch/...
+#     - github.com/vladimir-g/gmtrn/cmd/gmtrn-cli
 
-  tags:
-    - gotools
+#   tags:
+#     - gotools
 
 # - name: install node packages
 #   npm: name={{ item }} global=yes

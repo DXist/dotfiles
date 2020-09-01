@@ -34,16 +34,16 @@
         - karabiner-elements
         - spectacle
         - iterm2
-        - skype
-        - vlc
-        - libreoffice
+        # - skype
+        # - vlc
+        # - libreoffice
         - intellij-idea-ce
         # - yandexdisk
-        - virtualbox
-        - virtualbox-extension-pack
-        - vagrant
-        - transmission
-        - gimp
+        # - virtualbox
+        # - virtualbox-extension-pack
+        # - vagrant
+        # - transmission
+        # - gimp
         #- telegram
     PREFERENCES: "{{ lookup('env', 'HOME')}}/Library/Preferences"
   environment:
