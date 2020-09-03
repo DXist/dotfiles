@@ -18,6 +18,7 @@
       - the_silver_searcher
       - reattach-to-user-namespace
       - go
+      - ripgrep
       - glide
       - unrar
       - gpg

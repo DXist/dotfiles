@@ -29,6 +29,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends gnupg gpg-agent
         git \
         git-lfs \
         exuberant-ctags \
+        ripgrep \
         cmake \
         build-essential \
         tar \
