@@ -13,7 +13,7 @@ if [[ "${PATH}" != *libexec/python* ]]; then
 	export PATH="$(brew --prefix python)/libexec/bin:$PATH"
 fi
 
-USER_BASE=`python -m site --user-base`
+USER_BASE=`python3 -m site --user-base`
 
 if [[ "${PATH}" != *{USER_BASE}/bin* ]]; then
 	export PATH="${USER_BASE}/bin:$PATH"
