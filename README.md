@@ -34,4 +34,7 @@ Checklist - fresh OS X System
 * To automate:
 	* Minimize Dock
 	* Disable mru sort
+
+		* defaults write com.apple.dock mru-spaces -bool false
+
 	* Create 6 workspaces

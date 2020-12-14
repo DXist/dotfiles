@@ -22,8 +22,8 @@ if [[ "${PATH}" != *$HOME/go/bin* ]]; then
 	export PATH=$PATH:$HOME/go/bin
 fi
 
-if [[ "${PATH}" != *$HOME/cargo/bin* ]]; then
-	export PATH=$PATH:$HOME/cargo/bin
+if [[ "${PATH}" != *$HOME/.cargo/bin* ]]; then
+	export PATH=$PATH:$HOME/.cargo/bin
 fi
 # Test for an interactive shell.  There is no need to set anything
 # past this point for scp and rcp, and it's important to refrain from
@@ -186,3 +186,4 @@ fi
 if [ -r ~/.bashrc.local ]; then
 	. ~/.bashrc.local
 fi
+source "$HOME/.cargo/env"
