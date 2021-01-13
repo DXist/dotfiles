@@ -154,7 +154,7 @@
       -  pdbpp
       -  ipython
       -  black
-    extra_args: --user
+    extra_args: --user --no-cache-dir
   tags:
     - pippackages
 

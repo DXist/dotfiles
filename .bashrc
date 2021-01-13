@@ -53,6 +53,7 @@ export LC_MEASUREMENT="en_US.UTF-8"
 export LC_IDENTIFICATION="en_US.UTF-8"
 
 export EDITOR=vim
+export SHELL=${SHELL:-/bin/bash}
 
 # use neovim instead of vim if available
 if hash nvim 2>/dev/null; then

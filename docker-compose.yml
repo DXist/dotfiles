@@ -2,6 +2,7 @@
 version: '3'
 services:
   dev:
+    image: dotfiles
     build:
       context: .
     command: bash

@@ -1,8 +1,8 @@
-ARG BASE=debian:buster
+ARG BASE=ubuntu:21.04
 
 FROM ${BASE}
 
-ARG PYTHON_VERSION=3.8
+ARG PYTHON_VERSION=3.9
 ARG USER=user
 ARG GROUP=user
 ARG USER_ID=1000
@@ -17,22 +17,21 @@ RUN gpasswd -a ${USER} sudo
 
 RUN apt-get update && apt-get install -y --no-install-recommends gnupg gpg-agent dirmngr && \
         apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 55F96FCF8231B6DD \
-        && echo 'deb http://ppa.launchpad.net/neovim-ppa/unstable/ubuntu bionic main' > /etc/apt/sources.list.d/ppa_neovim_ppa_unstable_bionic.list \
+        && echo 'deb http://ppa.launchpad.net/neovim-ppa/unstable/ubuntu focal main' > /etc/apt/sources.list.d/ppa_neovim_ppa_unstable_focal.list \
         && apt-get update && apt-get install -y --no-install-recommends \
         sudo \
         ca-certificates \
         curl \
         locales \
-        locales-all \
         neovim \
         less \
         git \
         git-lfs \
+        ssh-client \
         exuberant-ctags \
         ripgrep \
         cmake \
         build-essential \
-        tar \
         rsync \
         silversearcher-ag \
         tmux \
@@ -60,11 +59,15 @@ USER ${USER}
 
 ENV PATH=/home/${USER}/.local/bin:/opt/conda/bin:$PATH
 
+RUN curl -Lo /tmp/buildkit.tar.gz https://github.com/moby/buildkit/releases/download/v0.8.1/buildkit-v0.8.1.linux-amd64.tar.gz && tar -xzf /tmp/buildkit.tar.gz -C /tmp && mkdir -p /home/${USER}/.local/bin && mv /tmp/bin/buildctl /home/${USER}/.local/bin/ && chmod +x /home/${USER}/.local/bin/buildctl && rm -rf /tmp/*
+
 WORKDIR /home/${USER}/workspace
+
+RUN ssh-keygen -t ed25519 -f /home/user/.ssh/id_ed25519 -P ''
 
 COPY --chown=${USER}:${GROUP} . /home/${USER}/workspace/dotfiles
 
-RUN pip install --user ansible && cd /home/${USER}/workspace/dotfiles && ansible-playbook -i inventory.ini playbook.Debian.yml --skip-tags=system_reqs,pippackages
+RUN pip install --user --no-cache-dir ansible && cd /home/${USER}/workspace/dotfiles && ansible-playbook -i inventory.ini playbook.Debian.yml --skip-tags=system_reqs,pippackages
 
 RUN cd /home/${USER}/workspace/dotfiles && nvim +PlugUpdate +qall
 
