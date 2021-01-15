@@ -1,0 +1,75 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: rshigapov-devbox
+  namespace: devboxes
+  labels:
+    app: rshigapov-devbox
+spec:
+  serviceName: rshigapov-devbox
+  selector:
+    matchLabels:
+      app: rshigapov-devbox
+  template:
+    metadata:
+      labels:
+        app: rshigapov-devbox
+    spec:
+      volumes:
+        - name: rshigapov-devbox
+          persistentVolumeClaim:
+            claimName: rshigapov-devbox
+        - name: docker-graph-storage
+          persistentVolumeClaim:
+            claimName: rshigapov-devbox-docker-graph-storage
+        - name: docker-certs-dir
+          emptyDir: {}
+      containers:
+        - name: rshigapov-devbox
+          image: dotfiles
+          env:
+            - name: DOCKER_CONFIG
+              value: /home/user/workspace/src/
+            - name: DOCKER_HOST
+              value: "tcp://localhost:2376/"
+            - name: DOCKER_CERT_PATH
+              value: "/etc/dockercerts/client"
+            - name: DOCKER_TLS_VERIFY
+              value: "1"
+          command: ["/bin/sleep"]
+          args: ["inf"]
+          volumeMounts:
+            - name: rshigapov-devbox
+              mountPath: /home/user/workspace/src
+            - name: docker-certs-dir
+              mountPath: /etc/dockercerts
+        - name: docker
+          image: docker:19.03.14-dind
+          env:
+            - name: DOCKER_TLS_CERTDIR
+              value: "/etc/dockercerts/"
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - name: docker-graph-storage
+              mountPath: /var/lib/docker
+            - name: docker-certs-dir
+              mountPath: /etc/dockercerts
+
+  volumeClaimTemplates:
+    - metadata:
+        name: rshigapov-devbox
+        namespace: devboxes
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        resources:
+          requests:
+            storage: 150Gi
+    - metadata:
+        name: rshigapov-devbox-docker-graph-storage
+        namespace: devboxes
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        resources:
+          requests:
+            storage: 100Gi
