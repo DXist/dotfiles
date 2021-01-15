@@ -2,7 +2,7 @@ ARG BASE=ubuntu:21.04
 
 FROM ${BASE}
 
-ARG PYTHON_VERSION=3.9
+ARG PYTHON_VERSION=3.8
 ARG USER=user
 ARG GROUP=user
 ARG USER_ID=1000
@@ -44,6 +44,10 @@ RUN locale-gen en_US.UTF-8 && update-locale LANG=en_US.UTF-8
 
 RUN sed -i 's/%sudo.\+/%sudo   ALL=(ALL:ALL) NOPASSWD:ALL/' /etc/sudoers
 
+RUN mkdir -p /opt/ && chown ${USER}:${GROUP} /opt/
+
+USER ${USER}
+
 RUN test -x /opt/conda/bin/conda || (curl -o ~/miniconda.sh -O  https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh  && \
      chmod +x ~/miniconda.sh && \
      ~/miniconda.sh -b -p /opt/conda && \
@@ -54,9 +58,6 @@ RUN test -x /opt/conda/bin/conda || (curl -o ~/miniconda.sh -O  https://repo.ana
      /opt/conda/bin/conda clean -yaf && \
      find /opt/conda/ -follow -type f -iname '*.a' -o -iname '*.pyc' -o -iname '*.js.map' -delete \
      )
-
-USER ${USER}
-
 ENV PATH=/home/${USER}/.local/bin:/opt/conda/bin:$PATH
 
 RUN curl -Lo /tmp/buildkit.tar.gz https://github.com/moby/buildkit/releases/download/v0.8.1/buildkit-v0.8.1.linux-amd64.tar.gz && tar -xzf /tmp/buildkit.tar.gz -C /tmp && mkdir -p /home/${USER}/.local/bin && mv /tmp/bin/buildctl /home/${USER}/.local/bin/ && chmod +x /home/${USER}/.local/bin/buildctl && rm -rf /tmp/*
