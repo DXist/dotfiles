@@ -62,6 +62,8 @@ ENV PATH=/home/${USER}/.local/bin:/opt/conda/bin:$PATH
 
 RUN curl -Lo /tmp/buildkit.tar.gz https://github.com/moby/buildkit/releases/download/v0.8.1/buildkit-v0.8.1.linux-amd64.tar.gz && tar -xzf /tmp/buildkit.tar.gz -C /tmp && mkdir -p /home/${USER}/.local/bin && mv /tmp/bin/buildctl /home/${USER}/.local/bin/ && chmod +x /home/${USER}/.local/bin/buildctl && rm -rf /tmp/*
 
+RUN curl -Lo /tmp/docker.tar.gz https://download.docker.com/linux/static/stable/x86_64/docker-20.10.2.tgz && tar -xzf /tmp/docker.tar.gz -C /tmp && mv /tmp/docker/docker /home/${USER}/.local/bin/ && rm -rf /tmp/*
+
 WORKDIR /home/${USER}/workspace
 
 RUN ssh-keygen -t ed25519 -f /home/user/.ssh/id_ed25519 -P ''
