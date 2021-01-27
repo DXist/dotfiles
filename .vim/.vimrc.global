@@ -316,10 +316,14 @@ augroup group_xml
 	autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 augroup END
 
-augroup group_c
+augroup group_ycm
 	au!
-	autocmd FileType c,cpp nnoremap <buffer> <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
-	autocmd FileType c,cpp nnoremap <buffer> <leader>jf :YcmCompleter GoToDeclaration<CR>
+	autocmd FileType c,cpp,cuda,go,python,rust nnoremap <buffer> <leader>jf :YcmCompleter GoTo<CR>
+	autocmd FileType c,cpp,cuda,go,python,rust nnoremap <buffer> <leader>jd :YcmCompleter GoToDeclaration<CR>
+	autocmd FileType c,cpp,cuda,python,rust nnoremap <buffer> <leader>jr :YcmCompleter GoToReferences<CR>
+	autocmd FileType go,rust nnoremap <buffer> <leader>ji :YcmCompleter GoToImplementation<CR>
+	autocmd FileType c,cpp,cuda,go,python,rust nnoremap <buffer> <leader>jt :YcmCompleter GetType<CR>
+	autocmd FileType c,cpp,cuda,go,python,rust nnoremap <buffer> <leader>je :YcmCompleter RefactorRename<space>
 augroup END
 
 if has('python3')

@@ -27,6 +27,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends gnupg gpg-agent
         less \
         git \
         git-lfs \
+        golang \
         ssh-client \
         exuberant-ctags \
         ripgrep \
@@ -70,8 +71,6 @@ RUN ssh-keygen -t ed25519 -f /home/user/.ssh/id_ed25519 -P ''
 
 COPY --chown=${USER}:${GROUP} . /home/${USER}/workspace/dotfiles
 
-RUN pip install --user --no-cache-dir ansible && cd /home/${USER}/workspace/dotfiles && ansible-playbook -i inventory.ini playbook.Debian.yml --skip-tags=system_reqs,pippackages
+RUN pip install --user --no-cache-dir ansible && cd /home/${USER}/workspace/dotfiles && ansible-playbook -i inventory.ini playbook.Debian.yml --skip-tags=system_reqs
 
 RUN cd /home/${USER}/workspace/dotfiles && nvim +PlugUpdate +qall
-
-RUN cd /home/${USER}/workspace/dotfiles && ansible-playbook -i inventory.ini playbook.Debian.yml --tags=pippackages

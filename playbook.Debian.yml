@@ -40,7 +40,7 @@
           - less
           - git
           - git-lfs
-          - golang-1.14-go
+          - golang
           - exuberant-ctags
           - cmake
           - build-essential
