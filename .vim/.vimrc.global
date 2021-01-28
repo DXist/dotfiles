@@ -425,6 +425,10 @@ nmap <silent> <leader>tf :TestFile<CR>
 nmap <silent> <leader>ts :TestSuite<CR>
 nmap <silent> <leader>tl :TestLast<CR>
 nmap <silent> <leader>tv :TestVisit<CR>
+if has('nvim')
+  tmap <C-o> <C-\><C-n>
+endif
+
 let test#python#pytest#options = '-s --pdb'
 let test#go#runner = 'ginkgo'
 " function! DebugNearest()
