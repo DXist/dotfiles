@@ -73,4 +73,4 @@ COPY --chown=${USER}:${GROUP} . /home/${USER}/workspace/dotfiles
 
 RUN pip install --user --no-cache-dir ansible && cd /home/${USER}/workspace/dotfiles && ansible-playbook -i inventory.ini playbook.Debian.yml --skip-tags=system_reqs
 
-RUN cd /home/${USER}/workspace/dotfiles && nvim +PlugUpdate +qall
+RUN nvim -E +PlugUpdate +qall

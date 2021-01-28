@@ -1,5 +1,4 @@
 /.bashrc.local
-/.gitconfig.local
 /.tmuxp
 *.retry
 .vim/plugged
