@@ -36,8 +36,8 @@ spec:
               value: "/etc/dockercerts/client"
             - name: DOCKER_TLS_VERIFY
               value: "1"
-          command: ["/bin/sleep"]
-          args: ["inf"]
+          command: ["/usr/bin/tini", "--"]
+          args: ["/bin/sleep", "inf"]
           volumeMounts:
             - name: rshigapov-devbox
               mountPath: /home/user/workspace/src

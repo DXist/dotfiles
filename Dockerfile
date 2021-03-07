@@ -39,6 +39,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends gnupg gpg-agent
         bash-completion \
         ncurses-term \
         jq \
+        tini \
         && rm -rf /var/lib/apt/lists/*
 
 RUN locale-gen en_US.UTF-8 && update-locale LANG=en_US.UTF-8
