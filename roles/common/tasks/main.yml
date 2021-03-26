@@ -24,6 +24,7 @@
     - .jshintrc
     - .jupyter
     - .less
+    - .netrc
     - .pdbrc
     - .pdbrc.py
     - .psqlrc
