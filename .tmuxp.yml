@@ -1,5 +1,5 @@
 session_name: dotfiles
-start_directory: $HOME/workspace/dotfiles
+start_directory: $HOME/workspace/src/dotfiles
 # options:
 #   default-path: $HOME/workspace/dotfiles
 
