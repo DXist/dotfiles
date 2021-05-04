@@ -323,6 +323,7 @@ augroup group_ycm
 	autocmd FileType c,cpp,cuda,go,python,rust nnoremap <buffer> <leader>jd :YcmCompleter GoToDeclaration<CR>
 	autocmd FileType c,cpp,cuda,python,rust nnoremap <buffer> <leader>jr :YcmCompleter GoToReferences<CR>
 	autocmd FileType go,rust nnoremap <buffer> <leader>ji :YcmCompleter GoToImplementation<CR>
+	autocmd FileType c,cpp,objc,objcpp,cuda,cs,go,java,javascript,python,typescript,rust nnoremap <buffer> <leader>jc :YcmCompleter GetDoc<CR>
 	autocmd FileType c,cpp,cuda,go,python,rust nnoremap <buffer> <leader>jt :YcmCompleter GetType<CR>
 	autocmd FileType c,cpp,cuda,go,python,rust nnoremap <buffer> <leader>je :YcmCompleter RefactorRename<space>
 augroup END
