@@ -17,6 +17,7 @@
     - .git_template
     - .gitattributes
     - .gitconfig
+    - .ycm_extra_conf.py
     - .gnupg
     - .hgrc
     - .ideavimrc
