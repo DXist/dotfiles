@@ -61,6 +61,7 @@
 	default = current
 [init]
 	templatedir = ~/.git_template
+	defaultBranch = main
 [include]
 	path = .gitconfig.local
 [filter "lfs"]
