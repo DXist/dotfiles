@@ -161,7 +161,7 @@
     - pippackages
 
 - name: Install rustup
-  script: /usr/bin/curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain nightly-2021-03-25
+  script: /usr/bin/curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain nightly-2021-08-18
   tags:
     - rust
 

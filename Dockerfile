@@ -50,7 +50,7 @@ RUN mkdir -p /opt/ && chown ${USER}:${GROUP} /opt/
 
 USER ${USER}
 
-RUN test -x /opt/conda/bin/mamba || (curl -o ~/mambaforge.sh -OL  https://github.com/conda-forge/miniforge/releases/download/4.10.0-0/Mambaforge-Linux-x86_64.sh  && \
+RUN test -x /opt/conda/bin/mamba || (curl -o ~/mambaforge.sh -OL  https://github.com/conda-forge/miniforge/releases/download/4.10.3-4/Mambaforge-Linux-x86_64.sh  && \
      chmod +x ~/mambaforge.sh && \
      ~/mambaforge.sh -b -p /opt/conda && \
      rm ~/mambaforge.sh && \
@@ -62,9 +62,9 @@ RUN test -x /opt/conda/bin/mamba || (curl -o ~/mambaforge.sh -OL  https://github
     )
 ENV PATH=/home/${USER}/.local/bin:/opt/conda/bin:$PATH
 
-RUN curl -Lo /tmp/buildkit.tar.gz https://github.com/moby/buildkit/releases/download/v0.8.2/buildkit-v0.8.2.linux-amd64.tar.gz && tar -xzf /tmp/buildkit.tar.gz -C /tmp && mkdir -p /home/${USER}/.local/bin && mv /tmp/bin/buildctl /home/${USER}/.local/bin/ && chmod +x /home/${USER}/.local/bin/buildctl && rm -rf /tmp/*
+RUN curl -Lo /tmp/buildkit.tar.gz https://github.com/moby/buildkit/releases/download/v0.9.0/buildkit-v0.9.0.linux-amd64.tar.gz && tar -xzf /tmp/buildkit.tar.gz -C /tmp && mkdir -p /home/${USER}/.local/bin && mv /tmp/bin/buildctl /home/${USER}/.local/bin/ && chmod +x /home/${USER}/.local/bin/buildctl && rm -rf /tmp/*
 
-RUN curl -Lo /tmp/docker.tar.gz https://download.docker.com/linux/static/stable/x86_64/docker-20.10.6.tgz && tar -xzf /tmp/docker.tar.gz -C /tmp && mv /tmp/docker/docker /home/${USER}/.local/bin/ && rm -rf /tmp/*
+RUN curl -Lo /tmp/docker.tar.gz https://download.docker.com/linux/static/stable/x86_64/docker-20.10.8.tgz && tar -xzf /tmp/docker.tar.gz -C /tmp && mv /tmp/docker/docker /home/${USER}/.local/bin/ && rm -rf /tmp/*
 
 WORKDIR /home/${USER}/workspace
 
