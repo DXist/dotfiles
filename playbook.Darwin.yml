@@ -123,5 +123,5 @@
     #    - install_atom_packages
 
   roles:
-    - geerlingguy.homebrew
+    - geerlingguy.mac.homebrew
     - common

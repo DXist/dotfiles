@@ -187,4 +187,4 @@ fi
 if [ -r ~/.bashrc.local ]; then
 	. ~/.bashrc.local
 fi
-source "$HOME/.cargo/env"
+. "$HOME/.cargo/env"
