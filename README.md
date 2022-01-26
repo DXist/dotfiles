@@ -21,15 +21,13 @@ Checklist - fresh OS X System
 * SSD related:
 	* Enable trim if you use third party SSDs: sudo trimforce enable 
 	* disable local Time Machine snapthots: sudo tmutil disablelocal
+* change defalt shell to bash- chsh -s /bin/bash
 * provision using `make`
 * run apps in current session
-	* Seil
-	  Configure Caps Lock behaviour in System Preferences
-	* Karabin
+	* Configure Caps Lock behaviour in System Preferences
+	* Karabiner-Elements
 	* Spectacle
-	* Google Chrome
 	* Iterm2
-	* Skype
 
 * To automate:
 	* Minimize Dock

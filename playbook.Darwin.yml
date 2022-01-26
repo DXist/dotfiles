@@ -19,8 +19,6 @@
       - reattach-to-user-namespace
       - go
       - ripgrep
-      - glide
-      - unrar
       - gpg
       # - gpg-agent
       # - fswatch
@@ -29,23 +27,22 @@
     # homebrew_taps:
     #   - homebrew/cask-fonts
     homebrew_cask_apps:
-        # - google-chrome
         # - font-iosevka
         - slack
         - karabiner-elements
         - spectacle
         - iterm2
-        # - skype
-        # - vlc
-        # - libreoffice
-        - intellij-idea-ce
+        - telegram
+        - docker
+        - microsoft-office
+        - cloudflare-warp
+        # - intellij-idea-ce
         # - yandexdisk
         # - virtualbox
         # - virtualbox-extension-pack
         # - vagrant
         # - transmission
         # - gimp
-        #- telegram
     PREFERENCES: "{{ lookup('env', 'HOME')}}/Library/Preferences"
   environment:
     GIT_TEMPLATE_DIR: ""
