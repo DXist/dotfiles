@@ -53,7 +53,7 @@ if has('vim_starting')
 	Plug 'benatkin/vim-move-between-tabs'
 	Plug 'ConradIrwin/vim-bracketed-paste'
 	Plug 'godlygeek/tabular'
-	Plug 'python/black', {'for': ['python'], 'branch': 'stable'}
+	Plug 'python/black', {'for': ['python']}
 	Plug 'google/yapf', {'rtp': 'plugins/vim', 'for': ['python']}
 
 
@@ -82,6 +82,7 @@ if has('vim_starting')
 	Plug 'Glench/Vim-Jinja2-Syntax', {'for': ['j2', 'html']}
 	Plug 'editorconfig/editorconfig-vim'
 	let g:EditorConfig_exclude_patterns = ['fugitive://.\*']
+	Plug 'lambdalisue/suda.vim'
 
 	call plug#end()
 
@@ -111,6 +112,7 @@ set laststatus=2
 set ttyfast
 if v:version>=703
 	set relativenumber
+	set number
 endif
 set showcmd
 
@@ -216,7 +218,7 @@ augroup END
 nmap <Leader>z :call <SID>zoom_window()<cr>
 function! s:zoom_window()
 	tabedit %
-	setlocal foldcolumn=0 norelativenumber
+	setlocal foldcolumn=0 norelativenumber nonumber
 endfunction
 
 " netrw
@@ -363,7 +365,7 @@ let mapleader = ","
 
 " Fast saving
 nmap <leader>s :w<cr>
-nmap <leader>x :silent w !sudo tee %<cr>:e!<cr>
+nmap <leader>x :SudaWrite<cr>
 "Tab in visual mode
 xmap <Tab> >gv
 xmap <S-Tab> <gv
