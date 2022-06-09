@@ -11,3 +11,5 @@ if [ -n "$BASH_VERSION" ]; then
     fi
 fi
 . "$HOME/.cargo/env"
+
+export PATH="/Users/rinatshigapov/.local/share/solana/install/active_release/bin:$PATH"
