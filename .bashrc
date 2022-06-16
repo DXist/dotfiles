@@ -25,6 +25,10 @@ fi
 if [[ "${PATH}" != *$HOME/.cargo/bin* ]]; then
 	export PATH=$PATH:$HOME/.cargo/bin
 fi
+
+if [[ "${PATH}" != *$HOME/.fzf/bin* ]]; then
+	export PATH=$PATH:$HOME/.fzf/bin
+fi
 # Test for an interactive shell.  There is no need to set anything
 # past this point for scp and rcp, and it's important to refrain from
 # outputting anything in those cases.
