@@ -22,3 +22,4 @@ __pycache__
 *.egg-info
 pylama.ini
 Pipfile
+*.code-workspace
