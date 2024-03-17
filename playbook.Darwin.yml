@@ -12,6 +12,7 @@
       - python
       - neovim
       - ctags
+      - bash
       - bash-completion
       - tmux
       - fd
