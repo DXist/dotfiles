@@ -53,7 +53,7 @@
           # - libbz2-dev
           # - libreadline-dev
           # - python-pygments
-          - silversearcher-ag
+          - fd-find
           - ripgrep
           - tmux
           # in bionic

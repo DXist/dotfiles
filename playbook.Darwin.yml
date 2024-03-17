@@ -14,11 +14,10 @@
       - ctags
       - bash-completion
       - tmux
+      - fd
       - ripgrep
-      - the_silver_searcher
       - reattach-to-user-namespace
       - go
-      - ripgrep
       - gpg
       # - gpg-agent
       # - fswatch

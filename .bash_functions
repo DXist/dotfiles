@@ -161,11 +161,6 @@ install_dev_tools() {
 	${PIP} install $INSTALL_ARGS ${DEV_TOOLS/mypy/}
 }
 
-
-function agreplace() {
-	ag -l "$1" | xargs perl -pi -e "s/$1/$2/g"
-}
-
 function topgrep() {
 	top -p $(pgrep -d',' $1)
 }
