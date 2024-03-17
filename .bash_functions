@@ -161,6 +161,11 @@ install_dev_tools() {
 	${PIP} install $INSTALL_ARGS ${DEV_TOOLS/mypy/}
 }
 
+
+function rgreplace() {
+	rg --files-with-matches -0 "$1" | xargs -0 perl -pi -e "s/$1/$2/g"
+}
+
 function topgrep() {
 	top -p $(pgrep -d',' $1)
 }
