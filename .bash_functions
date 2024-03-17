@@ -163,7 +163,7 @@ install_dev_tools() {
 
 
 function rgreplace() {
-	rg --files-with-matches -0 "$1" | xargs -0 perl -pi -e "s/$1/$2/g"
+	rg --files-with-matches -0 "$1" | xargs -0 sd "$1" "$2"
 }
 
 function topgrep() {

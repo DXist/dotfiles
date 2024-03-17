@@ -53,6 +53,7 @@
           # - libbz2-dev
           # - libreadline-dev
           # - python-pygments
+          - rust-sd
           - fd-find
           - ripgrep
           - tmux
