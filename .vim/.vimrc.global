@@ -490,7 +490,7 @@ nnoremap <leader>f  :<C-u>AFiles<space>
 nnoremap <silent> <leader>gf  :<C-u>Files<CR>
 " command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4.. --exact'}, <bang>0)
 command! -bang -complete=dir -nargs=* AFiles
-    \ call fzf#run(fzf#wrap({'source': 'fd --type file --hidden"' . <q-args> . '"', 'options': '--multi'}, <bang>0))
+    \ call fzf#run(fzf#wrap({'source': 'fd --type file --hidden "' . <q-args> . '"', 'options': '--multi'}, <bang>0))
 nnoremap <leader>a  :<C-u>Rg<space>
 nnoremap <silent> <leader>8 :<C-u>Rg <C-R><C-W><CR>
 
