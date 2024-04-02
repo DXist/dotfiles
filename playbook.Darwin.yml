@@ -29,6 +29,7 @@
     #   - homebrew/cask-fonts
     homebrew_cask_apps:
         # - font-iosevka
+        - outline
         - slack
         - karabiner-elements
         - spectacle
@@ -36,7 +37,7 @@
         - telegram
         - docker
         - microsoft-office
-        - cloudflare-warp
+        # - cloudflare-warp
         # - intellij-idea-ce
         # - yandexdisk
         # - virtualbox
