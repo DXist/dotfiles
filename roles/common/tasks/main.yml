@@ -143,20 +143,25 @@
 #   tags:
 #     - pyenv-virtualenv
 
-- name: Install global python packages
-  pip:
-    name:
-      - pipenv
-      - 'tmuxp>=1.0.0'
-      -  mypy
-      -  pylint
-      -  pylama
-      -  isort
-      -  neovim
-      -  pdbpp
-      -  ipython
-      -  black
-    extra_args: --user --no-cache-dir
+- name: Install pipx python packages
+  command: >
+    pipx install --include-deps
+    pipenv
+    tmuxp
+    mypy
+    pylint
+    pylama
+    isort
+    pdbpp
+    ipython
+    black
+  tags:
+    - pippackages
+
+- name: Install global python liraries
+  command: >
+    pip install --user --no-cache-dir --break-system-packages
+    neovim
   tags:
     - pippackages
 

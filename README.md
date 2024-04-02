@@ -17,23 +17,40 @@ Key components of my dev environment:
 Checklist - fresh OS X System
 -----------------------------
 
-* Install Command Line Tools
+* Ensure Apple's command line tools are installed (xcode-select --install to launch the installer).
+
+Install Ansible for initial run:
+
+* pip3 install --user ansible
+
 * SSD related:
 	* Enable trim if you use third party SSDs: sudo trimforce enable 
 	* disable local Time Machine snapthots: sudo tmutil disablelocal
-* provision using `make`
+* provision with system python
+
+    * make initial
+
+    * to fix [TypeError](https://github.com/geerlingguy/ansible-collection-mac/issues/92) with brew
+
+        /opt/homebrew/bin/brew update --auto-update
+
+* Run bash shell. Install ansible for Homerew Python.
+
+    pipx install --include-deps ansible
+
+* Provision with homebrew python:
+
+    * make
+
 * run apps in current session
 	* Configure Caps Lock behaviour in System Preferences
 	* Karabiner-Elements
 	* Spectacle
 	* Iterm2
-* add newer bash (/usr/local/bin/bash) to /etc/shells
-* change defalt shell to bash- chsh -s /usr/local/bin/bash
+* add newer bash (/opt/homebrew/bin/bash) to /etc/shells
+
+* change default shell to bash- chsh -s /opt/homebrew/bin/bash
 
 * To automate:
-	* Minimize Dock
-	* Disable mru sort
 
-		* defaults write com.apple.dock mru-spaces -bool false
-
-	* Create 6 workspaces
+    * Create 6 workspaces

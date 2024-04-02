@@ -2,14 +2,19 @@
 - hosts: localhost
   #gather_facts: no
   vars:
-    homebrew_install_path: "/usr/local/Homebrew"
+    mas_installed_apps:
+      - id: 1356178125
+        name: Outline-Secure internet access
+
     homebrew_installed_packages:
       - cask
       - coreutils
-      - cmake
+      # - name: cmake
+      #   install_options: --formula
       - git
       - git-lfs
       - python
+      - pipx
       - neovim
       - ctags
       - bash
@@ -25,18 +30,15 @@
       # - fswatch
       - sf-pwgen
       # - parallel
-    # homebrew_taps:
-    #   - homebrew/cask-fonts
     homebrew_cask_apps:
         # - font-iosevka
-        - outline
         - slack
         - karabiner-elements
         - spectacle
         - iterm2
         - telegram
         - docker
-        - microsoft-office
+        # - microsoft-office
         # - cloudflare-warp
         # - intellij-idea-ce
         # - yandexdisk
@@ -45,9 +47,28 @@
         # - vagrant
         # - transmission
         # - gimp
+    dockitems_remove:
+      - FaceTime
+      - Music
+      - Keynote
+      - Numbers
+      - Pages
+      - Freeform
+      - Maps
+      - TV
+    dockitems_persist:
+      - name: "Visual Studio Code Insiders"
+        path: "/Applications/Visual Studio Code - Insiders.app/"
+        pos: 5
     PREFERENCES: "{{ lookup('env', 'HOME')}}/Library/Preferences"
   environment:
     GIT_TEMPLATE_DIR: ""
+
+  roles:
+    - geerlingguy.mac.homebrew
+    # - geerlingguy.mac.mas
+    - geerlingguy.mac.dock
+    - common
 
   tasks:
     - name: Stat preferences
@@ -76,17 +97,6 @@
         - symlink_preferences
         - stop_pref_daemon
 
-    - name: install python packages
-      pip: name={{ item }}
-      with_items:
-        - pipenv
-        - neovim
-        # - ansible
-        # - glances
-        # - objgraph
-      tags:
-        - install_python_packages
-
     - name: Ensure application directories exist
       file: path="{{ item }}" state=directory
       with_items:
@@ -110,6 +120,17 @@
       tags:
         - install_fonts
 
+    - name: Autohide dock
+      ansible.builtin.command:
+        cmd: defaults write com.apple.Dock autohide -bool true
+      changed_when: true
+      notify: "Kill Dock"
+
+    - name: Disable mru spaces
+      ansible.builtin.command:
+        cmd: defaults write com.apple.dock mru-spaces -bool false
+      changed_when: true
+
     #- name: Install atom packages
     #  command: apm install {{ item }}
     #  with_items:
@@ -121,6 +142,6 @@
     #  tags:
     #    - install_atom_packages
 
-  roles:
-    - geerlingguy.mac.homebrew
-    - common
+  handlers:
+    - name: Kill Dock
+      ansible.builtin.command: killall Dock

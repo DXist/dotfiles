@@ -1,5 +1,0 @@
----
-collections:
-  - geerlingguy.mac
-roles:
-  - geerlingguy.mac.homebrew

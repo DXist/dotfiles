@@ -2,11 +2,7 @@ USERBASE := $(shell python3 -m site --user-base)
 ANSIBLE := $(shell which ansible)
 
 ifeq ($(ANSIBLE),)
-	ANSIBLE := $(shell which $(USERBASE)/bin/ansible)
-endif
-ifeq ($(ANSIBLE),)
-	ANSIBLE_INSTALLATION := $(shell easy_install --user ansible)
-	ANSIBLE := $(shell which $(USERBASE)/bin/ansible)
+	ANSIBLE := $(USERBASE)/bin/ansible
 endif
 
 OS_FAMILY := $(shell $(ANSIBLE) localhost -i inventory.ini -m setup -a 'filter=ansible_os_family' |grep ansible_os_family |cut -d'"' -f4)
@@ -24,11 +20,18 @@ ANSIBLE_ARGS ?= --ask-become-pass
 .PHONY: all
 all: bootstrap provision update_vim
 
+.PHONY: initial
+initial: bootstrap provision_initial
+
 .PHONY: bootstrap
 bootstrap:
 ifeq ($(OS_FAMILY), Darwin)
-	$(ANSIBLE)-galaxy install -r roles.Darwin.yml --ignore-errors
+	$(ANSIBLE)-galaxy install -r requirements.Darwin.yml --ignore-errors
 endif
+
+.PHONY: provision_initial
+provision_initial:
+	$(ANSIBLE)-playbook -i inventory.ini $(PLAYBOOK) $(ANSIBLE_ARGS) --skip-tags=pippackages
 
 .PHONY: provision
 provision:
@@ -40,4 +43,4 @@ pull:
 
 .PHONY: update_vim
 update_vim:
-	vim +PlugUpdate +qall
+	nvim +PlugUpdate +qall
