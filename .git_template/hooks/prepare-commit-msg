@@ -6,15 +6,13 @@ timeglass=""
 case $2 in
 	message|template|'')
 		BRANCH_NAME=`git rev-parse --abbrev-ref HEAD`
-		ISSUE=$(echo $BRANCH_NAME | grep -Eo '([[:upper:]]+-[0-9]+)')
+		ISSUE=$(echo $BRANCH_NAME | grep -Eo '[[:upper:]]+-[0-9]+')
 
 		if [ "$ISSUE" ]; then
-			prefix="$ISSUE "
-		fi
-		if hash glass 2>/dev/null; then
-			timeglass="$(glass -s status --template '{{printf "#time %0.0fm" .Minutes }}') "
+			TYPE=$(echo $BRANCH_NAME | grep -Eo '^\w+')
+			prefix="$TYPE: $ISSUE "
 		fi
 		;;
 esac
 
-echo -ne "${prefix}${timeglass}${msg}" > "$1"
+echo -ne "${prefix}${msg}" > "$1"
