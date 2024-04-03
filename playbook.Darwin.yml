@@ -131,6 +131,11 @@
         cmd: defaults write com.apple.dock mru-spaces -bool false
       changed_when: true
 
+    - name: Enable key repeate for VSCodeInsiders + Vim
+      ansible.builtin.command:
+        cmd: defaults write com.microsoft.VSCodeInsiders ApplePressAndHoldEnabled -bool false
+      changed_when: true
+
     #- name: Install atom packages
     #  command: apm install {{ item }}
     #  with_items:
