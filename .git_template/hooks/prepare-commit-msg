@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 msg=$(cat $1)
 prefix=""
-timeglass=""
 
 case $2 in
 	message|template|'')
