@@ -9,9 +9,21 @@ case $2 in
 
 		if [ "$ISSUE" ]; then
 			TYPE=$(echo $BRANCH_NAME | grep -Eo '^\w+')
-			prefix="$TYPE: $ISSUE "
+			COMPONENT=$(git diff --cached --numstat |
+				awk '$1 != "-" && $2 != "-" && split($3, components, "[/\.]") > 2 { changed[components[2]] += $1 + $2 }
+							BEGIN { max=0 } END {for (comp in changed) if (changed[comp]>max) {max=changed[comp]; max_comp = comp }; print max_comp }')
+			if [ "$COMPONENT" ]; then
+				prefix="$TYPE($COMPONENT): $ISSUE "
+			else
+				prefix="$TYPE: $ISSUE "
+			fi
 		fi
 		;;
 esac
 
-echo -ne "${prefix}${msg}" > "$1"
+if [[ "${msg}" != $prefix* ]]; then
+	echo -ne "${prefix}${msg}" > "$1"
+else
+	# don't add same prefix from cherry-picked msg
+	echo -ne "${msg}" > "$1"
+fi
