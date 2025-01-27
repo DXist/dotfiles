@@ -1,4 +1,6 @@
 window-theme = dark
+font-family = PragmataPro
+font-size = 14
 theme = dark:Builtin Solarized Dark,light:Builtin Solarized Light
 
 keybind = super+f=esc:f
