@@ -1,0 +1,9 @@
+window-theme = dark
+theme = dark:Builtin Solarized Dark,light:Builtin Solarized Light
+
+keybind = super+f=esc:f
+keybind = super+b=esc:b
+keybind = super+j=esc:j
+keybind = super+k=esc:k
+keybind = super+shift+j=esc:J
+keybind = super+shift+k=esc:K
