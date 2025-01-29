@@ -4,6 +4,8 @@ font-feature = -dlig
 font-size = 14
 theme = dark:Builtin Solarized Dark,light:Builtin Solarized Light
 
+copy-on-select = true
+
 keybind = super+f=esc:f
 keybind = super+b=esc:b
 keybind = super+j=esc:j
