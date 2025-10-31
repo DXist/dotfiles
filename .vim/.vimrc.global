@@ -34,7 +34,7 @@ if has('vim_starting')
 	" let g:VtrAppendNewline = 1
 
 	Plug 'jmcantrell/vim-virtualenv'
-	Plug 'altercation/vim-colors-solarized'
+	Plug 'lifepillar/vim-solarized8'
 	" Plug 'scrooloose/syntastic'
 	Plug 'neomake/neomake'
 	Plug 'chaoren/vim-wordmotion'
@@ -166,12 +166,8 @@ source $VIMRUNTIME/menu.vim
 " COLORS {{{1
 " тёмный фон
 set bg=dark
-silent! colorscheme solarized
-let g:solarized_termtrans =1
-" переключение background
-if exists("togglebg")
-	call togglebg#map("<F6>")
-endif
+silent! colorscheme solarized8
+set termguicolors
 
 let python_highlight_all = 1
 " Highlight leading tabs
