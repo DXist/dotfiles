@@ -118,7 +118,7 @@
     - { path: 'envs/postmkvirtualenv', dest: 'envs/postmkvirtualenv' }
     - { path: 'config/pudb', dest: '.config/pudb' }
     - { path: 'config/ghostty', dest: '.config/ghostty' }
-    - { path: '.vim', dest: '.config/nvim' }
+    - { path: 'nvim', dest: '.config/nvim' }
   tags:
     - links
 
