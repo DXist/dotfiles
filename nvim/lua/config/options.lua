@@ -3,3 +3,4 @@
 -- Add any additional options here
 vim.g.mapleader = ","
 vim.opt.clipboard = ""
+vim.opt.diffopt = vim.opt.diffopt + "vertical"
