@@ -117,6 +117,8 @@ return {
         "python",
         "query",
         "regex",
+        "rust",
+        "ron",
         "vim",
         "yaml",
       },
@@ -172,12 +174,12 @@ return {
     "mason-org/mason.nvim",
     opts = {
       ensure_installed = {
-        "bash",
+        "bash-language-server",
         "buf",
-        "python",
-        "rust",
+        "ruff",
         "taplo",
-        "just",
+        "just-lsp",
+        "ansible-language-server",
         "stylua",
         "shellcheck",
         "shfmt",
@@ -200,9 +202,9 @@ return {
             "python",
             "javascript",
             "typescript",
-            "json",
-            "yaml",
-            "toml",
+            "go",
+            "shellscript",
+            "sql",
           },
           settings = {
             ltex = {
