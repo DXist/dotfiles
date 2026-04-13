@@ -172,6 +172,12 @@ return {
     "mason-org/mason.nvim",
     opts = {
       ensure_installed = {
+        "bash",
+        "buf",
+        "python",
+        "rust",
+        "taplo",
+        "just",
         "stylua",
         "shellcheck",
         "shfmt",
@@ -184,7 +190,7 @@ return {
     "neovim/nvim-lspconfig",
     opts = {
       servers = {
-        ltex = {
+        ltex_plus = {
           filetypes = {
             "gitcommit",
             "markdown",
@@ -205,6 +211,10 @@ return {
                 enablePickyRules = true, -- High-quality grammar/style checks
                 motherTongue = "ru-RU",
                 languageModel = "~/.config/language-tool/ngram",
+              },
+              disabledRules = {
+                -- conventional commits prefer lowercase
+                ["en-US"] = { "UPPERCASE_SENTENCE_START" },
               },
               -- If you use Code Spell Checker or Nvim spell,
               -- you can disable LTeX spelling to avoid double squiggles:
