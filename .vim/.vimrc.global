@@ -48,7 +48,7 @@ if has('vim_starting')
 	Plug 'thaerkh/vim-workspace'
 	Plug 'thinca/vim-template'
 	Plug 'me-vlad/spellfiles.vim'
-	Plug 'SirVer/ultisnips'
+	" Plug 'SirVer/ultisnips'
 	Plug 'honza/vim-snippets'
 	Plug 'benatkin/vim-move-between-tabs'
 	Plug 'ConradIrwin/vim-bracketed-paste'
