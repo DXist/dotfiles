@@ -175,6 +175,43 @@ return {
         "stylua",
         "shellcheck",
         "shfmt",
+        "ltex-ls-plus",
+      },
+    },
+  },
+  -- Configure the server settings via nvim-lspconfig
+  {
+    "neovim/nvim-lspconfig",
+    opts = {
+      servers = {
+        ltex = {
+          filetypes = {
+            "gitcommit",
+            "markdown",
+            "txt",
+            "latex",
+            "rust",
+            "python",
+            "javascript",
+            "typescript",
+            "json",
+            "yaml",
+            "toml",
+          },
+          settings = {
+            ltex = {
+              language = "en-US",
+              additionalRules = {
+                enablePickyRules = true, -- High-quality grammar/style checks
+                motherTongue = "ru-RU",
+                languageModel = "~/.config/language-tool/ngram",
+              },
+              -- If you use Code Spell Checker or Nvim spell,
+              -- you can disable LTeX spelling to avoid double squiggles:
+              -- disabledRules = { ["en-US"] = { "MORFOLOGIK_RULE_EN_US" } },
+            },
+          },
+        },
       },
     },
   },
