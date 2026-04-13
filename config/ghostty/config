@@ -2,7 +2,7 @@ window-theme = dark
 font-family = PragmataPro
 font-feature = -dlig
 font-size = 14
-theme = dark:Builtin Solarized Dark,light:Builtin Solarized Light
+theme = dark:Solarized Dark Patched,light:Solarized Dark Patched
 
 copy-on-select = clipboard
 
